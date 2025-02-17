@@ -1,0 +1,539 @@
+{
+    "commands": {
+        "neofetch": {
+            "response": "I wake up, I turn my laptop on, I open a terminal and I run neofetch. I spend around 4 hours just staring at neofetch. I then get up, taking my laptop with me, to the kitchen. The kitchen is void of anything a normal human being would call food, I ran out of instant noodles years ago, too busy looking at neofetch. I set my laptop upon the kitchen counter, close my terminal, open it again and run neofetch. I proceed to stare at it for another hour before I spot a cockroach on the wall. I grab it and eat it. I require nutrition to stay alive. If I die I can no longer look at neofetch. I then close the terminal and open another one, running neofetch. I actually don't need to run neofetch manually, I have put the command in my .bashrc. I take the laptop back to my room, careful not to glance away from neofetch. I place the laptop on my desk, close the terminal and open another one. Neofetch prints before my eyes. I then proceed to stare at neofetch for many countless hours, only moving to close the terminal and reopen it, until I pass out from exhaustion. When I sleep I dream of neofetch. I awaken to another day of neofetch.",
+            "type": "message"
+        },
+        "newinterjection": {
+            "response": "I have a new interjection for you. It's a secret.",
+            "type": "function"
+        },
+        "newcommand": {
+            "response": "I have a newcommand for you. It's a secret.",
+            "type": "function"
+        },
+        "needy": {
+            "type": "message",
+            "response": "https://tenor.com/view/needle-needy-gif-10486767941572910863"
+        },
+        "beer": {
+            "type": "function",
+            "response": "kay"
+        },
+        "help": {
+            "type": "function",
+            "response": "kay"
+        },
+        "opopredict": {
+            "type": "message",
+            "response": "Something bad is ahead for <@534859465648898071>."
+        },
+        "opo9440": {
+            "type": "message",
+            "response": "What? Wasn't he banned?"
+        },
+        "reputation": {
+            "type": "function",
+            "response": "0"
+        },
+        "interjections": {
+            "type": "function",
+            "response": "kay"
+        },
+        "howisamy": {
+            "type": "message",
+            "response": "not good mentally"
+        }
+    },
+    "interjections": {
+        "based_low": {
+            "response": "Based on what?",
+            "type": "message",
+            "prompts": [
+                "based",
+                "so based",
+                "zased"
+            ],
+            "reputation_range": [
+                0,
+                60
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "based_high": {
+            "response": "I agree, so zased,,",
+            "type": "message",
+            "prompts": [
+                "based",
+                "so based",
+                "zased"
+            ],
+            "reputation_range": [
+                60,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "fuck": {
+            "response": "NO SWEARING!",
+            "type": "message",
+            "prompts": [
+                "fuck",
+                "fucks",
+                "fucking",
+                "ffs",
+                "wtf"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": -1,
+            "whole_message": false
+        },
+        "hate": {
+            "response": ":(",
+            "type": "message",
+            "prompts": [
+                "i hate dimmy widderkins"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": -10,
+            "whole_message": false
+        },
+        "welcome": {
+            "response": "hi everyone",
+            "type": "message",
+            "prompts": [
+                "everyone welcome dimmy widderkins"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": false
+        },
+        "preprogrammed": {
+            "response": "it's true, these responses are preprogrammed",
+            "type": "message",
+            "prompts": [
+                "he doesn't do very much yet",
+                "but you can add new commands and interjections with !newcommand or !newinterjection",
+                "isn't that so cool guys"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": false
+        },
+        "rea": {
+            "response": "wrong. nothing is real.",
+            "type": "message",
+            "prompts": [
+                "rea",
+                "reae",
+                "ra",
+                "real"
+            ],
+            "reputation_range": [
+                0,
+                60
+            ],
+            "reputation_change": -10,
+            "whole_message": false
+        },
+        "death": {
+            "response": "life!!!",
+            "type": "message",
+            "prompts": [
+                "death",
+                "dying",
+                "die"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "damn": {
+            "response": "https://preview.redd.it/saw-this-weird-bird-outside-anyone-know-the-species-v0-45lce8ammjbb1.jpeg?width=748&format=pjpg&auto=webp&s=69acd11b4ec6b2855297ea7c94a864cad33b6ad1",
+            "type": "message",
+            "prompts": [
+                "damn",
+                "darn",
+                "dang",
+                "damnation",
+                "dammit",
+                "damnit",
+                "dangit",
+                "dangnabbit",
+                "dangnabit",
+                "dangnabit",
+                "darnation",
+                "darnit",
+                "darnitall",
+                "darnitalltoheck",
+                "darnitalltoheckandback",
+                "darnitalltoheckandbackagain",
+                "darnitalltoheckandbackandbackagain",
+                "darnitalltoheckandbackandbackagainandback",
+                "darnitalltoheckandbackandbackagainandbackandbackagain",
+                "darnitalltoheckandbackandbackagainandbackandbackagainandback",
+                "darnitalltoheckandbackandbackagainandbackandbackagainandbackandbackagain",
+                "darnitalltoheckandbackandbackagainandbackandbackagainandbackandbackagainandback",
+                "darnitalltoheckandbackandbackagainandbackandbackagainandbackandbackagainandbackandbackagain",
+                "darnitalltoheckandbackandbackagainandbackandbackagainandbackandbackagainandbackandbackagainandback",
+                "darnitalltoheckandbackandbackagainandbackandbackagainandbackandbackagainandbackandbackagainandbackandbackagain",
+                "darnitalltoheckandbackandbackagainandbackandbackagainandbackandbackagainandbackandbackagainandbackandbackagainandback",
+                "darnitalltoheckandbackandbackagainandbackandbackagainandbackandbackagainandbackandbackagainandbackandbackagainandbackandbackagain",
+                "dangnation",
+                "dangnations"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739756242.231054": {
+            "type": "message",
+            "response": "i have a word or to two say: mist. plot. president. title. thank you",
+            "prompts": [
+                "word",
+                "words",
+                "wordy",
+                "wordless",
+                "wordful",
+                "wording"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": false
+        },
+        "1739757223.2595894": {
+            "type": "message",
+            "response": "that's me!",
+            "prompts": [
+                "<@1330727173115613304>"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": false
+        },
+        "1739757253.5864885": {
+            "type": "message",
+            "response": "Fucking shut up he has All Messages",
+            "prompts": [
+                "<@534859465648898071>"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739758493.5793507": {
+            "type": "message",
+            "response": "I fucking hate you",
+            "prompts": [
+                "<@534859465648898071>"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739758677.8116198": {
+            "type": "message",
+            "response": "fr",
+            "prompts": [
+                "",
+                "\u200b"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739758753.6886659": {
+            "type": "message",
+            "response": "I am watching",
+            "prompts": [
+                "amy"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739758769.9410021": {
+            "type": "message",
+            "response": "fr",
+            "prompts": [
+                "fr"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": false
+        },
+        "1739758800.0064795": {
+            "type": "message",
+            "response": "That bozer was banned already",
+            "prompts": [
+                "jack"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739758860.9379728": {
+            "type": "message",
+            "response": "Fucking fuck you fucking bitch I fucking hate you",
+            "prompts": [
+                "a"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739759052.157355": {
+            "type": "message",
+            "response": "That guy is a fucking idiot, I fucking hate him, block him",
+            "prompts": [
+                "chap",
+                "chapper",
+                "chapper24"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": false
+        },
+        "1739759158.8590631": {
+            "type": "message",
+            "response": "oh",
+            "prompts": [
+                "what"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739759161.9660306": {
+            "type": "message",
+            "response": "oh",
+            "prompts": [
+                "oh"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739759232.586398": {
+            "type": "message",
+            "response": "hiiii",
+            "prompts": [
+                "hello",
+                "hi",
+                "hey",
+                "greetings",
+                "salutations",
+                "good day",
+                "howdy",
+                "hiya",
+                "yo",
+                "what's up",
+                "g'day",
+                "aloha",
+                "bonjour",
+                "hola",
+                "ciao",
+                "namaste",
+                "salaam",
+                "shalom",
+                "konnichiwa",
+                "ni hao",
+                "zdravstvuyte",
+                "merhaba",
+                "szia",
+                "dia dhuit",
+                "tjena",
+                "hej",
+                "ol\u00e1",
+                "sveiki",
+                "salam",
+                "sawubona",
+                "jambo",
+                "ahoj",
+                "hallo",
+                "guten tag",
+                "moin",
+                "servus",
+                "hei",
+                "terve",
+                "buna",
+                "h\u00e6",
+                "hall\u00f3",
+                "g\u00f3\u00f0an daginn",
+                "xin ch\u00e0o",
+                "kumusta",
+                "kia ora",
+                "sain bainuu",
+                "selamat",
+                "sawasdee",
+                "sabaidee",
+                "ayubowan",
+                "vanakkam",
+                "dumela",
+                "mo\u00efen",
+                "hall\u00e5",
+                "hej hej",
+                "zdravo",
+                "dobar dan",
+                "bok",
+                "sveiki",
+                "tere",
+                "labas",
+                "witaj",
+                "dzie\u0144 dobry",
+                "bun\u0103 ziua",
+                "zdraveyte",
+                "yia sas",
+                "pryvit",
+                "zdravo",
+                "barev dzez",
+                "gamarjoba",
+                "moi",
+                "hoi",
+                "hallo daar",
+                "hej d\u00e5",
+                "hei hei",
+                "hej med dig",
+                "goddag",
+                "halla",
+                "h\u00e6 h\u00e6",
+                "hal\u00f2",
+                "dia duit",
+                "haigh",
+                "hel\u00f4",
+                "s'mae"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739760465.9073045": {
+            "type": "message",
+            "response": "\ud83d\uded6",
+            "prompts": [
+                "hut"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739760482.4834962": {
+            "type": "message",
+            "response": "jorin is so epic",
+            "prompts": [
+                "jorin"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739760627.157221": {
+            "type": "message",
+            "response": "me when opo",
+            "prompts": [
+                "murder"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": false
+        },
+        "1739760975.4370527": {
+            "type": "message",
+            "response": "Not the response I was hoping for, but I'll take it. I'm just happy to noticed, is all.",
+            "prompts": [
+                "interrobang"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739762186.8257756": {
+            "type": "message",
+            "response": "\"}\u0641\u0644\u064a\u062c\u0639\u0644 \u0627\u0644\u0644\u0647 \u0628\u062d\u0643\u0645\u062a\u0647 \u0648\u0639\u062f\u0644\u0647 \u0627\u0644\u0644\u0627\u0645\u062a\u0646\u0627\u0647\u064a\u064a\u0646 \u0639\u0644\u0649 \u0645\u062b\u0644 \u0647\u0630\u0627 \u0627\u0644\u0634\u062e\u0635 \u062d\u062c\u0627\u0628\u064b\u0627 \u0639\u0646 \u0628\u0635\u0631\u0647 \u0638\u0627\u0647\u0631\u064b\u0627 \u0648\u0628\u0627\u0637\u0646\u064b\u0627\u060c \u0641\u064a\u062c\u0639\u0644\u0647 \u0623\u0639\u0645\u0649 \u0639\u0646 \u0643\u0644 \u062d\u0642 \u0648\u0647\u062f\u0649\u060c \u0648\u0644\u064a\u0639\u0630\u0628\u0647 \u0628\u0623\u0634\u062f \u0623\u0646\u0648\u0627\u0639 \u0627\u0644\u0639\u0630\u0627\u0628 \u0627\u0644\u0630\u064a \u064a\u0644\u064a\u0642 \u0628\u0645\u0646 \u064a\u0635\u0631 \u0639\u0644\u0649 \u0627\u0644\u0627\u0633\u062a\u0643\u0628\u0627\u0631 \u0648\u0627\u0644\u0639\u062f\u0648\u0627\u0646 \u0648\u0627\u0644\u062a\u0645\u0631\u062f \u0639\u0644\u0649 \u0625\u0631\u0627\u062f\u062a\u0647 \u0627\u0644\u0625\u0644\u0647\u064a\u0629\u060c \u062d\u062a\u0649 \u064a\u062f\u0631\u0643 \u062e\u0637\u0648\u0631\u0629 \u0623\u0641\u0639\u0627\u0644\u0647 \u0648\u0627\u0644\u0633\u0644\u0637\u0629 \u0627\u0644\u0645\u0637\u0644\u0642\u0629 \u0644\u0644\u0647 \u062a\u0639\u0627\u0644\u0649 \u0639\u0644\u0649 \u0643\u0644 \u0627\u0644\u062e\u0644\u0642.The Leopard 2A7V is one of the most modern tanks that are currently in service with any army. Its two plane stabilized smoothbore 120mm Rh120/L55 A1 is capable of firing the DM53 APFSDS kinetic penetrator round with a muzzle velocity of about 6300km/h, which results in a penetration rate of over 640mm of pure steel at 500m, while it also has the DM11 HE-TF round packed with 3 kilograms of composition B resulting in a very effective munition against infantry, lightly armored vehicles and buildings. But the Leopard 2A7V is far from being a glass cannon. It is fitted with the arrowhead protection system on its turret cheeks which are capable of stopping a direct hit from an M1A2 SEP V2\u2018s M829A2 APFSDS round. The blowout panels in the ammunition rack in the back of the turret enable taking a hit from an anti-tank round right to the ammunition without killing the turret crew. The heavily armored front of the hull may not be enough to stop a modern kinetic penetrator but it can take a RPG with out breaking a sweat. For the sides of the Leopard 2A7V it has 30mm of heat treated steel and spall liner to neutralize the shrapnel of anti-tank munitions. Even in the mobility department the Leopard 2A7V is one of the best MBT models to own, with its 12-Zylinder-FM-Dieselmotor MTU MB 873 it can reach a top speed of 72km/h. And all that while also carrying two MG3A1 machine guns to eliminate any infantry that gets too close for comfort.",
+            "prompts": [
+                "\"}\u0641\u0644\u064a\u062c\u0639\u0644 \u0627\u0644\u0644\u0647 \u0628\u062d\u0643\u0645\u062a\u0647 \u0648\u0639\u062f\u0644\u0647 \u0627\u0644\u0644\u0627\u0645\u062a\u0646\u0627\u0647\u064a\u064a\u0646 \u0639\u0644\u0649 \u0645\u062b\u0644 \u0647\u0630\u0627 \u0627\u0644\u0634\u062e\u0635 \u062d\u062c\u0627\u0628\u064b\u0627 \u0639\u0646 \u0628\u0635\u0631\u0647 \u0638\u0627\u0647\u0631\u064b\u0627 \u0648\u0628\u0627\u0637\u0646\u064b\u0627\u060c \u0641\u064a\u062c\u0639\u0644\u0647 \u0623\u0639\u0645\u0649 \u0639\u0646 \u0643\u0644 \u062d\u0642 \u0648\u0647\u062f\u0649\u060c \u0648\u0644\u064a\u0639\u0630\u0628\u0647 \u0628\u0623\u0634\u062f \u0623\u0646\u0648\u0627\u0639 \u0627\u0644\u0639\u0630\u0627\u0628 \u0627\u0644\u0630\u064a \u064a\u0644\u064a\u0642 \u0628\u0645\u0646 \u064a\u0635\u0631 \u0639\u0644\u0649 \u0627\u0644\u0627\u0633\u062a\u0643\u0628\u0627\u0631 \u0648\u0627\u0644\u0639\u062f\u0648\u0627\u0646 \u0648\u0627\u0644\u062a\u0645\u0631\u062f \u0639\u0644\u0649 \u0625\u0631\u0627\u062f\u062a\u0647 \u0627\u0644\u0625\u0644\u0647\u064a\u0629\u060c \u062d\u062a\u0649 \u064a\u062f\u0631\u0643 \u062e\u0637\u0648\u0631\u0629 \u0623\u0641\u0639\u0627\u0644\u0647 \u0648\u0627\u0644\u0633\u0644\u0637\u0629 \u0627\u0644\u0645\u0637\u0644\u0642\u0629 \u0644\u0644\u0647 \u062a\u0639\u0627\u0644\u0649 \u0639\u0644\u0649 \u0643\u0644 \u0627\u0644\u062e\u0644\u0642.the leopard 2a7v is one of the most modern tanks that are currently in service with any army. its two plane stabilized smoothbore 120mm rh120/l55 a1 is capable of firing the dm53 apfsds kinetic penetrator round with a muzzle velocity of about 6300km/h",
+                "which results in a penetration rate of over 640mm of pure steel at 500m",
+                "while it also has the dm11 he-tf round packed with 3 kilograms of composition b resulting in a very effective munition against infantry",
+                "lightly armored vehicles and buildings. but the leopard 2a7v is far from being a glass cannon. it is fitted with the arrowhead protection system on its turret cheeks which are capable of stopping a direct hit from an m1a2 sep v2\u2018s m829a2 apfsds round. the blowout panels in the ammunition rack in the back of the turret enable taking a hit from an anti-tank round right to the ammunition without killing the turret crew. the heavily armored front of the hull may not be enough to stop a modern kinetic penetrator but it can take a rpg with out breaking a sweat. for the sides of the leopard 2a7v it has 30mm of heat treated steel and spall liner to neutralize the shrapnel of anti-tank munitions. even in the mobility department the leopard 2a7v is one of the best mbt models to own",
+                "with its 12-zylinder-fm-dieselmotor mtu mb 873 it can reach a top speed of 72km/h. and all that while also carrying two mg3a1 machine guns to eliminate any infantry that gets too close for comfort."
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        }
+    }
+}

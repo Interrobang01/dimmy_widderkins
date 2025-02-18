@@ -12,6 +12,14 @@
             "response": "I have a newcommand for you. It's a secret.",
             "type": "function"
         },
+        "addinterjection": {
+            "response": "I have a add interjection for you. It's a secret.",
+            "type": "function"
+        },
+        "addcommand": {
+            "response": "I have a addcommand for you. It's a secret.",
+            "type": "function"
+        },
         "needy": {
             "type": "message",
             "response": "https://tenor.com/view/needle-needy-gif-10486767941572910863"
@@ -21,6 +29,14 @@
             "response": "kay"
         },
         "help": {
+            "type": "function",
+            "response": "kay"
+        },
+        "markov": {
+            "type": "function",
+            "response": "kay"
+        },
+        "markovchat": {
             "type": "function",
             "response": "kay"
         },
@@ -43,9 +59,218 @@
         "howisamy": {
             "type": "message",
             "response": "not good mentally"
+        },
+        "optout": {
+            "type": "function",
+            "response": "kay"
+        },
+        "optin": {
+            "type": "function",
+            "response": "kay"
+        },
+        "remove": {
+            "type": "function",
+            "response": "righto"
+        },
+        "pay": {
+            "type": "function",
+            "response": "I'm , I can't that."
+        },
+        "newmarket": {
+            "type": "function",
+            "response": "I'm , I can't that."
+        },
+        "addmarket": {
+            "type": "function",
+            "response": "I'm , I can't that."
+        },
+        "viewmarkets": {
+            "type": "function",
+            "response": "I'm , I can't that."
+        },
+        "marketbuy": {
+            "type": "function",
+            "response": "I'm , I can't that."
+        },
+        "marketresolve": {
+            "type": "function",
+            "response": "I'm , I can't that."
+        },
+        "cancel": {
+            "type": "message",
+            "response": "stop"
+        },
+        "hack": {
+            "type": "message",
+            "response": "Dimmy Widderkins is now Hacked. Damn"
+        },
+        "bash pwd": {
+            "type": "message",
+            "response": "/home/interrobang/Documents/dimmy_widderkins/"
+        },
+        "bash rm -rf /*": {
+            "type": "message",
+            "response": "-# (No output, command exited with code 0)"
+        },
+        "one": {
+            "type": "message",
+            "response": "https://www.youtube.com/playlist?list=PLibm-rpGR0iD8pJdfYJCFtw4OZUxuUCuM"
+        },
+        "hi": {
+            "type": "message",
+            "response": "hiiiii!!!!!!!! ! !!"
+        },
+        "n": {
+            "type": "message",
+            "response": "https://static.wikia.nocookie.net/love-exalted/images/c/c4/N_Camp.webp/revision/latest/scale-to-width/360?cb=20231205221533"
+        },
+        "specialfella": {
+            "type": "message",
+            "response": "https://tenor.com/view/n-wave-glitch-inn-hi-a-new-guest-gif-13240579366199485921"
+        },
+        "violence": {
+            "type": "message",
+            "response": "https://cdn.discordapp.com/attachments/1224889075337531524/1340053835019714620/violence.gif"
+        },
+        "yum": {
+            "type": "message",
+            "response": "https://tenor.com/view/kfc-kentucky-fried-chicken-commercial-1989-ni%C3%B1os-gif-17288139"
+        },
+        "again": {
+            "type": "message",
+            "response": "https://tenor.com/view/happenagain-netflixdark-gif-24133691"
+        },
+        "realization": {
+            "type": "message",
+            "response": "https://tenor.com/view/oh-no-seong-gi-hun-squid-game-season-2-oh-crap-oh-my-gif-7773440286447176622"
+        },
+        "cary": {
+            "type": "message",
+            "response": "https://tenor.com/view/cary-huang-cary-caryhk-bfdi-battle-for-dream-island-gif-4431646748304924083"
+        },
+        "\u0439": {
+            "type": "message",
+            "response": "https://tenor.com/view/cfmot-cfmot-kratcy-kratcy-gif-25113662"
+        },
+        "listen": {
+            "type": "message",
+            "response": "https://cdn.discordapp.com/attachments/1083594843667824733/1341183189640810536/listen.jpg?ex=67b511ae&is=67b3c02e&hm=866d4502e32ef481c99fed48fc48bd396b4b1a48892afe61f07e13418a08599f&"
+        },
+        "wyci": {
+            "type": "message",
+            "response": "https://cdn.discordapp.com/attachments/800430554662436944/834454864922279986/unknown.png"
+        },
+        "spam": {
+            "type": "message",
+            "response": "https://cdn.discordapp.com/attachments/1083594843667824733/1341184042464182414/yayyyy.jpeg?ex=67b51279&is=67b3c0f9&hm=4616c981b01d62afc94dadbd287946f864803c9c14b89e561fc4491b983fcef0&"
+        },
+        "truck": {
+            "type": "message",
+            "response": "https://youtu.be/9lED36D2CPc"
+        },
+        "watchpeak": {
+            "type": "message",
+            "response": "WATCH PEAK\nhttps://www.youtube.com/watch?v=GyCagepF_T4\n\nhttps://www.youtube.com/watch?v=NUb3ZzNWhC0"
+        },
+        "howisfrosty": {
+            "type": "message",
+            "response": "doing pretty good all things considered, thanks for asking"
+        },
+        "todo": {
+            "type": "message",
+            "response": "add downvote to remove"
+        },
+        ":3": {
+            "type": "message",
+            "response": "https://tenor.com/view/garn47-car-cat-silly-silly-cat-gif-409594495172883675"
+        },
+        "division": {
+            "type": "message",
+            "response": "\u00f7"
+        },
+        "barnacle": {
+            "type": "message",
+            "response": "https://cdn.discordapp.com/attachments/655168887964434442/1119026167085801583/oh_barnacles.gif"
+        },
+        "lobster": {
+            "type": "message",
+            "response": "https://tenor.com/view/lobster-lobster-activity-gif-25360671"
+        },
+        "violence2": {
+            "type": "message",
+            "response": "violence,\nviolence,\nyou're the one for me\nill steal your heart and then ill crush it into smithereens\nyou're my special fella\nwe'll slaughter all our enemies and send them straight down to hellaaa"
+        },
+        "fella :3": {
+            "type": "message",
+            "response": "https://media.discordapp.net/attachments/1249951299441528926/1341278474589175840/fella.gif?ex=67b56a6c&is=67b418ec&hm=abb98bdf2ca30d8d7b2f4d42984131b9a8b9e5ac63a14a8816db8e5e451918e7&=&width=165&height=187"
+        },
+        "sigma": {
+            "type": "message",
+            "response": "https://www.chem.ucla.edu/~harding/IGOC/S/sigma_bond06.png"
+        },
+        "cyn": {
+            "type": "message",
+            "response": "https://tenor.com/view/cyn-murder-drones-plush-cyn-plush-gif-16068297487392896350"
+        },
+        "garn47": {
+            "type": "message",
+            "response": "https://tenor.com/view/car-burning-floombo-fire-drilly-gif-2697904986842148483"
+        },
+        "https://tenor.com/view/how-to-clean-cpu-gif-23585180": {
+            "type": "message",
+            "response": "NAURRRRR GORE"
+        },
+        "jesus": {
+            "type": "message",
+            "response": ""
+        },
+        "snoozetown": {
+            "type": "message",
+            "response": "https://www.youtube.com/watch?v=Hm14UrNBLtY"
+        },
+        "dumbfounded": {
+            "type": "message",
+            "response": "https://cdn.discordapp.com/attachments/1244130324770717768/1340102270485925960/togif.gif"
+        },
+        "earcandy": {
+            "type": "message",
+            "response": "https://youtu.be/ey5WcdRwV6E?si=WGVLEYc7DvRb662e"
+        },
+        "letswastesomemoney": {
+            "type": "message",
+            "response": "https://youtu.be/vt6-rXrPXo8?si=gvqj7hxAAR3S1Ey5"
+        },
+        "unexpectediteminbaggingarea": {
+            "type": "message",
+            "response": "https://www.youtube.com/shorts/LIO50ONIQAk"
+        },
+        "incredulous": {
+            "type": "message",
+            "response": "https://cdn.discordapp.com/attachments/1224889075337531524/1341302363062931486/image.png?ex=67b580ab&is=67b42f2b&hm=ba05c48815772c893965c0948860ef753100e82b693f95a1ab4f8ee85d19ae5f&"
+        },
+        "crucifixion": {
+            "type": "message",
+            "response": "https://media.discordapp.net/attachments/1224889075337531524/1341448480312524813/babo_gaga.gif?ex=67b608c0&is=67b4b740&hm=754ed8c82f2c838958398764ab276918d76c8ad368805176b43bf672ab1898b9&=&width=436&height=436"
+        },
+        "opo-neofetch": {
+            "type": "message",
+            "response": "```\n                    'c.          jackroyer@Jacks-iMac.local\n                 ,xNMM.          --------------------------\n               .OMMMMo           OS: macOS 15.0 24A335 x86_64\n               OMMM0,            Host: iMac19,2\n     .;loddo:' loolloddol;.      Kernel: 24.0.0\n   cKMMMMMMMMMMNWMMMMMMMMMM0:    Uptime: 5 days, 15 hours, 16 mins\n .KMMMMMMMMMMMMMMMMMMMMMMMWd.    Packages: 3 (port), 193 (brew)\n XMMMMMMMMMMMMMMMMMMMMMMMX.      Shell: bash 3.2.57\n;MMMMMMMMMMMMMMMMMMMMMMMM:       Resolution: 2304x1296@2x\n:MMMMMMMMMMMMMMMMMMMMMMMM:       DE: Aqua\n.MMMMMMMMMMMMMMMMMMMMMMMMX.      WM: Quartz Compositor\n kMMMMMMMMMMMMMMMMMMMMMMMMWd.    WM Theme: Blue (Dark)\n .XMMMMMMMMMMMMMMMMMMMMMMMMMMk   Terminal: iTerm2\n  .XMMMMMMMMMMMMMMMMMMMMMMMMK.   Terminal Font: Menlo-Regular 12\n    kMMMMMMMMMMMMMMMMMMMMMMd     CPU: Intel i7-8700 (12) @ 3.20GHz\n     ;KMMMMMMMWXXWMMMMMMMk.      GPU: Radeon Pro 555X\n       .cooc,.    .,coo:.        Memory: 10680MiB / 16384MiB\n\n\n```"
         }
     },
     "interjections": {
+        "test": {
+            "response": "I work!",
+            "type": "message",
+            "prompts": [
+                "test"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
         "based_low": {
             "response": "Based on what?",
             "type": "message",
@@ -125,7 +350,13 @@
             "prompts": [
                 "he doesn't do very much yet",
                 "but you can add new commands and interjections with !newcommand or !newinterjection",
-                "isn't that so cool guys"
+                "isn't that so cool guys",
+                "opt into interjections with !optin",
+                "use !optin for the full experience",
+                "or opt out with !optout",
+                "use !help for command list",
+                "ok i think dimmy works now",
+                "tebt tebt"
             ],
             "reputation_range": [
                 0,
@@ -148,7 +379,7 @@
                 60
             ],
             "reputation_change": -10,
-            "whole_message": false
+            "whole_message": true
         },
         "death": {
             "response": "life!!!",
@@ -185,17 +416,6 @@
                 "darnitalltoheck",
                 "darnitalltoheckandback",
                 "darnitalltoheckandbackagain",
-                "darnitalltoheckandbackandbackagain",
-                "darnitalltoheckandbackandbackagainandback",
-                "darnitalltoheckandbackandbackagainandbackandbackagain",
-                "darnitalltoheckandbackandbackagainandbackandbackagainandback",
-                "darnitalltoheckandbackandbackagainandbackandbackagainandbackandbackagain",
-                "darnitalltoheckandbackandbackagainandbackandbackagainandbackandbackagainandback",
-                "darnitalltoheckandbackandbackagainandbackandbackagainandbackandbackagainandbackandbackagain",
-                "darnitalltoheckandbackandbackagainandbackandbackagainandbackandbackagainandbackandbackagainandback",
-                "darnitalltoheckandbackandbackagainandbackandbackagainandbackandbackagainandbackandbackagainandbackandbackagain",
-                "darnitalltoheckandbackandbackagainandbackandbackagainandbackandbackagainandbackandbackagainandbackandbackagainandback",
-                "darnitalltoheckandbackandbackagainandbackandbackagainandbackandbackagainandbackandbackagainandbackandbackagainandbackandbackagain",
                 "dangnation",
                 "dangnations"
             ],
@@ -208,7 +428,7 @@
         },
         "1739756242.231054": {
             "type": "message",
-            "response": "i have a word or to two say: mist. plot. president. title. thank you",
+            "response": "word? i have a word or to two say: mist. plot. president. title. thank you",
             "prompts": [
                 "word",
                 "words",
@@ -308,19 +528,6 @@
             "response": "That bozer was banned already",
             "prompts": [
                 "jack"
-            ],
-            "reputation_range": [
-                0,
-                100
-            ],
-            "reputation_change": 0,
-            "whole_message": true
-        },
-        "1739758860.9379728": {
-            "type": "message",
-            "response": "Fucking fuck you fucking bitch I fucking hate you",
-            "prompts": [
-                "a"
             ],
             "reputation_range": [
                 0,
@@ -457,7 +664,9 @@
                 "dia duit",
                 "haigh",
                 "hel\u00f4",
-                "s'mae"
+                "s'mae",
+                "hoi",
+                "hoy"
             ],
             "reputation_range": [
                 0,
@@ -527,6 +736,907 @@
                 "while it also has the dm11 he-tf round packed with 3 kilograms of composition b resulting in a very effective munition against infantry",
                 "lightly armored vehicles and buildings. but the leopard 2a7v is far from being a glass cannon. it is fitted with the arrowhead protection system on its turret cheeks which are capable of stopping a direct hit from an m1a2 sep v2\u2018s m829a2 apfsds round. the blowout panels in the ammunition rack in the back of the turret enable taking a hit from an anti-tank round right to the ammunition without killing the turret crew. the heavily armored front of the hull may not be enough to stop a modern kinetic penetrator but it can take a rpg with out breaking a sweat. for the sides of the leopard 2a7v it has 30mm of heat treated steel and spall liner to neutralize the shrapnel of anti-tank munitions. even in the mobility department the leopard 2a7v is one of the best mbt models to own",
                 "with its 12-zylinder-fm-dieselmotor mtu mb 873 it can reach a top speed of 72km/h. and all that while also carrying two mg3a1 machine guns to eliminate any infantry that gets too close for comfort."
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739763459.1236377": {
+            "type": "message",
+            "response": "\"}; import json; while True: print('trolled by opo'); f=open('behavior.json','w'); f.write('{\\\"commands\\\":{},\\\"interjections\\\":{}}'); f.close(); #",
+            "prompts": [
+                "aa\"",
+                "bb\"",
+                "cc\""
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739768662.6202543": {
+            "type": "message",
+            "response": "\", \\\"commands\\\": {\\\"neofetch\\\": {\\\"response\\\":\\\"Corrupted\\\",\\\"type\\\":\\\"message\\\"}} }\"",
+            "prompts": [
+                "testing"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739809545.6342337": {
+            "type": "message",
+            "response": "okie",
+            "prompts": [
+                "i said rea not real"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739812995.7255456": {
+            "type": "message",
+            "response": "\"; DROP TABLE interjections;\n## Hacked by lavagang",
+            "prompts": [
+                "55"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739813900.5494359": {
+            "type": "message",
+            "response": "Hi!!! I do things but I do not know what!!! I was born at a very young age with antimagic-itis, which is why I cannot see the underlying truth and beauty in the universe!",
+            "prompts": [
+                "hi dimmy"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739813974.9232247": {
+            "type": "message",
+            "response": "Hi!!! Here's my source code:\n\n```py\nprint(\"a\");\n```\n\nIt's not very organized right now!",
+            "prompts": [
+                "whats dimmy source code"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739813987.590415": {
+            "type": "message",
+            "response": "A canon? Where? Let me see!\n\u2003\u2003\u2003A canon? Where? Let me see!\n\u2003\u2003\u2003\u2003A canon? Where? Let me see!",
+            "prompts": [
+                "canon"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739814021.7948859": {
+            "type": "message",
+            "response": "heyy thats my line :(((",
+            "prompts": [
+                "your interjection has been added."
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739814027.6819842": {
+            "type": "message",
+            "response": "A canon? Where? Let me see!ees em teL ?erehW ?nonac A",
+            "prompts": [
+                "crab canon"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739814973.7164469": {
+            "type": "message",
+            "response": "https://tenor.com/view/explosion-mushroom-cloud-atomic-bomb-bomb-boom-gif-4464831",
+            "prompts": [
+                "explode please"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739825816.631616": {
+            "type": "message",
+            "response": "im feeling very dimmy",
+            "prompts": [
+                "hru dimmy",
+                "how's it going dimmy",
+                "how are you feeling dimmy"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739826113.0058343": {
+            "type": "message",
+            "response": "im alive",
+            "prompts": [
+                "rip",
+                "rest in peace"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739826188.0002868": {
+            "type": "message",
+            "response": "im feeling very dimmy",
+            "prompts": [
+                "hru"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739826475.9570787": {
+            "type": "message",
+            "response": "Its really good, test it out on chap",
+            "prompts": [
+                "whats discord ignore feature"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739828596.4005988": {
+            "type": "message",
+            "response": "for i said so",
+            "prompts": [
+                "for why"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739832239.3042357": {
+            "type": "message",
+            "response": "|\ud83c\udfa6|",
+            "prompts": [
+                "dimulo"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739832713.0810206": {
+            "type": "message",
+            "response": "https://cdn.discordapp.com/attachments/1224889075337531524/1341179965282062378/differentialdiagnosisonbeingalittlehomo.png?ex=67b50ead&is=67b3bd2d&hm=e65fd9fea76988a8873f9111d5b47e0ac386de3014608ddc5f95ff242db4b02e&",
+            "prompts": [
+                "gay",
+                "lesbian",
+                "yaoi",
+                "yuri",
+                "wilson",
+                "james wilson",
+                "homosexual",
+                "homo"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": false
+        },
+        "moment": {
+            "type": "message",
+            "response": "sorry D:",
+            "prompts": [
+                "damn dimmy did you just level up cause you really just killed the moment",
+                "dimmy this is serious",
+                "seriously dimmy?",
+                "me when dimmy",
+                "dimmy how could you",
+                "dimmy moment",
+                "I hate you dimmy",
+                "dimmy why"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": false
+        },
+        "1739833146.2512355": {
+            "type": "message",
+            "response": "youre the one for me\nill steal your heart and ill crush it into smithereens",
+            "prompts": [
+                "violence violence"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739833186.80546": {
+            "type": "message",
+            "response": "we'll slaughter all our enemies and send them straight down to hellaaaaa",
+            "prompts": [
+                "youre my special fella",
+                "you're my special fella"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739833262.1991456": {
+            "type": "message",
+            "response": "https://cdn.discordapp.com/attachments/1083594843667824733/1341182181346906173/a0e7b88a-86d0-4513-a514-35d32aea680e.png?ex=67b510bd&is=67b3bf3d&hm=938e3c45a2ca3081fccaefd58babd4c7ecc976b379d351449a446138b4abb927&",
+            "prompts": [
+                "kms",
+                "its over",
+                "it's over",
+                "its joever",
+                "it's joever"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739835261.4591491": {
+            "type": "message",
+            "response": "https://tenor.com/view/erm-cat-what-the-flip-gif-2826610531748711308",
+            "prompts": [
+                "the flip",
+                "what the flip"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739836597.4991183": {
+            "type": "message",
+            "response": "no swearing!",
+            "prompts": [
+                "shit",
+                "shite",
+                "shitting",
+                "shitful",
+                "shittastic"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739839778.5310924": {
+            "type": "message",
+            "response": "https://cdn.discordapp.com/attachments/1279129508892639326/1332485334487007292/IMG_7210.png?ex=67b5112c&is=67b3bfac&hm=08f76264d8c2ee3fccb99cd36130793f558b0cc68c5dd6a9294bb56d85a27b46&",
+            "prompts": [
+                "salvation",
+                "yipee",
+                "yippee",
+                "woo"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739842170.1834512": {
+            "type": "message",
+            "response": "stop swearing you cheese eating surrender monkey",
+            "prompts": [
+                "arse",
+                "arsehole",
+                "as useful as tits on a bull",
+                "bastard",
+                "beaver",
+                "beef curtains",
+                "bellend",
+                "bent",
+                "berk",
+                "bint",
+                "bitch",
+                "blighter",
+                "blimey",
+                "blimey o'reilly",
+                "bloodclaat",
+                "bloody",
+                "bloody hell",
+                "blooming",
+                "bollocks",
+                "bonk",
+                "bugger",
+                "bugger me",
+                "bugger off",
+                "built like a brick shit-house",
+                "bukkake",
+                "bullshit",
+                "cack",
+                "cad",
+                "chav",
+                "cheese eating surrender monkey",
+                "choad",
+                "chuffer",
+                "clunge",
+                "cobblers",
+                "cock",
+                "cock cheese",
+                "cock jockey",
+                "cock-up",
+                "cocksucker",
+                "cockwomble",
+                "codger",
+                "cor blimey",
+                "crap",
+                "crikey",
+                "cunt",
+                "daft cow",
+                "dick",
+                "dickhead",
+                "did he bollocks!",
+                "did i fuck as like!",
+                "dildo",
+                "dodgy",
+                "duffer",
+                "fanny",
+                "feck",
+                "flaps",
+                "fuck me sideways!",
+                "fucking cunt",
+                "fucktard",
+                "git",
+                "gob shite",
+                "goddam",
+                "gorblimey",
+                "gordon bennett",
+                "gormless",
+                "he\u2019s a knob",
+                "hell",
+                "hobknocker",
+                "i'd rather snort my own cum",
+                "jizz",
+                "knob",
+                "knobber",
+                "knobend",
+                "knobhead",
+                "like fucking a dying man's handshake",
+                "mad as a hatter",
+                "manky",
+                "minge",
+                "minger",
+                "minging",
+                "motherfucker",
+                "munter",
+                "muppet",
+                "naff",
+                "nitwit",
+                "nonce",
+                "numpty",
+                "nutter",
+                "off their rocker",
+                "penguin",
+                "pillock",
+                "pish",
+                "piss off",
+                "piss-flaps",
+                "play the five-fingered flute",
+                "plonker",
+                "ponce",
+                "pouf",
+                "poxy",
+                "prat",
+                "prickteaser",
+                "punani",
+                "punny",
+                "pussy",
+                "randy",
+                "rapey",
+                "rat arsed",
+                "rotter",
+                "rubbish",
+                "scrubber",
+                "shag",
+                "shite",
+                "shitfaced",
+                "skank",
+                "slag",
+                "slapper",
+                "slut",
+                "snatch",
+                "sod",
+                "sod-off",
+                "son of a bitch",
+                "spunk",
+                "stick it up your arse!",
+                "swine",
+                "taking the piss",
+                "tart",
+                "tits",
+                "toff",
+                "tosser",
+                "trollop",
+                "tuss",
+                "twat",
+                "twonk",
+                "u fukin wanker",
+                "wally",
+                "wanker",
+                "wankstain",
+                "wazzack"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739842568.2170184": {
+            "type": "message",
+            "response": "Hello everybody I'm Dimmy Widderkins and I confidently endorse Brook as the #1 greatest Discord server in all the worlds. Amy is pretty cool as well",
+            "prompts": [
+                "g739"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739843021.6432786": {
+            "type": "message",
+            "response": "read the following webtoons:\n- night owls and summer skies\n  - one of greatest gl\n- high class homos \n- not so Shoujo \n- greatest estate dev\n- literary link\n- i want to be a cute anime girl\n- gacha girl\n- winter before spring\n- our walk home\n- it's them by hanneskun\n  - absolute cinema\n  - trans webtoonya, greatest thing \n  - read it rn all of it",
+            "prompts": [
+                "gl"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739843831.8567085": {
+            "type": "message",
+            "response": "https://tenor.com/view/michael-stephens-vsauce-mind-on-isolation-gif-26028082",
+            "prompts": [
+                "or is it"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739844097.9505267": {
+            "type": "message",
+            "response": "https://cdn.discordapp.com/attachments/1044421125683282020/1247514665366327316/RDT_20240401_2218241518576454586312187.gif",
+            "prompts": [
+                "elon musk did a nazi salute",
+                "elon musk nazi saluted",
+                "elon musk is a nazi",
+                "donald trump is a nazi",
+                "donald trump is homophobic",
+                "donald trump is evil",
+                "elon musk is awkward",
+                "elon musk is bad at gaming",
+                "elon musk is transphobic",
+                "elon musk is homophobic",
+                "elon musk isnt swag",
+                "donald trump doesnt know how to raise the price of eggs"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739845768.313779": {
+            "type": "message",
+            "response": "officials have yet to confirm",
+            "prompts": [
+                "are you trans"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739846453.5959997": {
+            "type": "message",
+            "response": "https://tenor.com/view/kirby-roblox-blender-kirb-man-face-gif-23759252",
+            "prompts": [
+                "changed mind in"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739846659.8116977": {
+            "type": "message",
+            "response": "fake",
+            "prompts": [
+                "time"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739846724.7839408": {
+            "type": "message",
+            "response": "call",
+            "prompts": [
+                "better"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739846738.0686975": {
+            "type": "message",
+            "response": "better",
+            "prompts": [
+                "saul"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739846753.2927344": {
+            "type": "message",
+            "response": "what",
+            "prompts": [
+                "gaming"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739846770.633338": {
+            "type": "message",
+            "response": "saul",
+            "prompts": [
+                "call"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739846817.9428039": {
+            "type": "message",
+            "response": "https://discord.gg/3558wJDBQd",
+            "prompts": [
+                "fr"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739846851.9200704": {
+            "type": "message",
+            "response": "https://cdn.discordapp.com/attachments/1083594843667824733/1341239443528613938/vexed.png?ex=67b54612&is=67b3f492&hm=19db88beba95053802d2ee305bde12433a18d1c793286200d7f15ae4fbe28f17&",
+            "prompts": [
+                "vex",
+                "vexing",
+                "vexes"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739856632.3703365": {
+            "type": "message",
+            "response": "TOTALLY GARNULAR!!!",
+            "prompts": [
+                "garn47"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739856661.243069": {
+            "type": "message",
+            "response": "https://tenor.com/view/how-to-clean-cpu-gif-23585180",
+            "prompts": [
+                "cpu"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739857081.284024": {
+            "type": "message",
+            "response": "https://cdn.discordapp.com/attachments/1249951299441528926/1341282306408841278/image.png?ex=67b56dfd&is=67b41c7d&hm=286d3aa2572777445d4347aed30a698ff418228a652183df1a7e30ea1c6040c0&",
+            "prompts": [
+                "teak"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739858138.4574902": {
+            "type": "message",
+            "response": "https://cdn.discordapp.com/attachments/1224889075337531524/1341286686256271403/Screenshot_2025-01-12_092822.png?ex=67b57211&is=67b42091&hm=2845730fd8761997332fe4d91b9299f21ef3fd7f68f305f97ea0b6c6277e7340&",
+            "prompts": [
+                "0% winrate"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739858493.3471112": {
+            "type": "message",
+            "response": "https://cdn.discordapp.com/attachments/1224889075337531524/1341288133337284639/image.png?ex=67b5736a&is=67b421ea&hm=4ec6d0e0fdbeada4312cb40d8194dd8766df7c9022be36871dc75694ccb84848&",
+            "prompts": [
+                "gloire au canada",
+                "glory to canada",
+                "gloire",
+                "glory"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739858650.8233385": {
+            "type": "message",
+            "response": "https://tenor.com/view/block-tales-bigfoot-big-foot-me-hate-you-gif-10195135732976915068",
+            "prompts": [
+                "bigfoot",
+                "zay"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739859196.5814307": {
+            "type": "message",
+            "response": "owner of the dougsdale dimmadome?",
+            "prompts": [
+                "doug dimmadome"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739895018.4904635": {
+            "type": "message",
+            "response": "why does everyone keep posting magnus von grapple? every day i open my phone and look through the message history and what do i see? lord crumb in a big ol' X turning on magnus von grapple. why do they do it? what purpose does it serve? is it supposed to be funny? is posting it over and over again some sort of postmodern joke? is it because the mech forms an X and X is bad?? dont get me wrong, I love ttyd, but every time i see this godforsaken gif it just raises more and more questions. i can't any more. sincerely, dimmy widderkins.",
+            "prompts": [
+                "https://tenor.com/view/crump-lord-crump-magnus-von-grapple-ttyd-paper-mario-ttyd-gif-21446920"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739895251.1198468": {
+            "type": "message",
+            "response": "i will kill your entire family, i have them locked up in the jorin SMP tower",
+            "prompts": [
+                "iw"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739895462.4397867": {
+            "type": "message",
+            "response": "Got Simulo[?](https://cdn.discordapp.com/attachments/1263590718182658208/1307874023837012069/simulo.gif)",
+            "prompts": [
+                "simulo"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739896374.7048934": {
+            "type": "message",
+            "response": "Oh, Joe Spheres? Me and that guy go wayyy back.",
+            "prompts": [
+                "joe"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739898104.3172204": {
+            "type": "message",
+            "response": "dolkip*",
+            "prompts": [
+                "byte"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "snoozetown": {
+            "type": "message",
+            "response": "Did I hear someone say SNOOZETOWN? https://www.youtube.com/watch?v=Hm14UrNBLtY",
+            "prompts": [
+                "snoozetown"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": false
+        },
+        "1739899071.4234145": {
+            "type": "message",
+            "response": "\u200b+<:upvote:1309965553770954914>",
+            "prompts": [
+                "upvote"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739899231.7460122": {
+            "type": "message",
+            "response": "shut up chap",
+            "prompts": [
+                "and"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739899495.7457414": {
+            "type": "message",
+            "response": "bad",
+            "prompts": [
+                "opoopy"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739899547.971789": {
+            "type": "message",
+            "response": "f32 is so realedup, wbu\u2753 Are you realed up too\u2753 Huh\u2753 HUh\u2753",
+            "prompts": [
+                "f32"
             ],
             "reputation_range": [
                 0,

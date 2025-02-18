@@ -1,110 +1,325 @@
 # This example requires the 'message_content' intent.
 
 import discord
+import subprocess
 import json
 import time
 import datetime
+from brook import Brook
+from bot_helper import send_message, get_user_input, write_json, get_reputation, change_reputation
+import random
 
-# General message function
-async def send_message(message, response):
-    # Replace @ with @​ to prevent pinging (note zero-width space)
-    response = response.replace('@', '@​')
+# # Rate limiting system
+# message_timestamps = []
+# self_destruct = False
+# async def log_message(message):
+#     if self_destruct: return
 
-    # Get page argument
-    page = message.content.split(' ')[-1]
-    if page.isdigit():
-        page = int(page)
-        if page < 1:
-            page = 1
-    else:
-        page = 1
-
-    # Limit message length to 2000 characters
-    response = response[0 + 2000*(page-1):2000 + 2000*(page-1)]
-
-    # # Amount of time to wait before sending the message
-    # wait_time = len(response) * 0.05
-
-
-    # # Start typing indicator
-    # async with message.channel.typing():
-    #     wait_until_time = time.time() + wait_time
-    #     await discord.utils.sleep_until(datetime.datetime.fromtimestamp(wait_until_time))
-
-    await message.channel.send(response)
-
-# Reputation system
-def get_reputation(user):
-    # Load reputation list
-    with open('reputation.json', 'r') as file:
-        reputations = json.load(file)
+#     # Keep track of message timestamps
+#     current_time = time.time()
+#     message_timestamps.append(current_time)
     
-    user_id = str(user.id)
+#     # Remove timestamps older than 5 seconds
+#     while message_timestamps and message_timestamps[0] < current_time - 5:
+#         message_timestamps.pop(0)
+    
+#     # Check if we've sent more than 5 messages in 5 seconds
+#     if len(message_timestamps) > 5:
+#         self_destruct = True
+#         print("Rate limit exceeded. Shutting down bot.")
+#         await message.channel.send("TOO MANY MESSAGES INITIATING SELF-DESTRUCT SEQUENCE")
+#         await message.channel.send("5")
+#         await message.channel.send("4")
+#         await message.channel.send("3")
+#         await message.channel.send("2")
+#         await message.channel.send("1")
+#         await message.channel.send("https://tenor.com/bko4E.gif")
+#         await client.close()
+#         return
 
-    # Check if user has reputation
-    if user_id not in reputations:
-        # Add user to reputation list
-        reputations[user_id] = 50 # Default reputation
-        with open('reputation.json', 'w') as file:
-            json.dump(reputations, file)
-    
-    return reputations[user_id]
+# Markov model functions
+def load_markov_model_from_json(file_path,file_path_chat):
+    global markov_model
+    global markov_model_chat
+    with open(file_path, 'r', encoding='utf-8') as json_file:
+        markov_model = json.load(json_file)
+    with open(file_path_chat, 'r', encoding='utf-8') as json_file:
+        markov_model_chat = json.load(json_file)
 
-def change_reputation(user, amount):
-    # Load reputation list
-    with open('reputation.json', 'r') as file:
-        reputations = json.load(file)
-    
-    # Convert user.id to string for consistent handling
-    user_id = str(user.id)
-    
-    # Check if user has reputation
-    if user_id not in reputations:
-        # Add user to reputation list
-        reputations[user_id] = 50 # Default reputation
-    
-    # Change reputation
-    reputations[user_id] += amount
-    reputations[user_id] = max(0, min(reputations[user_id], 100)) # Clamp reputation to 0-100
-    with open('reputation.json', 'w') as file:
-        json.dump(reputations, file)
+load_markov_model_from_json(r'markov_model.json', r'markov_model_chat.json')
 
-# Ask a series of questions defined in prompts to the user, then return their responses
-async def get_user_input(message, prompts):
-    cancel_keywords = [
-        'cancel',
-        'stop',
-        'exit',
-        'no',
-        'quit',
+def get_next_word(current_word):
+    if current_word in markov_model:
+        next_words = markov_model[current_word]
+        total = sum(next_words.values())
+        rand_val = random.randint(1, total)
+        cumulative = 0
+        for word, count in next_words.items():
+            cumulative += count
+            if rand_val <= cumulative:
+                return word
+    return None
+
+def get_next_word_chat(current_message):
+    if current_message in markov_model_chat:
+        next_messages = markov_model_chat[current_message]
+        total = sum(next_messages.values())
+        rand_val = random.randint(1, total)
+        cumulative = 0
+        for message, count in next_messages.items():
+            cumulative += count
+            if rand_val <= cumulative:
+                return message
+    return None
+
+# Prediction market functions
+async def calculate_market_probability_change(data, market, amount):
+    msg = data['msg']
+    # Calculate the new probability of the market (the YES price)
+    # This is based on the current liquidity and the current probability
+    # amount is the amount of YES shares bought, or the amount of NO shares bought if negative
+    # The formula is:
+    # new_probability = (current_liquidity * current_probability + amount) / (current_liquidity + abs(amount))
+    # This formula is derived from the formula for the expected value of a bet
+    # The expected value of a bet is the probability of winning times the amount won minus the probability of losing times the amount lost
+    # In this case, the amount won is 1 and the amount lost is 1
+    # The expected value of a YES bet is the current probability times the amount won minus the (1 - current probability) times the amount lost
+    # The expected value of a NO bet is the (1 - current probability) times the amount won minus the current probability times the amount lost
+    # The expected value of a bet is the same as the probability of winning
+    # So the expected value of a YES bet is the current probability
+    # And the expected value of a NO bet is 1 - the current probability
+    current_liquidity = market['liquidity']
+    current_probability = market['probability']
+    new_probability = (current_liquidity * current_probability + amount) / (current_liquidity + abs(amount))
+    return new_probability
+
+async def market_resolve(data):
+    msg = data['msg']
+
+    prompts = [
+        "What is the market name?",
+        "What are you resolving it to? (y/n)",
     ]
-    user = message.author
-    username = user.name
-    responses = []
-    for prompt in prompts:
-        await send_message(message, username + ": " + prompt)
-        response = await client.wait_for('message', check=lambda m: m.author == user)
-        if response in cancel_keywords:
-            await send_message(message, 'Cancelled.')
-            return None
-        responses.append(response.content)
-    return responses
 
+    responses = await get_user_input(data, prompts)
+    if responses is None:
+        return
+    
+    market_name, resolution_str = responses
+    resolution = 'y' in resolution_str.lower()
+
+    # Get market
+    with open('markets.json', 'r') as file:
+        markets = json.load(file)
+    
+    if market_name not in markets:
+        await send_message(data, "Market not found.")
+        return
+    
+    market = markets[market_name]
+    if str(msg.author.id) != market['creator']:
+        await send_message(data, "You cannot resolve markets you do not own!")
+        return
+    
+    market['resolved'] = True
+    market['resolution'] = resolution
+
+    liquidity_remaining = market['liquidity']
+    
+    # Pay shareholders
+    for user_id, shares in market['user_shares'].items():
+        payout = abs(shares) if (resolution and shares > 0) or (not resolution and shares < 0) else 0
+        if payout > 0:
+            if payout > liquidity_remaining:
+                await send_message(data, f"Not enough liquidity remaining to pay user {user_id}!")
+                continue
+            await brook.pay(user_id, payout, msg.channel)
+            liquidity_remaining -= payout
+
+    # Pay remaining liquidity to market creator
+    if liquidity_remaining > 0:
+        await brook.pay(market['creator'], liquidity_remaining, msg.channel)
+
+    write_json(markets, 'markets.json')
+
+async def market_buy(data):
+    msg = data['msg']
+
+    prompts = [
+        "What is the market name?",
+        "How many shares do you want to buy?",
+    ]
+    responses = await get_user_input(data, prompts)
+    if responses is None:
+        return
+    
+    # Ensure amount is an integer
+    try:
+        responses[1] = int(responses[1])
+    except ValueError:
+        await send_message(data, "Amount must be an integer.")
+        return
+    
+    market_name, amount = responses
+    # Get market
+    with open('markets.json', 'r') as file:
+        markets = json.load(file)
+    
+    if market_name not in markets:
+        await send_message(data, "Market not found.")
+        return
+    
+    market = markets[market_name]
+    if market['resolved']:
+        await send_message(data, "Market is already resolved.")
+        return
+    
+    # Calculate price
+    if amount > 0:
+        price = market['probability'] * amount
+    else:
+        price = (1 - market['probability']) * abs(amount)
+
+    # Request money
+    future = await brook.request_payment(msg.author, price, msg.channel, "Market shares for market '" + market_name + "'")
+    try:
+        await future
+    except Exception as e:
+        await send_message(data, "Payment request denied. Purchase cancelled.")
+        return
+    
+    user_id = str(msg.author.id)
+
+    # Update user_shares
+    if user_id not in market['user_shares']:
+        market['user_shares'][user_id] = amount
+    else:
+        market['user_shares'][user_id] += amount
+    
+    # Calculate new probability
+    new_probability = await calculate_market_probability_change(data, market, amount)
+
+    # Update market
+    market['liquidity'] += price
+    market['probability'] = new_probability
+    write_json(markets, 'markets.json')
+
+    await send_message(data, f"Purchace made. New probability: {new_probability * 100}%")
+
+
+# 1a. Asks the following prompts:
+#     "What is the market name?",
+#     "What is the starting liquidity?",
+#     "What is the initialized probability?",
+# 1b. Requests payment from the user equal to the starting liqudity, cancelling if payment is rejected
+# 1c. Reserves that money for the market
+# 1d. Creates a market message
+async def new_market(data):
+    msg = data['msg']
+
+    await send_message(data, "WARNING: super buggy and infinite money exploits abound. Ye've been warned!")
+
+    prompts = [
+        "What is the market name/resolution criteria?",
+        "What is the starting liquidity?",
+        "What is the initialized probability?",
+    ]
+    responses = await get_user_input(data, prompts)
+    if not responses:
+        return
+    
+    # Ensure liquidity/probability is a integer/number
+    try:
+        responses[1] = int(responses[1])
+        probability_str = responses[2]
+        if probability_str.endswith('%'):
+            probability_str = probability_str[:-2]
+        responses[2] = float(probability_str)
+    except ValueError:
+        await send_message(data, "Liquidity must be an integer and probability must be a number.")
+        return
+    
+    market_name, starting_liquidity, initialized_probability = responses
+
+    # Convert to fraction
+    if initialized_probability >= 1:
+        initialized_probability = initialized_probability / 100
+
+    # Request payment from the user equal to the starting liquidity
+    future = await brook.request_payment(msg.author, starting_liquidity, msg.channel, "Market liquidity for market '" + market_name + "'")
+
+    # Cancel if request is denied
+    try:
+        await future
+    except Exception as e:
+        await send_message(data, "Payment request denied. Market creation cancelled.")
+        return
+
+
+
+    # Send a market message with the market name, starting liquidity, and initialized probability
+    # The message has a "Buy" button that allows users to buy shares in the market
+    # The message has a "Resolve" button that allows the market creator to resolve the market
+    market = {
+        "name": market_name,
+        "starting_liquidity": starting_liquidity,
+        "initialized_probability": initialized_probability,
+        "liquidity": starting_liquidity,
+        "probability": initialized_probability,
+        "user_shares": {},
+        "creator": str(msg.author.id),
+        "resolved": False,
+        "resolution": None,
+    }
+
+    with open('markets.json', 'r') as file:
+        markets = json.load(file)
+    
+    # Check duplicate market names
+    if market_name in markets:
+        await send_message(data, "Market name already exists.")
+        return
+    
+    markets[market_name] = market
+    write_json(markets, 'markets.json')
+
+    await send_message(data, "New market created: " + market_name)
+
+async def view_markets(data):
+    msg = data['msg']
+    # Get markets
+    with open('markets.json', 'r') as file:
+        markets = json.load(file)
+    
+    response = 'Markets: '
+    for market in markets:
+        response += f'\n{market}: {markets[market]["probability"] * 100}%'
+    await send_message(data, response)
 
 # Command functions
-async def command_reputation(message):
-    reputation = get_reputation(message.author)
-    await send_message(message, f'Your reputation is {reputation}.')
+async def command_reputation(data):
+    msg = data['msg']
+    reputation = get_reputation(msg.author)
+    await send_message(data, f'Your reputation is {reputation}.')
 
-async def new_command(message):
+async def new_command(data):
+    msg = data['msg']
     prompts = [
         "What should the command be?",
         "What should the command response be?",
     ]
 
-    responses = await get_user_input(message, prompts)
+    responses = await get_user_input(data, prompts)
     if responses is None:
         return
+    
+    # # Return error if command contains spaces
+    # if ' ' in responses[0]:
+    #     await send_message(message, 'Command cannot contain spaces.')
+    #     return
+    
+    # commandname = responses[0].split(' ')[0]
+    commandname = responses[0]
 
     # Load commands list
     with open('behavior.json', 'r') as file:
@@ -112,28 +327,28 @@ async def new_command(message):
         commands = behavior['commands']
     
     # Check if command already exists
-    if responses[0] in commands:
-        await send_message(message, 'This command already exists.')
+    if commandname in commands:
+        await send_message(data, 'This command already exists.')
         return
     
     # Add command
-    commands[responses[0]] = {
+    commands[commandname] = {
         'type': 'message',
         'response': responses[1]
     }
-    with open('behavior.json', 'w') as file:
-        json.dump(behavior, file)
+    write_json(behavior)
     
-    await send_message(message, 'Your command has been added.')
+    await send_message(data, 'Your command has been added.')
 
-async def new_interjection(message):
+async def new_interjection(data):
+    msg = data['msg']
     prompts = [
         "What should the prompts be? Separate multiple prompts with commas.",
         "Do the prompts have to take up the whole message? (y/n)",
         "What should the interjection be?",
     ]
 
-    responses = await get_user_input(message, prompts)
+    responses = await get_user_input(data, prompts)
     if responses is None:
         return
     
@@ -143,18 +358,30 @@ async def new_interjection(message):
     visited_prompts = []
     for prompt in interjection_prompts:
         if len(prompt) < 2:
-            await send_message(message, 'Prompts must be at least 2 characters long.')
+            await send_message(data, 'Prompts must be at least 2 characters long.')
             return
         if prompt in visited_prompts:
-            await send_message(message, 'Prompts must be unique.')
+            await send_message(data, 'The prompts you listed cannot contain duplicates.')
+            return
+        if not any(char.isalpha() for char in prompt):
+            await send_message(data, 'Prompts must contain at least one letter.')
             return
         visited_prompts.append(prompt)
 
+    # Validate response length and content
+    if len(responses[2]) > 2000:
+        await send_message(data, 'Response too long (max 2000 characters).')
+        return
+    
+    if not responses[2].strip():
+        await send_message(data, 'Response cannot be empty.')
+        return
+    
     whole_message = 'y' in responses[1].lower()
     # Pranked
     if not whole_message:
         whole_message = True
-        await send_message(message, 'Just kidding. You are not allowed to make non-whole-message interjections.')
+        await send_message(data, 'Just kidding. You are not allowed to make non-whole-message interjections.')
 
 
     # Load interjections list
@@ -174,24 +401,82 @@ async def new_interjection(message):
         "reputation_change": 0,
         "whole_message": whole_message 
     }
-    with open('behavior.json', 'w') as file:
-        json.dump(behavior, file)
+
+    write_json(behavior)
     
-    await send_message(message, 'Your interjection has been added.')
+    await send_message(data, 'Your interjection has been added.')
+
+async def remove_command_or_interjection(data):
+    msg = data['msg']
+    # Get target name from message
+    target = ' '.join(msg.content.split(' ')[1:]).lower()
+    if not target:
+        await send_message(data, "Please specify what to remove.")
+        return
+
+    # Load behavior file
+    with open('behavior.json', 'r') as file:
+        behavior = json.load(file)
+
+    # Find matching commands and interjections
+    matching_commands = [(name, cmd) for name, cmd in behavior['commands'].items() 
+                        if name.lower() == target and cmd.get('type') != 'function']
+    matching_interjections = [(id, interj) for id, interj in behavior['interjections'].items() 
+                            if any(prompt.lower() == target for prompt in interj['prompts'])]
+
+    if not matching_commands and not matching_interjections:
+        await send_message(data, "No matching commands or interjections found.")
+        return
+
+    # Build list of options
+    options = []
+    response = "Found these matches:\n"
+    
+    for i, (name, cmd) in enumerate(matching_commands):
+        options.append(('command', name))
+        response += f"{i+1}. Command: !{name} -> {cmd['response'][:100]}...\n"
+
+    for i, (id, interj) in enumerate(matching_interjections, start=len(matching_commands)+1):
+        options.append(('interjection', id))
+        response += f"{i}. Interjection: {', '.join(interj['prompts'])} -> {interj['response'][:100]}...\n"
+
+    response += "\nEnter the number to remove:"
+    
+    # Use get_user_input instead of manual input
+    responses = await get_user_input(data, [response])
+    if responses is None:
+        return
+
+    choice = responses[0]
+    if not choice.isdigit() or int(choice) < 1 or int(choice) > len(options):
+        await send_message(data, "Invalid selection.")
+        return
+
+    # Remove selected item
+    selected = options[int(choice)-1]
+    if selected[0] == 'command':
+        del behavior['commands'][selected[1]]
+    else:
+        del behavior['interjections'][selected[1]]
+
+    write_json(behavior)
+    await send_message(data, "Item removed successfully.")
 
 beercount = 99
-async def beer(message):
+async def beer(data):
+    msg = data['msg']
     global beercount
     if beercount == 0:
-        await send_message(message, 'No more bottles of beer on the wall, no more bottles of beer. Go to the store and buy some more, 99 bottles of beer on the wall!')
+        await send_message(data, 'No more bottles of beer on the wall, no more bottles of beer. Go to the store and buy some more, 99 bottles of beer on the wall!')
         beercount = 100 # gets subtracted to 99
     elif beercount == 1:
-        await send_message(message, '1 bottle of beer on the wall, 1 bottle of beer! Take one down and pass it around, no more bottles of beer on the wall!')
+        await send_message(data, '1 bottle of beer on the wall, 1 bottle of beer! Take one down and pass it around, no more bottles of beer on the wall!')
     else:
-        await send_message(message, f'{beercount} bottles of beer on the wall, {beercount} bottles of beer! Take one down and pass it around, {beercount-1} bottles of beer on the wall!')
+        await send_message(data, f'{beercount} bottles of beer on the wall, {beercount} bottles of beer! Take one down and pass it around, {beercount-1} bottles of beer on the wall!')
     beercount -= 1
 
-async def help(message):
+async def help(data):
+    msg = data['msg']
     # Get commands
     with open('behavior.json', 'r') as file:
         behavior = json.load(file)
@@ -200,9 +485,10 @@ async def help(message):
     response = 'Commands: '
     for command in commands:
         response += f'\n`!{command}`'
-    await send_message(message, response)
+    await send_message(data, response)
 
-async def list_interjections(message):
+async def list_interjections(data):
+    msg = data['msg']
     # Get interjections
     with open('behavior.json', 'r') as file:
         behavior = json.load(file)
@@ -213,15 +499,98 @@ async def list_interjections(message):
         prompts_string = ", ".join(interjection['prompts'])
         response_string = interjection['response']
         response += f'\n{prompts_string} -> {response_string}'
-    await send_message(message, response)
+    await send_message(data, response)
+
+async def opt_out(data):
+    msg = data['msg']
+    if get_reputation(msg.author) >= 100:
+        await send_message(data, "You are already opted out.")
+        return
+    change_reputation(msg.author, 100)
+    await send_message(data, "You have opted out.")
+
+async def opt_in(data):
+    msg = data['msg']
+    if get_reputation(msg.author) < 100:
+        await send_message(data, "You are already opted in.")
+        return
+    change_reputation(msg.author, -100)
+    await send_message(data, "You have opted back in.")
+
+# Use Brook.request_payment
+async def pay_command(data):
+    msg = data['msg']
+    user = msg.author
+    amount = 100  # Example amount
+    request_channel = msg.channel
+    description = "please donate to help fund my medication"
+    
+    await brook.request_payment(user, amount, request_channel, description)
+
+async def markov(data):
+    msg = data['msg']
+
+    length = 1000 # Default length of response in characters
+
+    next_word = msg.content.split(' ')[-1]
+    if next_word.isdigit():
+        length = int(next_word)
+        next_word = msg.content.split(' ')[-2]
+
+    response = ""
+    while next_word != None and len(response) < 1000:
+        next_word = get_next_word(next_word)
+        if next_word != None:
+            response += str(next_word) + ' '
+            
+    
+    await send_message(data, response)
+
+last_markov_message = ""
+async def markov_chat(data):
+    global last_markov_message
+    print(f"last markov message is {last_markov_message}")
+    print(f"last markov message is now {last_markov_message}")
+    msg = data['msg']
+
+    split = msg.content.split(' ')[1:]
+
+    input_message = ' '.join(split)
+    next_message = input_message
+
+    if len(split) == 0 and last_markov_message:
+        next_message = last_markov_message
+
+    response = ""
+    #while next_message is not None:
+    next_message = get_next_word_chat(next_message)
+    response += str(next_message) + ' '
+            
+    last_markov_message = response.strip()
+    print(last_markov_message)
+    
+    await send_message(data, response)
 
 command_functions = {
     'newinterjection': new_interjection,
     'newcommand': new_command,
+    'addinterjection': new_interjection,
+    'addcommand': new_command,
     'beer': beer,
     'help': help,
     'reputation': command_reputation,
     'interjections': list_interjections,
+    'optout': opt_out,
+    'optin': opt_in,
+    'remove': remove_command_or_interjection,
+    'pay': pay_command,
+    'newmarket': new_market,
+    'addmarket': new_market,
+    'viewmarkets': view_markets,
+    'marketbuy': market_buy,
+    'marketresolve': market_resolve,
+    'markov': markov,
+    'markovchat': markov_chat,
 }
 
 # Initialize bot
@@ -235,75 +604,143 @@ intents.typing = True
 client = discord.Client(intents=intents)
 
 # Define event handlers
+
+transport_channel = None  # This needs to be set after client is ready
 @client.event
 async def on_ready():
     print(f'We have logged in as {client.user}')
+    global transport_channel
+    transport_channel = client.get_channel(1322717023351865395)
+    global brook
+    brook = Brook(transport_channel, client)
 
     
 
-async def interject(message):
-
+async def interject(data):
+    msg = data['msg']
     # Load interjections list
     with open('behavior.json', 'r') as file:
         interjections = json.load(file)['interjections']
     
-    # Go through every interjection
-    for name, interjection in interjections.items():
+    # Track matching interjections
+    matching_interjections = []
 
+    # Go through every interjection
+    for _, interjection in interjections.items():
         # Skip if user reputation is out of range
-        reputation = get_reputation(message.author)
-        if reputation <= interjection['reputation_range'][0] or reputation >= interjection['reputation_range'][1]:
+        reputation = get_reputation(msg.author)
+        if reputation < interjection['reputation_range'][0]-1 or reputation > interjection['reputation_range'][1]-1:
             continue
         
-        whole_message = interjection['whole_message'] # Whether the prompt must be the entirety of the message
+        whole_message = interjection['whole_message']
 
         for prompt in interjection['prompts']:
+            # Convert message to lowercase
+            message_lower = msg.content.lower()
+            prompt_lower = prompt.lower()
 
             # Check if prompt matches message based on whole_message setting
-            matches = (prompt.lower() == message.content.lower()) if whole_message else (prompt.lower() in message.content.lower())
-            
-            if matches:
-                print(f"Interjection caused by {message.content} by user {message.author}")
-                change_reputation(message.author, interjection['reputation_change'])
-                await send_message(message, interjection['response'])
+            # Create a version of the message where non-letters are removed
+            def clean_text(text):
+                # Preserve mentions but clean other parts
+                words = []
+                current_word = ''
+                i = 0
+                while i < len(text):
+                    if text[i].isalpha():
+                        current_word += text[i]
+                    else:
+                        if current_word:
+                            words.append(current_word)
+                            current_word = ''
+                    i += 1
+                if current_word:
+                    words.append(current_word)
+                return words
 
-async def run_command(message):
+            message_words = clean_text(message_lower)
+            prompt_words = clean_text(prompt_lower)
+
+            # Continue if prompt_words is empty
+            if not prompt_words:
+                continue
+            
+            if whole_message:
+            # Check if both message and prompt have same words
+                matches = message_words == prompt_words
+            else:
+                # Check if prompt words appear as a consecutive sequence in message words
+                if len(prompt_words) > len(message_words):
+                    matches = False
+                else:
+                    matches = any(prompt_words == message_words[i:i+len(prompt_words)]
+                        for i in range(len(message_words) - len(prompt_words) + 1))
+
+            if matches:
+                matching_interjections.append((prompt, interjection))
+
+    # If we found matches, respond to the one with the longest prompt
+    if matching_interjections:
+        longest_prompt, chosen_interjection = max(matching_interjections, key=lambda x: len(x[0]))
+        print(f"Interjection caused by {msg.content} by user {msg.author}")
+        change_reputation(msg.author, chosen_interjection['reputation_change'])
+        await send_message(data, chosen_interjection['response'])
+
+async def run_command(data):
+    msg = data['msg']
     # Return if not a command
-    if not message.content.startswith('!'):
+    if not msg.content.startswith('!'):
         return
     
-    print(f"Command {message.content} by user {message.author}")
+    print(f"Command {msg.content} by user {msg.author}")
     
-    command_name = message.content.split(' ')[0][1:]
+    # Get full command string without the ! prefix
+    full_command = msg.content[1:].strip()
     
     # Load commands list
     with open('behavior.json', 'r') as file:
         commands = json.load(file)['commands']
 
+    # Find the longest matching command
+    command_name = None
+    for cmd in commands:
+        if full_command.lower().startswith(cmd.lower()):
+            # Update if this is the longest matching command so far
+            if command_name is None or len(cmd) > len(command_name):
+                command_name = cmd
+
     # Check if command exists
-    if command_name not in commands:
-        await send_message(message, 'Command not found.')
+    if command_name is None:
+        await send_message(data, 'Command not found.')
         return
 
     # Execute command
     command = commands[command_name]
     if command['type'] == 'message':
-        await send_message(message, command['response'])
+        await send_message(data, command['response'])
     elif command['type'] == 'function':
-        await command_functions[command_name](message)
+        try:
+            await command_functions[command_name](data)
+        except KeyError:
+            await send_message(data, 'Interrobang screwed up and forgot to bind this function. Or the keyerror is some unrelated bug.')
+            await send_message(data, command['response'])
 
 @client.event
-async def on_message(message):
+async def on_message(msg):
     # Ignore messages from the bot itself
-    if message.author.id == client.user.id:
+    if msg.author.id == client.user.id:
         return
+    
+    data = {'msg': msg, 'client': client}
+    
+    await brook.on_message(msg)
 
-    await run_command(message) # Run command if possible
-    await interject(message) # Interject if possible
+    await run_command(data) # Run command if possible
+    await interject(data) # Interject if possible
 
     
 
 if __name__ == '__main__':
     with open(r"/home/interrobang/VALUABLE/dimmy_widderkins_token.txt", 'r') as file:
         client.run(file.read())
-            
+

@@ -9,6 +9,7 @@ from brook import Brook
 from bot_helper import send_message, get_user_input, write_json, get_reputation, change_reputation
 import random
 import asyncio
+from commands.net import net_command
 
 # # Rate limiting system
 # message_timestamps = []
@@ -339,7 +340,7 @@ async def new_command(data):
     msg = data['msg']
     prompts = [
         "What should the command be?",
-        "What should the command response be?",
+        "What should the command response be? If you'd like to add an argument, place a {} and it will be replaced with anything that comes after your command.",
     ]
 
     responses = await get_user_input(data, prompts)
@@ -659,12 +660,15 @@ async def react(data):
         await referenced_message.add_reaction(requested_reaction)  # React
         return
 
+# Add this import near the top with other imports
+from commands.net import net_command
+
 command_functions = {
     'newinterjection': new_interjection,
     'newcommand': new_command,
     'addinterjection': new_interjection,
     'addcommand': new_command,
-    'beer': beer,
+    'net': net_command,
     'help': help,
     'reputation': command_reputation,
     'interjections': list_interjections,
@@ -800,10 +804,16 @@ async def run_command(data):
         await send_message(data, 'Command not found.')
         return True
 
+    # Get the input parameter (everything after the command)
+    input_param = full_command[len(command_name):].strip()
+
     # Execute command
     command = commands[command_name]
     if command['type'] == 'message':
-        await send_message(data, command['response'])
+        response = command['response']
+        if '{}' in response:
+            response = response.replace('{}', input_param)
+        await send_message(data, response)
     elif command['type'] == 'function':
         try:
             await command_functions[command_name](data)

@@ -109,22 +109,15 @@ def get_next_word_chat(current_message):
 # Prediction market functions
 async def calculate_market_probability_change(data, market, amount):
     msg = data['msg']
-    # Calculate the new probability of the market (the YES price)
-    # This is based on the current liquidity and the current probability
-    # amount is the amount of YES shares bought, or the amount of NO shares bought if negative
-    # The formula is:
-    # new_probability = (current_liquidity * current_probability + amount) / (current_liquidity + abs(amount))
-    # This formula is derived from the formula for the expected value of a bet
-    # The expected value of a bet is the probability of winning times the amount won minus the probability of losing times the amount lost
-    # In this case, the amount won is 1 and the amount lost is 1
-    # The expected value of a YES bet is the current probability times the amount won minus the (1 - current probability) times the amount lost
-    # The expected value of a NO bet is the (1 - current probability) times the amount won minus the current probability times the amount lost
-    # The expected value of a bet is the same as the probability of winning
-    # So the expected value of a YES bet is the current probability
-    # And the expected value of a NO bet is 1 - the current probability
     current_liquidity = market['liquidity']
     current_probability = market['probability']
+    
+    # Calculate new probability with the same formula but clamp between 0 and 1
     new_probability = (current_liquidity * current_probability + amount) / (current_liquidity + abs(amount))
+    
+    # Clamp probability between 0 and 1
+    new_probability = max(0.0, min(1.0, new_probability))
+    
     return new_probability
 
 async def market_resolve(data):

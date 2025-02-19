@@ -9,6 +9,7 @@ from brook import Brook
 from bot_helper import send_message, get_user_input, write_json, get_reputation, change_reputation
 import random
 import asyncio
+from commands.net import net_command
 
 # # Rate limiting system
 # message_timestamps = []
@@ -108,22 +109,15 @@ def get_next_word_chat(current_message):
 # Prediction market functions
 async def calculate_market_probability_change(data, market, amount):
     msg = data['msg']
-    # Calculate the new probability of the market (the YES price)
-    # This is based on the current liquidity and the current probability
-    # amount is the amount of YES shares bought, or the amount of NO shares bought if negative
-    # The formula is:
-    # new_probability = (current_liquidity * current_probability + amount) / (current_liquidity + abs(amount))
-    # This formula is derived from the formula for the expected value of a bet
-    # The expected value of a bet is the probability of winning times the amount won minus the probability of losing times the amount lost
-    # In this case, the amount won is 1 and the amount lost is 1
-    # The expected value of a YES bet is the current probability times the amount won minus the (1 - current probability) times the amount lost
-    # The expected value of a NO bet is the (1 - current probability) times the amount won minus the current probability times the amount lost
-    # The expected value of a bet is the same as the probability of winning
-    # So the expected value of a YES bet is the current probability
-    # And the expected value of a NO bet is 1 - the current probability
     current_liquidity = market['liquidity']
     current_probability = market['probability']
+    
+    # Calculate new probability with the same formula but clamp between 0 and 1
     new_probability = (current_liquidity * current_probability + amount) / (current_liquidity + abs(amount))
+    
+    # Clamp probability between 0 and 1
+    new_probability = max(0.0, min(1.0, new_probability))
+    
     return new_probability
 
 async def market_resolve(data):
@@ -339,7 +333,7 @@ async def new_command(data):
     msg = data['msg']
     prompts = [
         "What should the command be?",
-        "What should the command response be?",
+        "What should the command response be? If you'd like to add an argument, place a {} and it will be replaced with anything that comes after your command.",
     ]
 
     responses = await get_user_input(data, prompts)
@@ -659,12 +653,15 @@ async def react(data):
         await referenced_message.add_reaction(requested_reaction)  # React
         return
 
+# Add this import near the top with other imports
+from commands.net import net_command
+
 command_functions = {
     'newinterjection': new_interjection,
     'newcommand': new_command,
     'addinterjection': new_interjection,
     'addcommand': new_command,
-    'beer': beer,
+    'net': net_command,
     'help': help,
     'reputation': command_reputation,
     'interjections': list_interjections,
@@ -800,10 +797,16 @@ async def run_command(data):
         await send_message(data, 'Command not found.')
         return True
 
+    # Get the input parameter (everything after the command)
+    input_param = full_command[len(command_name):].strip()
+
     # Execute command
     command = commands[command_name]
     if command['type'] == 'message':
-        await send_message(data, command['response'])
+        response = command['response']
+        if '{}' in response:
+            response = response.replace('{}', input_param)
+        await send_message(data, response)
     elif command['type'] == 'function':
         try:
             await command_functions[command_name](data)
@@ -813,6 +816,10 @@ async def run_command(data):
     
     return True
 
+# Add near the top with other imports
+from commands.ollama_handler import ask_ollama
+
+# Modify the on_message event handler
 @client.event
 async def on_message(msg):
     # Ignore messages from the bot itself
@@ -823,14 +830,19 @@ async def on_message(msg):
     
     await brook.on_message(msg)
 
-    command_found = await run_command(data) # Run command if possible
+    # Add Ollama processing
+    response = await ask_ollama(msg.content)
+    if response == 'Y':
+        await msg.add_reaction('<:upvote:1309965553770954914>')
 
-    # Use markovchat to react to replies
+    command_found = await run_command(data)
+
     if not command_found and msg.reference and msg.reference.resolved and msg.reference.resolved.author == client.user:
         await markov_chat(data)
         return
     
-    if not command_found: await interject(data) # Interject if possible
+    if not command_found: 
+        await interject(data)
 
 # Delete on trash emoji
 @client.event

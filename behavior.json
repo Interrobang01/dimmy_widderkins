@@ -1,5 +1,11 @@
 {
     "commands": {
+        "commands": {
+        "net": {
+            "type": "function",
+            "response": "Network utility command"
+        }
+    },
         "neofetch": {
             "response": "I wake up, I turn my laptop on, I open a terminal and I run neofetch. I spend around 4 hours just staring at neofetch. I then get up, taking my laptop with me, to the kitchen. The kitchen is void of anything a normal human being would call food, I ran out of instant noodles years ago, too busy looking at neofetch. I set my laptop upon the kitchen counter, close my terminal, open it again and run neofetch. I proceed to stare at it for another hour before I spot a cockroach on the wall. I grab it and eat it. I require nutrition to stay alive. If I die I can no longer look at neofetch. I then close the terminal and open another one, running neofetch. I actually don't need to run neofetch manually, I have put the command in my .bashrc. I take the laptop back to my room, careful not to glance away from neofetch. I place the laptop on my desk, close the terminal and open another one. Neofetch prints before my eyes. I then proceed to stare at neofetch for many countless hours, only moving to close the terminal and reopen it, until I pass out from exhaustion. When I sleep I dream of neofetch. I awaken to another day of neofetch.",
             "type": "message"

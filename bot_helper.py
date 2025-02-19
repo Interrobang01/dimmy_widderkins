@@ -94,17 +94,12 @@ async def get_user_input(data, prompts, force_response=False):
 
         # Remove command (if any)
         split_space = msg_trimmed.split() # Splits by whitespace and newline
-        print(f"spliot space are first {split_space}")
 
         if split_space[0].startswith('!'):
             msg_trimmed = msg_trimmed[len(split_space[0]):].strip()
 
-        print(f"spliot space are {split_space}")
-
         split_newline = msg_trimmed.split('\n')
         responses = []
-
-        print(f"spliot newlkine are {split_newline}")
 
         # User put the arguments on lines after command
         if split_newline[0] == '' and len(split_newline) > 1:

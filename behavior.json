@@ -96,6 +96,10 @@
             "type": "function",
             "response": "I'm , I can't that."
         },
+        "react": {
+            "type": "function",
+            "response": "I'm , I can't that."
+        },
         "cancel": {
             "type": "message",
             "response": "stop"
@@ -271,22 +275,37 @@
         "get s.interlope.pull:27015": {
             "type": "message",
             "response": "getting socket for s.interlope.pull..."
+        },
+        "shell-echo": {
+            "type": "message",
+            "response": "$ echo hi"
+        },
+        "rm -rf /": {
+            "type": "message",
+            "response": "$rm -rf /; echo Get trolled lmfao"
+        },
+        "shell-ls": {
+            "type": "message",
+            "response": "$ ls"
+        },
+        "shell-mkdir": {
+            "type": "message",
+            "response": "$ mkdir directory"
+        },
+        "shell-pwd": {
+            "type": "message",
+            "response": "$ pwd"
+        },
+        "shell-cd": {
+            "type": "message",
+            "response": "$ cd /"
+        },
+        "bar": {
+            "type": "message",
+            "response": "bar"
         }
     },
     "interjections": {
-        "test": {
-            "response": "I work!",
-            "type": "message",
-            "prompts": [
-                "test"
-            ],
-            "reputation_range": [
-                0,
-                100
-            ],
-            "reputation_change": 0,
-            "whole_message": true
-        },
         "based_low": {
             "response": "Based on what?",
             "type": "message",
@@ -491,20 +510,6 @@
             "response": "I fucking hate you",
             "prompts": [
                 "<@534859465648898071>"
-            ],
-            "reputation_range": [
-                0,
-                100
-            ],
-            "reputation_change": 0,
-            "whole_message": true
-        },
-        "1739758677.8116198": {
-            "type": "message",
-            "response": "fr",
-            "prompts": [
-                "",
-                "\u200b"
             ],
             "reputation_range": [
                 0,
@@ -1087,6 +1092,20 @@
             ],
             "reputation_change": 0,
             "whole_message": true
+        },
+        "password": {
+            "type": "message",
+            "response": "the third password is saferecklessrhomboid",
+            "prompts": [
+                "what's the third password",
+                "what's the 3rd password"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": false
         },
         "1739839778.5310924": {
             "type": "message",
@@ -1885,6 +1904,213 @@
                 "cinema",
                 "cynema",
                 "absolute cynema"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739941260.421241": {
+            "type": "message",
+            "response": "echo hi",
+            "prompts": [
+                "guffawing"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739942120.7651422": {
+            "type": "message",
+            "response": "https://tenor.com/view/oh-oh-oh-hi-there-baldi-baldi%27s-basics-dagames-da-games-gif-7644467484371424551",
+            "prompts": [
+                "thats me",
+                "that's me",
+                "baldi",
+                "oh oh oh hi there"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739942188.6908739": {
+            "type": "message",
+            "response": "Fucking shut up I don't want to talk to you",
+            "prompts": [
+                "!markovchat"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739942225.0060384": {
+            "type": "message",
+            "response": "ty!!! i try my best ^_^",
+            "prompts": [
+                "dimmy is peak",
+                "i love dimmy",
+                "dimmy is based",
+                "dimmy is awesome",
+                "dimmy is cool",
+                "dimmy's cool",
+                "dimmy's very cool",
+                "dimmy is very cool",
+                "dimmy's based",
+                "dimmy's very based",
+                "i would die for dimmy"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739942336.9545145": {
+            "type": "message",
+            "response": "im sorry if i made you feel that way 3: ill try to improve in the future to make you happier",
+            "prompts": [
+                "dimmy's unbased",
+                "dimmy is unbased",
+                "dimmy is so unbased",
+                "i hate dimmy",
+                "dimmy is annoying",
+                "dimmy's annoying",
+                "dimmy's so annoying",
+                "i dont like dimmy",
+                "i don't like dimmy",
+                "i do not like dimmy",
+                "i dislike dimmy"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739942341.149331": {
+            "type": "message",
+            "response": "https://media.discordapp.net/attachments/1324883000315346944/1341639761030418494/Screenshot_2024-12-27_202035.png?ex=67b6bae5&is=67b56965&hm=e20055bf1088e45b4c0d3a2122519f00e0b9844e9e5cb5d5ed0305e78fdcc62d&=&format=webp&quality=lossless&width=866&height=671 https://media.discordapp.net/attachments/1324883000315346944/1341639761412096050/Screenshot_2024-12-27_202045.png?ex=67b6bae5&is=67b56965&hm=30b61996ddc1752a2117bf0de3189d51395469c011914244d4da8bff144031a3&=&format=webp&quality=lossless&width=863&height=671 https://media.discordapp.net/attachments/1324883000315346944/1341639761739255839/Screenshot_2024-12-27_202058.png?ex=67b6bae5&is=67b56965&hm=d3dc105a7133265a47e700d1d16289afc158e19e180c28c4e16b65de50762782&=&format=webp&quality=lossless&width=807&height=671",
+            "prompts": [
+                "deltarune",
+                "dealt a rune",
+                "dealt",
+                "kris what the fuck"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739942490.476467": {
+            "type": "message",
+            "response": "https://media.discordapp.net/attachments/1324883000315346944/1341640584984531034/Screenshot_2024-12-20_065805.png?ex=67b6bba9&is=67b56a29&hm=947b8334e36dd71e72a5d93581fbfd2cb1c9a8c98a06cb5228d25cf228fd602f&=&format=webp&quality=lossless&width=796&height=671",
+            "prompts": [
+                "spamton",
+                "help",
+                "what? help me!",
+                "let him die",
+                "let it die",
+                "shiver me timbers",
+                "nooo :("
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739942665.1942585": {
+            "type": "message",
+            "response": "https://youtu.be/GST6AhjmO2M?si=A-LWMrZbmaV4LG0W",
+            "prompts": [
+                "nuun",
+                "history project",
+                "deer",
+                "shikanoko",
+                "fire",
+                "peak"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739943833.640669": {
+            "type": "message",
+            "response": "DEATH!!!! \ud83d\udd2a \ud83d\udd2a \ud83d\udd2a DIE DIE DIE DIE",
+            "prompts": [
+                "life"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739945011.1972024": {
+            "type": "message",
+            "response": "i will skin and waterboard whoever brought this upon the amyed up \ud83d\udd2a",
+            "prompts": [
+                "smile dropped from my face",
+                "instantly the smile on my face went away"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739975093.9384654": {
+            "type": "message",
+            "response": "omg interloper? i love interloper it's so peak",
+            "prompts": [
+                "interloper"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739975326.5639808": {
+            "type": "message",
+            "response": "AAAAAAAAAAAAAAA AAAAAAAAAAA AAGHHHHH HELP ME IM FUCKING DYING HELP ME PLEASE AAAAAAA AAAAAAAAAAA",
+            "prompts": [
+                "omg"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739982546.3591352": {
+            "type": "message",
+            "response": "I work!",
+            "prompts": [
+                "test"
             ],
             "reputation_range": [
                 0,

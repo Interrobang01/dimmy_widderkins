@@ -487,11 +487,10 @@ async def remove_command_or_interjection(data):
 
     response += "\nEnter the number to remove:"
     
-    # Remove only option if it's the only option
+    # Use only option if it's the only option
     choice = None
     if len(matching_commands) + len(matching_interjections) == 1:
-        if len(matching_commands) == 1:
-            choice = 1
+        choice = 1
     else:
         # Use get_user_input instead of manual input
         responses = await get_user_input(data, [response], True) # True is for not reusing this message as choice
@@ -635,6 +634,31 @@ async def markov_chat(data):
     
     await send_message(data, response, True) # True causes bot to reply
 
+async def react(data):
+    msg = data['msg']
+
+    prompts = [
+        'What do you want me to react with?',
+    ]
+
+    responses = await get_user_input(data, prompts)
+    if responses is None:
+        return
+    
+    requested_reaction = [prompt.strip().lower() for prompt in responses[0].split(',')][0]
+
+    if msg.reference:
+        referenced_message = await msg.channel.fetch_message(msg.reference.message_id)
+        for reaction in referenced_message.reactions:
+            if str(reaction.emoji) == requested_reaction:
+                async for reactor in reaction.users():
+                    if reactor.id == data['client'].user.id:
+                        # User has reacted, so remove their reaction
+                        await referenced_message.remove_reaction(requested_reaction, data['client'].user) # Remove reaction if already there
+                        return
+        await referenced_message.add_reaction(requested_reaction)  # React
+        return
+
 command_functions = {
     'newinterjection': new_interjection,
     'newcommand': new_command,
@@ -655,6 +679,7 @@ command_functions = {
     'marketresolve': market_resolve,
     'markov': markov,
     'markovchat': markov_chat,
+    'react': react,
 }
 
 # Initialize bot
@@ -798,12 +823,13 @@ async def on_message(msg):
     
     await brook.on_message(msg)
 
+    command_found = await run_command(data) # Run command if possible
+
     # Use markovchat to react to replies
-    if msg.reference and msg.reference.resolved and msg.reference.resolved.author == client.user:
+    if not command_found and msg.reference and msg.reference.resolved and msg.reference.resolved.author == client.user:
         await markov_chat(data)
         return
-
-    command_found = await run_command(data) # Run command if possible
+    
     if not command_found: await interject(data) # Interject if possible
 
 # Delete on trash emoji

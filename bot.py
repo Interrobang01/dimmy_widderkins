@@ -823,6 +823,10 @@ async def run_command(data):
     
     return True
 
+# Add near the top with other imports
+from commands.ollama_handler import ask_ollama
+
+# Modify the on_message event handler
 @client.event
 async def on_message(msg):
     # Ignore messages from the bot itself
@@ -833,14 +837,19 @@ async def on_message(msg):
     
     await brook.on_message(msg)
 
-    command_found = await run_command(data) # Run command if possible
+    # Add Ollama processing
+    response = await ask_ollama(msg.content)
+    if response == 'Y':
+        await msg.add_reaction('<:upvote:1309965553770954914>')
 
-    # Use markovchat to react to replies
+    command_found = await run_command(data)
+
     if not command_found and msg.reference and msg.reference.resolved and msg.reference.resolved.author == client.user:
         await markov_chat(data)
         return
     
-    if not command_found: await interject(data) # Interject if possible
+    if not command_found: 
+        await interject(data)
 
 # Delete on trash emoji
 @client.event

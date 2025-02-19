@@ -8,6 +8,7 @@ import datetime
 from brook import Brook
 from bot_helper import send_message, get_user_input, write_json, get_reputation, change_reputation
 import random
+import asyncio
 
 # # Rate limiting system
 # message_timestamps = []
@@ -46,9 +47,10 @@ def load_markov_model_from_json(file_path,file_path_chat):
     with open(file_path_chat, 'r', encoding='utf-8') as json_file:
         markov_model_chat = json.load(json_file)
 
-load_markov_model_from_json(r'markov_model.json', r'markov_model_chat.json')
+load_markov_model_from_json(r'markov_model_notw.json', r'markov_model_chat_notw.json')
 
 def get_next_word(current_word):
+    if not current_word: current_word = random.choice(list(markov_model))
     if current_word in markov_model:
         next_words = markov_model[current_word]
         total = sum(next_words.values())
@@ -61,6 +63,37 @@ def get_next_word(current_word):
     return None
 
 def get_next_word_chat(current_message):
+    keys = markov_model_chat.keys()
+    
+    # Gets skipped if current_message is already inside
+    i = 0
+    while current_message not in markov_model_chat:
+        i += 1
+
+        # Look for shortest message containing current_message
+        matching_keys = []
+        for key in keys:
+            if current_message in key:
+                matching_keys.append(key)
+        
+        if len(matching_keys) != 0:
+            current_message = min(matching_keys, key=lambda x: len(x[0]))
+
+        # Shorten if still not found
+        if current_message not in markov_model_chat:
+            split = current_message.split(' ')
+
+            # Remove last word to increase match chance
+            current_message = ' '.join(split[:-1])
+            
+            # Return if we've cut away the entire message
+            if len(split) == 0:
+                return None
+            
+    print(f"Found in {i} iterations")
+        
+
+
     if current_message in markov_model_chat:
         next_messages = markov_model_chat[current_message]
         total = sum(next_messages.values())
@@ -354,18 +387,23 @@ async def new_interjection(data):
     
     interjection_prompts = [prompt.strip().lower() for prompt in responses[0].split(',')]
 
-    # Iterate through prompts and remove duplicates and short prompts
-    visited_prompts = []
+    # Validate prompts
+    visited_prompts = [] # Used to track duplicates
     for prompt in interjection_prompts:
-        if len(prompt) < 2:
+
+        # Notifying users of bad prompts
+        if len(prompt) == 1:
             await send_message(data, 'Prompts must be at least 2 characters long.')
-            return
-        if prompt in visited_prompts:
-            await send_message(data, 'The prompts you listed cannot contain duplicates.')
             return
         if not any(char.isalpha() for char in prompt):
             await send_message(data, 'Prompts must contain at least one letter.')
             return
+        
+        # Removing bad prompts that the user won't miss
+        if prompt in visited_prompts:
+            interjection_prompts.remove(prompt) # Remove duplicates
+        if len(prompt) == 0:
+            interjection_prompts.remove(prompt) # Remove empty prompts
         visited_prompts.append(prompt)
 
     # Validate response length and content
@@ -408,11 +446,17 @@ async def new_interjection(data):
 
 async def remove_command_or_interjection(data):
     msg = data['msg']
-    # Get target name from message
-    target = ' '.join(msg.content.split(' ')[1:]).lower()
-    if not target:
-        await send_message(data, "Please specify what to remove.")
+
+    prompts = [
+        "What's the prompt or command name of the thing you want to remove?",
+    ]
+
+    responses = await get_user_input(data, prompts)
+    if responses is None:
         return
+
+    # Get target name from message
+    target = responses[0].lower()
 
     # Load behavior file
     with open('behavior.json', 'r') as file:
@@ -428,6 +472,7 @@ async def remove_command_or_interjection(data):
         await send_message(data, "No matching commands or interjections found.")
         return
 
+
     # Build list of options
     options = []
     response = "Found these matches:\n"
@@ -442,25 +487,35 @@ async def remove_command_or_interjection(data):
 
     response += "\nEnter the number to remove:"
     
-    # Use get_user_input instead of manual input
-    responses = await get_user_input(data, [response])
-    if responses is None:
-        return
+    # Remove only option if it's the only option
+    choice = None
+    if len(matching_commands) + len(matching_interjections) == 1:
+        if len(matching_commands) == 1:
+            choice = 1
+    else:
+        # Use get_user_input instead of manual input
+        responses = await get_user_input(data, [response], True) # True is for not reusing this message as choice
+        if responses is None:
+            return
 
-    choice = responses[0]
-    if not choice.isdigit() or int(choice) < 1 or int(choice) > len(options):
-        await send_message(data, "Invalid selection.")
-        return
+        choice = responses[0]
+        if not choice.isdigit() or int(choice) < 1 or int(choice) > len(options):
+            await send_message(data, "Invalid selection.")
+            return
 
     # Remove selected item
     selected = options[int(choice)-1]
     if selected[0] == 'command':
-        del behavior['commands'][selected[1]]
+        removed_item = behavior['commands'].pop(selected[1])
+        removed_type = 'Command'
+        removed_name = selected[1]
     else:
-        del behavior['interjections'][selected[1]]
+        removed_item = behavior['interjections'].pop(selected[1])
+        removed_type = 'Interjection'
+        removed_name = ', '.join(removed_item['prompts'])
 
     write_json(behavior)
-    await send_message(data, "Item removed successfully.")
+    await send_message(data, f"{removed_type} '{removed_name}' removed successfully.")
 
 beercount = 99
 async def beer(data):
@@ -530,7 +585,7 @@ async def pay_command(data):
 async def markov(data):
     msg = data['msg']
 
-    length = 1000 # Default length of response in characters
+    length = 100 # Default length of response in characters
 
     next_word = msg.content.split(' ')[-1]
     if next_word.isdigit():
@@ -538,7 +593,7 @@ async def markov(data):
         next_word = msg.content.split(' ')[-2]
 
     response = ""
-    while next_word != None and len(response) < 1000:
+    while next_word != None and len(response) < length:
         next_word = get_next_word(next_word)
         if next_word != None:
             response += str(next_word) + ' '
@@ -553,7 +608,10 @@ async def markov_chat(data):
     print(f"last markov message is now {last_markov_message}")
     msg = data['msg']
 
-    split = msg.content.split(' ')[1:]
+    split = msg.content.split(' ')
+    # Remove command if it exists
+    if msg.content.startswith('!'):
+        split = split[1:]
 
     input_message = ' '.join(split)
     next_message = input_message
@@ -568,8 +626,14 @@ async def markov_chat(data):
             
     last_markov_message = response.strip()
     print(last_markov_message)
+    # Calculate typing delay based on response length
+    typing_delay = min(len(response) * 0.01, 3)  # Max delay of 3 seconds
+
+    # Trigger typing indicator
+    async with msg.channel.typing():
+        await asyncio.sleep(typing_delay)
     
-    await send_message(data, response)
+    await send_message(data, response, True) # True causes bot to reply
 
 command_functions = {
     'newinterjection': new_interjection,
@@ -597,9 +661,6 @@ command_functions = {
 intents = discord.Intents.default()
 intents.message_content = True
 intents.typing = True
-
-# Don't let the bot ping
-
 
 client = discord.Client(intents=intents)
 
@@ -690,7 +751,7 @@ async def run_command(data):
     msg = data['msg']
     # Return if not a command
     if not msg.content.startswith('!'):
-        return
+        return False
     
     print(f"Command {msg.content} by user {msg.author}")
     
@@ -712,7 +773,7 @@ async def run_command(data):
     # Check if command exists
     if command_name is None:
         await send_message(data, 'Command not found.')
-        return
+        return True
 
     # Execute command
     command = commands[command_name]
@@ -724,6 +785,8 @@ async def run_command(data):
         except KeyError:
             await send_message(data, 'Interrobang screwed up and forgot to bind this function. Or the keyerror is some unrelated bug.')
             await send_message(data, command['response'])
+    
+    return True
 
 @client.event
 async def on_message(msg):
@@ -735,10 +798,20 @@ async def on_message(msg):
     
     await brook.on_message(msg)
 
-    await run_command(data) # Run command if possible
-    await interject(data) # Interject if possible
+    # Use markovchat to react to replies
+    if msg.reference and msg.reference.resolved and msg.reference.resolved.author == client.user:
+        await markov_chat(data)
+        return
 
-    
+    command_found = await run_command(data) # Run command if possible
+    if not command_found: await interject(data) # Interject if possible
+
+# Delete on trash emoji
+@client.event
+async def on_reaction_add(reaction, user):
+    # Check if the reaction is the specific emoji and the message was written by the bot
+    if reaction.emoji == '🗑️' and reaction.message.author == client.user:
+        await reaction.message.delete()
 
 if __name__ == '__main__':
     with open(r"/home/interrobang/VALUABLE/dimmy_widderkins_token.txt", 'r') as file:

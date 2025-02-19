@@ -5,7 +5,7 @@ import json
 import time
 
 # General message function
-async def send_message(data, response):
+async def send_message(data, response, reply=False):
     msg = data['msg']
     # Replace @ with @​ to prevent pinging (note zero-width space)
     response = response.replace('@', '@​')
@@ -35,7 +35,10 @@ async def send_message(data, response):
         return
 
     print(f"Sending message: {response}")
-    await msg.channel.send(response)
+    if reply:
+        await msg.reply(response)
+    else:
+        await msg.channel.send(response)
 
 # Write json
 def write_json(data, filename='behavior.json'):
@@ -81,8 +84,40 @@ def change_reputation(user, amount):
     write_json(reputations, 'reputation.json')
 
 # Ask a series of questions defined in prompts to the user, then return their responses
-async def get_user_input(data, prompts):
+async def get_user_input(data, prompts, force_response=False):
     msg = data['msg']
+    message_prefix = "" # Prefix to add to prompt message
+
+    # First see if responses are answered in message already, if that's allowed
+    if not force_response:
+        msg_trimmed = msg.content # A msg.content that we can rip stuff out of 
+
+        # Remove command (if any)
+        split_space = msg_trimmed.split() # Splits by whitespace and newline
+        print(f"spliot space are first {split_space}")
+
+        if split_space[0].startswith('!'):
+            msg_trimmed = msg_trimmed[len(split_space[0]):].strip()
+
+        print(f"spliot space are {split_space}")
+
+        split_newline = msg_trimmed.split('\n')
+        responses = []
+
+        print(f"spliot newlkine are {split_newline}")
+
+        # User put the arguments on lines after command
+        if split_newline[0] == '' and len(split_newline) > 1:
+            split_newline.pop(0)
+        
+        if len(split_newline) >= len(prompts):
+            responses = split_newline[0:len(prompts)]
+            return responses
+        
+        if split_newline[0] != '':
+            message_prefix = "Not enough arguments.\n"
+
+    print(f"responses are {responses}")
     client = data['client']
     cancel_keywords = [
         'cancel',
@@ -101,12 +136,16 @@ async def get_user_input(data, prompts):
     ]
     user = msg.author
     username = user.name
-    responses = []
-    for prompt in prompts:
-        await send_message(data, username + ": " + prompt)
+    while len(responses) < len(prompts):
+        await send_message(data, message_prefix + username + ": " + "Please answer the following questions (separate answers with newlines): " + '\n- ' + "\n- ".join(prompts), True)
+        message_prefix = ""
         response = await client.wait_for('message', check=lambda m: m.author == user)
-        if response.content in cancel_keywords:
+        responses = response.content.split('\n')
+        if response.content.lower() in cancel_keywords:
             await send_message(data, 'Cancelled.')
             return None
-        responses.append(response.content)
+        
+        if len(responses) < len(prompts):
+            message_prefix = "Not enough arguments. Try again or say 'cancel' to cancel.\n"
+
     return responses

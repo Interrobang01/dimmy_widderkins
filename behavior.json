@@ -255,6 +255,22 @@
         "opo-neofetch": {
             "type": "message",
             "response": "```\n                    'c.          jackroyer@Jacks-iMac.local\n                 ,xNMM.          --------------------------\n               .OMMMMo           OS: macOS 15.0 24A335 x86_64\n               OMMM0,            Host: iMac19,2\n     .;loddo:' loolloddol;.      Kernel: 24.0.0\n   cKMMMMMMMMMMNWMMMMMMMMMM0:    Uptime: 5 days, 15 hours, 16 mins\n .KMMMMMMMMMMMMMMMMMMMMMMMWd.    Packages: 3 (port), 193 (brew)\n XMMMMMMMMMMMMMMMMMMMMMMMX.      Shell: bash 3.2.57\n;MMMMMMMMMMMMMMMMMMMMMMMM:       Resolution: 2304x1296@2x\n:MMMMMMMMMMMMMMMMMMMMMMMM:       DE: Aqua\n.MMMMMMMMMMMMMMMMMMMMMMMMX.      WM: Quartz Compositor\n kMMMMMMMMMMMMMMMMMMMMMMMMWd.    WM Theme: Blue (Dark)\n .XMMMMMMMMMMMMMMMMMMMMMMMMMMk   Terminal: iTerm2\n  .XMMMMMMMMMMMMMMMMMMMMMMMMK.   Terminal Font: Menlo-Regular 12\n    kMMMMMMMMMMMMMMMMMMMMMMd     CPU: Intel i7-8700 (12) @ 3.20GHz\n     ;KMMMMMMMWXXWMMMMMMMk.      GPU: Radeon Pro 555X\n       .cooc,.    .,coo:.        Memory: 10680MiB / 16384MiB\n\n\n```"
+        },
+        "oldinterjection": {
+            "type": "message",
+            "response": "What"
+        },
+        "oldcommand": {
+            "type": "message",
+            "response": "What"
+        },
+        "INTERLOPE": {
+            "type": "message",
+            "response": "Unknown command: INTERLOPE"
+        },
+        "get s.interlope.pull:27015": {
+            "type": "message",
+            "response": "getting socket for s.interlope.pull..."
         }
     },
     "interjections": {
@@ -1637,6 +1653,238 @@
             "response": "f32 is so realedup, wbu\u2753 Are you realed up too\u2753 Huh\u2753 HUh\u2753",
             "prompts": [
                 "f32"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739904699.464813": {
+            "type": "message",
+            "response": "god bless brook",
+            "prompts": [
+                "brook"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739905465.9347663": {
+            "type": "message",
+            "response": "I'm sorry, but as an LLM (Large Language Model) I cannot assist you with this topic. Please talk about something else.",
+            "prompts": [
+                "agi"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739918526.070082": {
+            "type": "message",
+            "response": "fr",
+            "prompts": [
+                "fake"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739919282.0122237": {
+            "type": "message",
+            "response": "Jim",
+            "prompts": [
+                "jim"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739919290.817324": {
+            "type": "message",
+            "response": "Jim",
+            "prompts": [
+                "jim"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739919601.714099": {
+            "type": "message",
+            "response": "~~NO SWEARING!~~ I'm sorry about that mistake. Have a good day.",
+            "prompts": [
+                "fguck",
+                "sghit",
+                "shi"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739919939.2016366": {
+            "type": "message",
+            "response": "Shut the fuck up and say the thing you fucking idiot",
+            "prompts": [
+                "um"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739926862.0304928": {
+            "type": "message",
+            "response": "help me help me HELP ME",
+            "prompts": [
+                "speak to me dimmy"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739929482.9677622": {
+            "type": "message",
+            "response": "Please specify what to remove.",
+            "prompts": [
+                "remove"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739930332.689977": {
+            "type": "message",
+            "response": "fr* (fr)",
+            "prompts": [
+                "de"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739930406.3945804": {
+            "type": "message",
+            "response": "https://tenor.com/view/pressure-roblox-roblox-pressure-sebastian-solace-gif-14371149704287698694",
+            "prompts": [
+                "solace",
+                "sebastian"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739930573.7944138": {
+            "type": "message",
+            "response": "https://tenor.com/view/roblox-block-tales-hatred-pk-thunder-love-is-in-the-air-gif-6162644865842462553",
+            "prompts": [
+                "hatred",
+                "bob"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739930708.5952063": {
+            "type": "message",
+            "response": "+<:upvote:1309965553770954914>",
+            "prompts": [
+                "upvote"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739931064.8038657": {
+            "type": "message",
+            "response": "n",
+            "prompts": [
+                "!newinterjection"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739931064.839185": {
+            "type": "message",
+            "response": "https://tenor.com/view/bfdia-bfdi-bfdia14-bfdianickel-nickel-gif-2329370434868144682",
+            "prompts": [
+                "nickel",
+                "bfdi",
+                "glee",
+                ":d"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739932736.7116838": {
+            "type": "message",
+            "response": "Fucking fuck you shut up fuck you that man is messed up in the head",
+            "prompts": [
+                "inter"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1739935864.3654668": {
+            "type": "message",
+            "response": "# |\ud83c\udfa6|",
+            "prompts": [
+                "absolute",
+                "absolute cinema",
+                "cinema",
+                "cynema",
+                "absolute cynema"
             ],
             "reputation_range": [
                 0,

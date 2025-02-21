@@ -859,8 +859,10 @@ async def run_command(data):
     return True
 
 last_reaction = "🤪"
+
 @client.event
 async def on_message(msg):
+    global last_reaction
     # Ignore messages from the bot itself
     if msg.author.id == client.user.id:
         return

@@ -875,6 +875,7 @@ async def on_message(msg):
         response = response.strip()[0]
         print(f"Ollama response: {response}")
         if response in emoji.EMOJI_DATA:
+            last_reaction = response
             #await msg.add_reaction('<:upvote:1309965553770954914>')
             await msg.add_reaction(response)
 

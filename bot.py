@@ -9,7 +9,11 @@ from brook import Brook
 from bot_helper import send_message, get_user_input, write_json, get_reputation, change_reputation
 import random
 import asyncio
-from commands.net import net_command
+from ollama_handler import ask_ollama
+import subprocess
+import sys
+import requests
+import emoji
 
 # # Rate limiting system
 # message_timestamps = []
@@ -555,7 +559,7 @@ async def opt_out(data):
         await send_message(data, "You are already opted out.")
         return
     change_reputation(msg.author, 100)
-    await send_message(data, "You have opted out.")
+    await send_message(data, "You have opted back out.")
 
 async def opt_in(data):
     msg = data['msg']
@@ -563,7 +567,7 @@ async def opt_in(data):
         await send_message(data, "You are already opted in.")
         return
     change_reputation(msg.author, -100)
-    await send_message(data, "You have opted back in.")
+    await send_message(data, "You have opted in.")
 
 # Use Brook.request_payment
 async def pay_command(data):
@@ -653,14 +657,52 @@ async def react(data):
         await referenced_message.add_reaction(requested_reaction)  # React
         return
 
-# Add this import near the top with other imports
-from commands.net import net_command
+async def net_command(data):
+    msg = data['msg']
+    args = msg.content.split()[1:]  # Remove !net
+
+    if str(msg.author.id) != '658073528888721408':
+        await send_message(data, "Wait, maybe dont let literally everyone make network requests from my machine")
+        return
+    
+    if not args:
+        await send_message(data, "Usage: !net <ip/domain> [-d]")
+        return
+        
+    target = args[0]
+    download_flag = "-d" in args
+    
+    try:
+        # Ping test
+        if not download_flag:
+            if sys.platform == "win32":
+                result = subprocess.run(['ping', '-n', '4', target], 
+                                     capture_output=True, text=True)
+            else:
+                result = subprocess.run(['ping', '-c', '4', target], 
+                                     capture_output=True, text=True)
+            await send_message(data, f"```\n{result.stdout}```")
+            return
+
+        # Download and display content
+        if download_flag:
+            # Ensure URL has protocol
+            if not target.startswith(('http://', 'https://')):
+                target = 'http://' + target
+                
+            response = requests.get(target, timeout=10)
+            content = response.text[:1500]  # Limit content length
+            await send_message(data, f"Content from {target}:\n```\n{content}...\n```")
+            
+    except Exception as e:
+        await send_message(data, f"Error: {str(e)}")
 
 command_functions = {
     'newinterjection': new_interjection,
     'newcommand': new_command,
     'addinterjection': new_interjection,
     'addcommand': new_command,
+    'beer': beer,
     'net': net_command,
     'help': help,
     'reputation': command_reputation,
@@ -816,10 +858,7 @@ async def run_command(data):
     
     return True
 
-# Add near the top with other imports
-from commands.ollama_handler import ask_ollama
-
-# Modify the on_message event handler
+last_reaction = "🤪"
 @client.event
 async def on_message(msg):
     # Ignore messages from the bot itself
@@ -830,17 +869,22 @@ async def on_message(msg):
     
     await brook.on_message(msg)
 
-    # Add Ollama processing
-    response = await ask_ollama(msg.content)
-    if response == 'Y':
-        await msg.add_reaction('<:upvote:1309965553770954914>')
+    if 'dimmy' in msg.content.lower() or 'widderkins' in msg.content.lower():
+        # Ollama processing
+        response = await ask_ollama(msg.content, last_reaction)
+        response = response.strip()[0]
+        print(f"Ollama response: {response}")
+        if response in emoji.EMOJI_DATA:
+            #await msg.add_reaction('<:upvote:1309965553770954914>')
+            await msg.add_reaction(response)
 
-    command_found = await run_command(data)
+    command_found = await run_command(data) # Run command if possible
 
     if not command_found and msg.reference and msg.reference.resolved and msg.reference.resolved.author == client.user:
         await markov_chat(data)
         return
     
+    # Interject if possible
     if not command_found: 
         await interject(data)
 

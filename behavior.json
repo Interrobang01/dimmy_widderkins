@@ -1,11 +1,9 @@
 {
     "commands": {
-        "commands": {
         "net": {
             "type": "function",
             "response": "Network utility command"
-        }
-    },
+        },
         "neofetch": {
             "response": "I wake up, I turn my laptop on, I open a terminal and I run neofetch. I spend around 4 hours just staring at neofetch. I then get up, taking my laptop with me, to the kitchen. The kitchen is void of anything a normal human being would call food, I ran out of instant noodles years ago, too busy looking at neofetch. I set my laptop upon the kitchen counter, close my terminal, open it again and run neofetch. I proceed to stare at it for another hour before I spot a cockroach on the wall. I grab it and eat it. I require nutrition to stay alive. If I die I can no longer look at neofetch. I then close the terminal and open another one, running neofetch. I actually don't need to run neofetch manually, I have put the command in my .bashrc. I take the laptop back to my room, careful not to glance away from neofetch. I place the laptop on my desk, close the terminal and open another one. Neofetch prints before my eyes. I then proceed to stare at neofetch for many countless hours, only moving to close the terminal and reopen it, until I pass out from exhaustion. When I sleep I dream of neofetch. I awaken to another day of neofetch.",
             "type": "message"
@@ -309,6 +307,34 @@
         "bar": {
             "type": "message",
             "response": "bar"
+        },
+        "dsh": {
+            "type": "message",
+            "response": "$ {}"
+        },
+        "dimmyhates": {
+            "type": "message",
+            "response": "I sure do hate {}. Fuck you"
+        },
+        "say": {
+            "type": "message",
+            "response": "{}"
+        },
+        "opo": {
+            "type": "message",
+            "response": "{} killed (Death by stab wound)"
+        },
+        "hpmor": {
+            "type": "message",
+            "response": "https://hpmor.com"
+        },
+        "worm": {
+            "type": "message",
+            "response": "https://parahumans.wordpress.com"
+        },
+        "repo": {
+            "type": "message",
+            "response": "https://github.com/Interrobang01/dimmy_widderkins"
         }
     },
     "interjections": {
@@ -341,23 +367,6 @@
             ],
             "reputation_change": 0,
             "whole_message": true
-        },
-        "fuck": {
-            "response": "NO SWEARING!",
-            "type": "message",
-            "prompts": [
-                "fuck",
-                "fucks",
-                "fucking",
-                "ffs",
-                "wtf"
-            ],
-            "reputation_range": [
-                0,
-                100
-            ],
-            "reputation_change": -1,
-            "whole_message": false
         },
         "hate": {
             "response": ":(",
@@ -405,67 +414,6 @@
             ],
             "reputation_change": 0,
             "whole_message": false
-        },
-        "rea": {
-            "response": "wrong. nothing is real.",
-            "type": "message",
-            "prompts": [
-                "rea",
-                "reae",
-                "ra",
-                "real"
-            ],
-            "reputation_range": [
-                0,
-                60
-            ],
-            "reputation_change": -10,
-            "whole_message": true
-        },
-        "death": {
-            "response": "life!!!",
-            "type": "message",
-            "prompts": [
-                "death",
-                "dying",
-                "die"
-            ],
-            "reputation_range": [
-                0,
-                100
-            ],
-            "reputation_change": 0,
-            "whole_message": true
-        },
-        "damn": {
-            "response": "https://preview.redd.it/saw-this-weird-bird-outside-anyone-know-the-species-v0-45lce8ammjbb1.jpeg?width=748&format=pjpg&auto=webp&s=69acd11b4ec6b2855297ea7c94a864cad33b6ad1",
-            "type": "message",
-            "prompts": [
-                "damn",
-                "darn",
-                "dang",
-                "damnation",
-                "dammit",
-                "damnit",
-                "dangit",
-                "dangnabbit",
-                "dangnabit",
-                "dangnabit",
-                "darnation",
-                "darnit",
-                "darnitall",
-                "darnitalltoheck",
-                "darnitalltoheckandback",
-                "darnitalltoheckandbackagain",
-                "dangnation",
-                "dangnations"
-            ],
-            "reputation_range": [
-                0,
-                100
-            ],
-            "reputation_change": 0,
-            "whole_message": true
         },
         "1739756242.231054": {
             "type": "message",
@@ -562,21 +510,6 @@
             ],
             "reputation_change": 0,
             "whole_message": true
-        },
-        "1739759052.157355": {
-            "type": "message",
-            "response": "That guy is a fucking idiot, I fucking hate him, block him",
-            "prompts": [
-                "chap",
-                "chapper",
-                "chapper24"
-            ],
-            "reputation_range": [
-                0,
-                100
-            ],
-            "reputation_change": 0,
-            "whole_message": false
         },
         "1739759158.8590631": {
             "type": "message",
@@ -2117,6 +2050,183 @@
             "response": "I work!",
             "prompts": [
                 "test"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740008504.8278835": {
+            "type": "message",
+            "response": "pluh \ud83d\udde3\ufe0f\ud83d\udd25\ud83d\udd25\ud83d\udd25",
+            "prompts": [
+                "pluh",
+                "ploh"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740011284.464381": {
+            "type": "message",
+            "response": "I am Dimmy Widderkins, an ADI. (Artificial Diary Intelligence, trained on real diaries submitted by users)",
+            "prompts": [
+                "who"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740011839.8696306": {
+            "type": "message",
+            "response": "I fucking hate that fucking idiot fuck him",
+            "prompts": [
+                "chap",
+                "chapper",
+                "chapper24",
+                "chapstick",
+                "chappy"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740013441.332011": {
+            "type": "message",
+            "response": "fucking get to the point already, fuck exists for a reason",
+            "prompts": [
+                "crap",
+                "fiddlesticks",
+                "guck"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740015695.9073715": {
+            "type": "message",
+            "response": "OMG i love jorin smp!!!!!! it's way better than dumbshitsurvival, jorin smp has a tower \ud83d\uddfc",
+            "prompts": [
+                "jorin smp",
+                "jorinsmp"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740015834.3498688": {
+            "type": "message",
+            "response": "https://s36500.pcdn.co/wp-content/uploads/2021/06/Echoes-of-Enslavement-1200.jpg",
+            "prompts": [
+                "slavation",
+                "enslavement"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740015945.3589456": {
+            "type": "message",
+            "response": "https://preview.redd.it/damnation-birds-v0-n822qxt6p4de1.jpeg?width=750&format=pjpg&auto=webp&s=c494ac2453b158b2b17c3457959480b4de235fe3",
+            "prompts": [
+                "hell",
+                "satan",
+                "what the hell",
+                "wth",
+                "devilish",
+                "evil",
+                "nefarious",
+                "ghoulish",
+                "tartarus",
+                "hel"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740019267.2638476": {
+            "type": "message",
+            "response": "LIFE !!!!!!!!!!",
+            "prompts": [
+                "life or bath for dry cat"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740096219.4142325": {
+            "type": "message",
+            "response": "god isn't real, praise Ra \u2600\ufe0f\ud83e\udd85",
+            "prompts": [
+                "god bless",
+                "god",
+                "oh my god"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740096929.876417": {
+            "type": "message",
+            "response": "worm? i have a worm or to two say: \ud83e\udeb1. \ud83e\udeb1\ud83e\udeb1. \ud83e\udeb1, \ud83e\udeb1.",
+            "prompts": [
+                "worm"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740103548.5147867": {
+            "type": "message",
+            "response": "Hello everyobdy I'm Amy too and I confidently endorse Amy as the better amy. I'm pretty cool as well",
+            "prompts": [
+                "amy"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740103841.955507": {
+            "type": "message",
+            "response": "omg i love Gaper Bingzoid, he's my idol",
+            "prompts": [
+                "gaper bingzoid",
+                "it's me gaper bingzoid"
             ],
             "reputation_range": [
                 0,

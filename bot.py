@@ -869,7 +869,7 @@ async def on_message(msg):
     
     await brook.on_message(msg)
 
-    if 'dimmy' in msg.content.lower() or 'widderkins' in msg.content.lower():
+    if 'dimmy' in msg.content.lower() or 'widderkins' in msg.content.lower() or '<@1330727173115613304>' in msg.content.lower():
         # Ollama processing
         response = await ask_ollama(msg.content, last_reaction)
         response = response.strip()[0]

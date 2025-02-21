@@ -2180,21 +2180,6 @@
             "reputation_change": 0,
             "whole_message": true
         },
-        "1740096219.4142325": {
-            "type": "message",
-            "response": "god isn't real, praise Ra \u2600\ufe0f\ud83e\udd85",
-            "prompts": [
-                "god bless",
-                "god",
-                "oh my god"
-            ],
-            "reputation_range": [
-                0,
-                100
-            ],
-            "reputation_change": 0,
-            "whole_message": true
-        },
         "1740096929.876417": {
             "type": "message",
             "response": "worm? i have a worm or to two say: \ud83e\udeb1. \ud83e\udeb1\ud83e\udeb1. \ud83e\udeb1, \ud83e\udeb1.",
@@ -2227,6 +2212,26 @@
             "prompts": [
                 "gaper bingzoid",
                 "it's me gaper bingzoid"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740112067.4951057": {
+            "type": "message",
+            "response": "i love everybody and believe we should all have rights, i am a leftist ^w^",
+            "prompts": [
+                "dimmy should trans people have rights",
+                "dimmy wdyt about trans people",
+                "answer with \ud83d\udeab or \u2705",
+                "dimmy trump wants to imprison trans people with cis people of their birth gender",
+                "do you support this",
+                "dimmy should people in the lgbtq+ circle exist",
+                "dimmy where are you on the political spectrum",
+                "react with \u2b05\ufe0f or \u27a1\ufe0f"
             ],
             "reputation_range": [
                 0,

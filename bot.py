@@ -874,8 +874,8 @@ async def on_message(msg):
     if 'dimmy' in msg.content.lower() or 'widderkins' in msg.content.lower() or '<@1330727173115613304>' in msg.content.lower():
         # Ollama processing
         response = await ask_ollama(msg.content, last_reaction)
-        response = response.strip()[0]
         print(f"Ollama response: {response}")
+        response = response.strip()[0]
         if response in emoji.EMOJI_DATA:
             last_reaction = response
             #await msg.add_reaction('<:upvote:1309965553770954914>')

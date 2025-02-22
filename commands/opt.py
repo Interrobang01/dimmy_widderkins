@@ -1,4 +1,4 @@
-from ..bot_helper import send_message, get_reputation, change_reputation
+from bot_helper import send_message, get_reputation, change_reputation
 
 async def opt_out(data):
     msg = data['msg']

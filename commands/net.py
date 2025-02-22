@@ -1,4 +1,4 @@
-from ..bot_helper import send_message
+from bot_helper import send_message
 import requests
 import subprocess
 import sys

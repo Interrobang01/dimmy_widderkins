@@ -1,4 +1,4 @@
-from ..bot_helper import send_message
+from bot_helper import send_message
 
 async def beer(data):
     if not hasattr(beer, 'beercount'):

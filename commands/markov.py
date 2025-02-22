@@ -1,6 +1,6 @@
 import random
 import json
-from ..bot_helper import send_message
+from bot_helper import send_message
 import asyncio
 import atexit
 

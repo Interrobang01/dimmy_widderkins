@@ -1,29 +1,21 @@
-from ..bot_helper import send_message
+from bot_helper import send_message, execute_query
 import json
 
 async def help(data):
     msg = data['msg']
-    # Get commands
-    with open('behavior.json', 'r') as file:
-        behavior = json.load(file)
-        commands = behavior['commands']
+    commands = execute_query("SELECT name FROM commands")
     
     response = 'Commands: '
     for command in commands:
-        response += f'\n`!{command}`'
+        response += f'\n`!{command["name"]}`'
     await send_message(data, response)
-
-# Todo: make help a general guide and add list_commands
 
 async def list_interjections(data):
     msg = data['msg']
-    # Get interjections
-    with open('behavior.json', 'r') as file:
-        behavior = json.load(file)
-        interjections = behavior['interjections']
+    interjections = execute_query("SELECT prompts, response FROM interjections")
     
     response = 'Interjections: '
-    for name, interjection in interjections.items():
+    for interjection in interjections:
         prompts_string = ", ".join(interjection['prompts'])
         response_string = interjection['response']
         response += f'\n{prompts_string} -> {response_string}'

@@ -1,14 +1,11 @@
-from ..bot_helper import *
+from bot_helper import *
 
 async def calculate_market_probability_change(data, market, amount):
     msg = data['msg']
     current_liquidity = market['liquidity']
     current_probability = market['probability']
     
-    # Calculate new probability with the same formula but clamp between 0 and 1
     new_probability = (current_liquidity * current_probability + amount) / (current_liquidity + abs(amount))
-    
-    # Clamp probability between 0 and 1
     new_probability = max(0.0, min(1.0, new_probability))
     
     return new_probability
@@ -29,26 +26,22 @@ async def market_resolve(data):
     market_name, resolution_str = responses
     resolution = 'y' in resolution_str.lower()
 
-    # Get market
-    with open('markets.json', 'r') as file:
-        markets = json.load(file)
+    market = execute_query("SELECT * FROM markets WHERE name = ?", (market_name,), fetchone=True)
     
-    if market_name not in markets:
+    if not market:
         await send_message(data, "Market not found.")
         return
     
-    market = markets[market_name]
     if str(msg.author.id) != market['creator']:
         await send_message(data, "You cannot resolve markets you do not own!")
         return
     
-    market['resolved'] = True
-    market['resolution'] = resolution
+    execute_query("UPDATE markets SET resolved = 1, resolution = ? WHERE name = ?", (resolution, market_name))
 
     liquidity_remaining = market['liquidity']
     
-    # Pay shareholders
-    for user_id, shares in market['user_shares'].items():
+    user_shares = execute_query("SELECT user_id, shares FROM user_shares WHERE market_name = ?", (market_name,))
+    for user_id, shares in user_shares:
         payout = abs(shares) if (resolution and shares > 0) or (not resolution and shares < 0) else 0
         if payout > 0:
             if payout > liquidity_remaining:
@@ -57,11 +50,8 @@ async def market_resolve(data):
             await brook.pay(user_id, payout, msg.channel)
             liquidity_remaining -= payout
 
-    # Pay remaining liquidity to market creator
     if liquidity_remaining > 0:
         await brook.pay(market['creator'], liquidity_remaining, msg.channel)
-
-    write_json(markets, 'markets.json')
 
 async def market_buy(data):
     msg = data['msg']
@@ -75,7 +65,6 @@ async def market_buy(data):
     if responses is None:
         return
     
-    # Ensure amount is an integer
     try:
         responses[1] = int(responses[1])
     except ValueError:
@@ -83,26 +72,21 @@ async def market_buy(data):
         return
     
     market_name, amount = responses
-    # Get market
-    with open('markets.json', 'r') as file:
-        markets = json.load(file)
+    market = execute_query("SELECT * FROM markets WHERE name = ?", (market_name,), fetchone=True)
     
-    if market_name not in markets:
+    if not market:
         await send_message(data, "Market not found.")
         return
     
-    market = markets[market_name]
     if market['resolved']:
         await send_message(data, "Market is already resolved.")
         return
     
-    # Calculate price
     if amount > 0:
         price = market['probability'] * amount
     else:
         price = (1 - market['probability']) * abs(amount)
 
-    # Request money
     future = await brook.request_payment(msg.author, price, msg.channel, "Market shares for market '" + market_name + "'")
     try:
         await future
@@ -112,30 +96,19 @@ async def market_buy(data):
     
     user_id = str(msg.author.id)
 
-    # Update user_shares
-    if user_id not in market['user_shares']:
-        market['user_shares'][user_id] = amount
+    existing_shares = execute_query("SELECT shares FROM user_shares WHERE market_name = ? AND user_id = ?", (market_name, user_id), fetchone=True)
+    if existing_shares:
+        new_shares = existing_shares['shares'] + amount
+        execute_query("UPDATE user_shares SET shares = ? WHERE market_name = ? AND user_id = ?", (new_shares, market_name, user_id))
     else:
-        market['user_shares'][user_id] += amount
+        execute_query("INSERT INTO user_shares (market_name, user_id, shares) VALUES (?, ?, ?)", (market_name, user_id, amount))
     
-    # Calculate new probability
     new_probability = await calculate_market_probability_change(data, market, amount)
 
-    # Update market
-    market['liquidity'] += price
-    market['probability'] = new_probability
-    write_json(markets, 'markets.json')
+    execute_query("UPDATE markets SET liquidity = liquidity + ?, probability = ? WHERE name = ?", (price, new_probability, market_name))
 
-    await send_message(data, f"Purchace made. New probability: {new_probability * 100}%")
+    await send_message(data, f"Purchase made. New probability: {new_probability * 100}%")
 
-
-# 1a. Asks the following prompts:
-#     "What is the market name?",
-#     "What is the starting liquidity?",
-#     "What is the initialized probability?",
-# 1b. Requests payment from the user equal to the starting liqudity, cancelling if payment is rejected
-# 1c. Reserves that money for the market
-# 1d. Creates a market message
 async def new_market(data):
     msg = data['msg']
     brook = data['brook']
@@ -151,12 +124,11 @@ async def new_market(data):
     if not responses:
         return
     
-    # Ensure liquidity/probability is a integer/number
     try:
         responses[1] = int(responses[1])
         probability_str = responses[2]
         if probability_str.endswith('%'):
-            probability_str = probability_str[:-2]
+            probability_str = probability_str[:-1]
         responses[2] = float(probability_str)
     except ValueError:
         await send_message(data, "Liquidity must be an integer and probability must be a number.")
@@ -164,57 +136,42 @@ async def new_market(data):
     
     market_name, starting_liquidity, initialized_probability = responses
 
-    # Convert to fraction
     if initialized_probability >= 1:
         initialized_probability = initialized_probability / 100
 
-    # Request payment from the user equal to the starting liquidity
     future = await brook.request_payment(msg.author, starting_liquidity, msg.channel, "Market liquidity for market '" + market_name + "'")
-
-    # Cancel if request is denied
     try:
         await future
     except Exception as e:
         await send_message(data, "Payment request denied. Market creation cancelled.")
         return
 
-
-
-    # Send a market message with the market name, starting liquidity, and initialized probability
-    # The message has a "Buy" button that allows users to buy shares in the market
-    # The message has a "Resolve" button that allows the market creator to resolve the market
     market = {
         "name": market_name,
         "starting_liquidity": starting_liquidity,
         "initialized_probability": initialized_probability,
         "liquidity": starting_liquidity,
         "probability": initialized_probability,
-        "user_shares": {},
         "creator": str(msg.author.id),
         "resolved": False,
         "resolution": None,
     }
 
-    with open('markets.json', 'r') as file:
-        markets = json.load(file)
-    
-    # Check duplicate market names
-    if market_name in markets:
+    existing_market = execute_query("SELECT name FROM markets WHERE name = ?", (market_name,))
+    if existing_market:
         await send_message(data, "Market name already exists.")
         return
     
-    markets[market_name] = market
-    write_json(markets, 'markets.json')
+    execute_query("INSERT INTO markets (name, starting_liquidity, initialized_probability, liquidity, probability, creator, resolved, resolution) VALUES (?, ?, ?, ?, ?, ?, 0, NULL)", 
+                  (market_name, starting_liquidity, initialized_probability, starting_liquidity, initialized_probability, str(msg.author.id)))
 
     await send_message(data, "New market created: " + market_name)
 
 async def view_markets(data):
     msg = data['msg']
-    # Get markets
-    with open('markets.json', 'r') as file:
-        markets = json.load(file)
+    markets = execute_query("SELECT name, probability FROM markets")
     
     response = 'Markets: '
     for market in markets:
-        response += f'\n{market}: {markets[market]["probability"] * 100}%'
+        response += f'\n{market["name"]}: {market["probability"] * 100}%'
     await send_message(data, response)

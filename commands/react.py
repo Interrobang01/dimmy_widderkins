@@ -1,4 +1,4 @@
-from ..bot_helper import get_user_input
+from bot_helper import get_user_input
 
 async def react(data):
     msg = data['msg']

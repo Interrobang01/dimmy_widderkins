@@ -1,82 +1,113 @@
 import discord
 import json
 from brook import Brook
-from bot_helper import send_message, get_user_input, write_json, get_reputation, change_reputation
+from bot_helper import send_message, get_user_input, execute_query, get_reputation, change_reputation
 from ollama_handler import ask_ollama
 import emoji
 import importlib
 import inspect
 import os
-
-# # Rate limiting system
-# message_timestamps = []
-# self_destruct = False
-# async def log_message(message):
-#     if self_destruct: return
-
-#     # Keep track of message timestamps
-#     current_time = time.time()
-#     message_timestamps.append(current_time)
-    
-#     # Remove timestamps older than 5 seconds
-#     while message_timestamps and message_timestamps[0] < current_time - 5:
-#         message_timestamps.pop(0)
-    
-#     # Check if we've sent more than 5 messages in 5 seconds
-#     if len(message_timestamps) > 5:
-#         self_destruct = True
-#         print("Rate limit exceeded. Shutting down bot.")
-#         await message.channel.send("TOO MANY MESSAGES INITIATING SELF-DESTRUCT SEQUENCE")
-#         await message.channel.send("5")
-#         await message.channel.send("4")
-#         await message.channel.send("3")
-#         await message.channel.send("2")
-#         await message.channel.send("1")
-#         await message.channel.send("https://tenor.com/bko4E.gif")
-#         await client.close()
-#         return
+import sqlite3
 
 # Get functions to bind to commands
 def get_command_functions():
     folder = "commands"
     functions = {}
+    commands_path = os.path.abspath(folder)
 
     for filename in os.listdir(folder):
         if filename.endswith('.py') and filename != '__init__.py':
             module_name = f"{folder}.{filename[:-3]}"
             module = importlib.import_module(module_name)
 
-            for name, obj in inspect.getmembers(module):
-                if inspect.isfunction(obj):
-                    functions[name] = obj
+            # Ensure the module is from the correct folder
+            module_path = os.path.abspath(module.__file__)
+            if os.path.commonpath([commands_path, module_path]) == commands_path:
+                for name, obj in inspect.getmembers(module):
+                    if inspect.isfunction(obj):
+                        functions[name] = obj
     
     return functions
 
 command_functions = get_command_functions()
 
-# command_functions = {
-#     'newinterjection': new_interjection,
-#     'newcommand': new_command,
-#     'addinterjection': new_interjection,
-#     'addcommand': new_command,
-#     'beer': beer,
-#     'net': net_command,
-#     'help': help,
-#     'reputation': command_reputation,
-#     'interjections': list_interjections,
-#     'optout': opt_out,
-#     'optin': opt_in,
-#     'remove': remove_command_or_interjection,
-#     'pay': pay_command,
-#     'newmarket': new_market,
-#     'addmarket': new_market,
-#     'viewmarkets': view_markets,
-#     'marketbuy': market_buy,
-#     'marketresolve': market_resolve,
-#     'markov': markov,
-#     'markovchat': markov_chat,
-#     'react': react,
-# }
+def initialize_database():
+    conn = sqlite3.connect('/home/interrobang/Scripts/DimmyWidderkins/database.db')
+    cursor = conn.cursor()
+    
+    cursor.execute('''
+    CREATE TABLE IF NOT EXISTS users (
+        user_id TEXT PRIMARY KEY,
+        reputation INTEGER
+    )
+    ''')
+    
+    cursor.execute('''
+    CREATE TABLE IF NOT EXISTS commands (
+        name TEXT PRIMARY KEY,
+        type TEXT,
+        response TEXT
+    )
+    ''')
+    
+    cursor.execute('''
+    CREATE TABLE IF NOT EXISTS interjections (
+        id INTEGER PRIMARY KEY,
+        type TEXT,
+        response TEXT,
+        prompts TEXT,
+        reputation_range TEXT,
+        reputation_change INTEGER,
+        whole_message BOOLEAN
+    )
+    ''')
+    
+    cursor.execute('''
+    CREATE TABLE IF NOT EXISTS markets (
+        name TEXT PRIMARY KEY,
+        starting_liquidity INTEGER,
+        initialized_probability REAL,
+        liquidity INTEGER,
+        probability REAL,
+        creator TEXT,
+        resolved BOOLEAN,
+        resolution BOOLEAN
+    )
+    ''')
+    
+    cursor.execute('''
+    CREATE TABLE IF NOT EXISTS user_shares (
+        market_name TEXT,
+        user_id TEXT,
+        shares INTEGER,
+        PRIMARY KEY (market_name, user_id)
+    )
+    ''')
+    
+    conn.commit()
+    conn.close()
+
+def import_json_to_sql():
+    conn = sqlite3.connect('/home/interrobang/Scripts/DimmyWidderkins/database.db')
+    cursor = conn.cursor()
+
+    # Import users (reputation.json)
+    with open('/home/interrobang/Scripts/DimmyWidderkins/persistence/reputation.json', 'r') as file:
+        reputations = json.load(file)
+        for user_id, reputation in reputations.items():
+            cursor.execute("INSERT OR IGNORE INTO users (user_id, reputation) VALUES (?, ?)", (user_id, reputation))
+
+    # Import commands and interjections (behavior.json)
+    with open('/home/interrobang/Scripts/DimmyWidderkins/persistence/behavior.json', 'r') as file:
+        behavior = json.load(file)
+        for name, command in behavior['commands'].items():
+            cursor.execute("INSERT OR IGNORE INTO commands (name, type, response) VALUES (?, ?, ?)", (name, command['type'], command['response']))
+        for id, interjection in behavior['interjections'].items():
+            cursor.execute("INSERT OR IGNORE INTO interjections (id, type, response, prompts, reputation_range, reputation_change, whole_message) VALUES (?, ?, ?, ?, ?, ?, ?)", 
+                           (id, interjection['type'], interjection['response'], json.dumps(interjection['prompts']), json.dumps(interjection['reputation_range']), interjection['reputation_change'], int(interjection['whole_message'])))
+
+    conn.commit()
+    conn.close()
 
 # Initialize bot
 intents = discord.Intents.default()
@@ -100,16 +131,11 @@ async def on_ready():
 
 async def interject(data):
     msg = data['msg']
-    # Load interjections list
-    with open('behavior.json', 'r') as file:
-        interjections = json.load(file)['interjections']
+    interjections = execute_query("SELECT * FROM interjections")
     
-    # Track matching interjections
     matching_interjections = []
 
-    # Go through every interjection
-    for _, interjection in interjections.items():
-        # Skip if user reputation is out of range
+    for interjection in interjections:
         reputation = get_reputation(msg.author)
         if reputation < interjection['reputation_range'][0]-1 or reputation > interjection['reputation_range'][1]-1:
             continue
@@ -179,17 +205,16 @@ async def run_command(data):
     # Get full command string without the ! prefix
     full_command = msg.content[1:].strip()
     
-    # Load commands list
-    with open('behavior.json', 'r') as file:
-        commands = json.load(file)['commands']
-
+    commands = execute_query("SELECT name FROM commands")
+    commands.extend({'name': name, 'type': 'function'} for name in command_functions.keys())
+    print(f"Commands: {commands}")
     # Find the longest matching command
     command_name = None
     for cmd in commands:
-        if full_command.lower().startswith(cmd.lower()):
+        if full_command.lower().startswith(cmd['name'].lower()):
             # Update if this is the longest matching command so far
-            if command_name is None or len(cmd) > len(command_name):
-                command_name = cmd
+            if command_name is None or len(cmd['name']) > len(command_name):
+                command_name = cmd['name']
 
     # Check if command exists
     if command_name is None:
@@ -199,19 +224,21 @@ async def run_command(data):
     # Get the input parameter (everything after the command)
     input_param = full_command[len(command_name):].strip()
 
-    # Execute command
-    command = commands[command_name]
-    if command['type'] == 'message':
-        response = command['response']
-        if '{}' in response:
-            response = response.replace('{}', input_param)
-        await send_message(data, response)
-    elif command['type'] == 'function':
-        try:
-            await command_functions[command_name](data)
-        except KeyError:
-            await send_message(data, 'Interrobang screwed up and forgot to bind this function. Or the keyerror is some unrelated bug.')
-            await send_message(data, command['response'])
+    # Check if the command is a function in command_functions
+    print(f"Command name: {command_name}")
+    print(f"Command functions: {command_functions}")
+    if command_name in command_functions:
+        await command_functions[command_name](data)
+    else:
+        # Execute command from the database
+        command = execute_query("SELECT * FROM commands WHERE name = ?", (command_name,), fetchone=True)
+        if command:
+            response = command['response']
+            if '{}' in response:
+                response = response.replace('{}', input_param)
+            await send_message(data, response)
+        else:
+            await send_message(data, 'Command not found.')
     
     return True
 
@@ -241,7 +268,7 @@ async def on_message(msg):
     command_found = await run_command(data) # Run command if possible
 
     if not command_found and msg.reference and msg.reference.resolved and msg.reference.resolved.author == client.user:
-        await markov_chat(data)
+        await command_functions.markov_chat(data)
         return
     
     # Interject if possible
@@ -256,6 +283,8 @@ async def on_reaction_add(reaction, user):
         await reaction.message.delete()
 
 if __name__ == '__main__':
+    initialize_database()
+    import_json_to_sql()
     with open(r"/home/interrobang/VALUABLE/dimmy_widderkins_token.txt", 'r') as file:
         client.run(file.read())
 

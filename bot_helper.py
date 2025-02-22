@@ -3,6 +3,7 @@
 import discord
 import json
 import time
+import sqlite3
 
 # General message function
 async def send_message(data, response, reply=False):
@@ -51,37 +52,37 @@ def write_json(data, filename='behavior.json'):
 
 # Reputation system
 def get_reputation(user):
-    # Load reputation list
-    with open('reputation.json', 'r') as file:
-        reputations = json.load(file)
-    
     user_id = str(user.id)
-
-    # Check if user has reputation
-    if user_id not in reputations:
-        # Add user to reputation list
-        reputations[user_id] = 100 # Default reputation
-        write_json(reputations, 'reputation.json')
-    
-    return reputations[user_id]
+    reputation = execute_query("SELECT reputation FROM users WHERE user_id = ?", (user_id,), fetchone=True)
+    if reputation:
+        return reputation['reputation']
+    else:
+        # Add user to reputation list with default reputation
+        execute_query("INSERT INTO users (user_id, reputation) VALUES (?, ?)", (user_id, 100))
+        return 100
 
 def change_reputation(user, amount):
-    # Load reputation list
-    with open('reputation.json', 'r') as file:
-        reputations = json.load(file)
-    
-    # Convert user.id to string for consistent handling
     user_id = str(user.id)
-    
-    # Check if user has reputation
-    if user_id not in reputations:
-        # Add user to reputation list
-        reputations[user_id] = 100 # Default reputation
-    
-    # Change reputation
-    reputations[user_id] += amount
-    reputations[user_id] = max(0, min(reputations[user_id], 100)) # Clamp reputation to 0-100
-    write_json(reputations, 'reputation.json')
+    reputation = execute_query("SELECT reputation FROM users WHERE user_id = ?", (user_id,), fetchone=True)
+    if reputation:
+        new_reputation = max(0, min(reputation['reputation'] + amount, 100))  # Clamp reputation to 0-100
+        execute_query("UPDATE users SET reputation = ? WHERE user_id = ?", (new_reputation, user_id))
+    else:
+        # Add user to reputation list with default reputation
+        execute_query("INSERT INTO users (user_id, reputation) VALUES (?, ?)", (user_id, max(0, min(100 + amount, 100))))
+
+def execute_query(query, params=(), fetchone=False):
+    conn = sqlite3.connect('/home/interrobang/Scripts/DimmyWidderkins/database.db')
+    conn.row_factory = sqlite3.Row  # This enables column access by name: row['column_name']
+    cursor = conn.cursor()
+    cursor.execute(query, params)
+    result = cursor.fetchone() if fetchone else cursor.fetchall()
+    conn.commit()
+    conn.close()
+    if fetchone:
+        return dict(result) if result else None
+    else:
+        return [dict(row) for row in result] if result else []
 
 # Ask a series of questions defined in prompts to the user, then return their responses
 async def get_user_input(data, prompts, force_response=False):

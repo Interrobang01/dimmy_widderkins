@@ -1,5 +1,4 @@
-from ..bot_helper import send_message, get_user_input, write_json
-import json
+from bot_helper import send_message, get_user_input, execute_query
 import time
 
 async def new_command(data):
@@ -13,31 +12,14 @@ async def new_command(data):
     if responses is None:
         return
     
-    # # Return error if command contains spaces
-    # if ' ' in responses[0]:
-    #     await send_message(message, 'Command cannot contain spaces.')
-    #     return
-    
-    # commandname = responses[0].split(' ')[0]
     commandname = responses[0]
 
-    # Load commands list
-    with open('behavior.json', 'r') as file:
-        behavior = json.load(file)
-        commands = behavior['commands']
-    
-    # Check if command already exists
-    if commandname in commands:
+    existing_command = execute_query("SELECT name FROM commands WHERE name = ?", (commandname,))
+    if existing_command:
         await send_message(data, 'This command already exists.')
         return
     
-    # Add command
-    commands[commandname] = {
-        'type': 'message',
-        'response': responses[1]
-    }
-    write_json(behavior)
-    
+    execute_query("INSERT INTO commands (name, type, response) VALUES (?, 'message', ?)", (commandname, responses[1]))
     await send_message(data, 'Your command has been added.')
 
 async def new_interjection(data):
@@ -54,11 +36,8 @@ async def new_interjection(data):
     
     interjection_prompts = [prompt.strip().lower() for prompt in responses[0].split(',')]
 
-    # Validate prompts
-    visited_prompts = [] # Used to track duplicates
+    visited_prompts = []
     for prompt in interjection_prompts:
-
-        # Notifying users of bad prompts
         if len(prompt) == 1:
             await send_message(data, 'Prompts must be at least 2 characters long.')
             return
@@ -66,14 +45,12 @@ async def new_interjection(data):
             await send_message(data, 'Prompts must contain at least one letter.')
             return
         
-        # Removing bad prompts that the user won't miss
         if prompt in visited_prompts:
-            interjection_prompts.remove(prompt) # Remove duplicates
+            interjection_prompts.remove(prompt)
         if len(prompt) == 0:
-            interjection_prompts.remove(prompt) # Remove empty prompts
+            interjection_prompts.remove(prompt)
         visited_prompts.append(prompt)
 
-    # Validate response length and content
     if len(responses[2]) > 2000:
         await send_message(data, 'Response too long (max 2000 characters).')
         return
@@ -83,30 +60,11 @@ async def new_interjection(data):
         return
     
     whole_message = 'y' in responses[1].lower()
-    # Pranked
     if not whole_message:
         whole_message = True
         await send_message(data, 'Just kidding. You are not allowed to make non-whole-message interjections.')
 
-
-    # Load interjections list
-    with open('behavior.json', 'r') as file:
-        behavior = json.load(file)
-        interjections = behavior['interjections']
-    
-    # Add interjection
-    interjections[time.time()] = {
-        'type': 'message',
-        'response': responses[2],
-        "prompts": interjection_prompts,
-        "reputation_range": [
-            0,
-            100
-        ],
-        "reputation_change": 0,
-        "whole_message": whole_message 
-    }
-
-    write_json(behavior)
+    execute_query("INSERT INTO interjections (id, type, response, prompts, reputation_range, reputation_change, whole_message) VALUES (?, 'message', ?, ?, ?, ?, ?)", 
+                  (time.time(), responses[2], interjection_prompts, [0, 100], 0, whole_message))
     
     await send_message(data, 'Your interjection has been added.')

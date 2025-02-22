@@ -11,7 +11,7 @@ async def ask_ollama(message_content, last_reaction):
                         "stream": False,
                         "max_tokens": 1,  # Limit to one token
                         "stop": [" "],   # Stop at first space
-                        "temperature": 1000000  # WHY USNT UT WIRJUNG
+                        "temperature": 0.2  # WHY USNT UT WIRJUNG
                     }) as response:
                     if response.status == 200:
                         result = await response.json()

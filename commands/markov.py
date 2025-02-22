@@ -48,37 +48,30 @@ def _infer_markov(current_word):
 
 def _infer_markov_chat(current_message):
     markov_model_chat = _load_markov_chat()
-
     keys = markov_model_chat.keys()
     
-    # Gets skipped if current_message is already inside
+    original_message = current_message
     i = 0
+    
     while current_message not in markov_model_chat:
         i += 1
-
-        # Look for shortest message containing current_message
+        
         matching_keys = []
         for key in keys:
             if current_message in key:
                 matching_keys.append(key)
         
         if len(matching_keys) != 0:
-            current_message = min(matching_keys, key=lambda x: len(x[0]))
-
-        # Shorten if still not found
-        if current_message not in markov_model_chat:
-            split = current_message.split(' ')
-
-            # Remove last word to increase match chance
-            current_message = ' '.join(split[:-1])
-            
-            # Return if we've cut away the entire message
-            if len(split) == 0:
-                return None
-            
-    print(f"Found in {i} iterations")
+            current_message = min(matching_keys, key=lambda x: len(x))
         
-
+        if current_message not in markov_model_chat:
+            split = original_message.split(' ')
+            if len(split) <= 1: 
+                return None
+                
+            current_message = ' '.join(split[i:])
+            
+    print(f"Found match: '{current_message}' in {i} iterations")
 
     if current_message in markov_model_chat:
         next_messages = markov_model_chat[current_message]
@@ -94,7 +87,7 @@ def _infer_markov_chat(current_message):
 async def markov(data):
     msg = data['msg']
 
-    length = 100 # Default length of response in characters
+    length = 100 
 
     next_word = msg.content.split(' ')[-1]
     if next_word.isdigit():
@@ -117,7 +110,7 @@ async def markov_chat(data):
     msg = data['msg']
 
     if not hasattr(markov_chat, 'last_markov_message'):
-        markov_chat.last_markov_message = 99
+        markov_chat.last_markov_message = ""
 
     split = msg.content.split(' ')
     # Remove command if it exists
@@ -128,15 +121,19 @@ async def markov_chat(data):
     
     # Add current message to history
     _message_history.append(input_message)
-    context = ' '.join(list(_message_history))
-    next_message = context if len(split) > 0 else markov_chat.last_markov_message
+    
+    # Prioritize recent messages by reversing the history
+    recent_first = list(reversed(_message_history))
+    context = ' '.join(recent_first)
+    next_message = context if context else markov_chat.last_markov_message
 
     response = ""
     next_message = _infer_markov_chat(next_message)
-    response += str(next_message) + ' '
+    if next_message:
+        response = str(next_message)
             
-    markov_chat.last_markov_message = response.strip()
-    _message_history.append(response.strip())
+    markov_chat.last_markov_message = response
+    _message_history.append(response)
 
     # Delay message to simulate typing
     typing_delay = min(len(response) * 0.01, 3)
@@ -146,6 +143,5 @@ async def markov_chat(data):
     
     await send_message(data, response, True)
 
-# Function aliases without underscores, using prefixes, and using close synonyms
 markovchat = markov_chat
 mc = markov_chat

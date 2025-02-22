@@ -339,6 +339,10 @@
         "howisopo": {
             "type": "message",
             "response": "probably in a bad mental state, he will not open up to you though so you have no way to tell"
+        },
+        "femtanyl": {
+            "type": "message",
+            "response": "https://music.youtube.com/watch?v=gR_ZWOMs63o"
         }
     },
     "interjections": {
@@ -1729,19 +1733,6 @@
             "reputation_change": 0,
             "whole_message": true
         },
-        "1739929482.9677622": {
-            "type": "message",
-            "response": "Please specify what to remove.",
-            "prompts": [
-                "remove"
-            ],
-            "reputation_range": [
-                0,
-                100
-            ],
-            "reputation_change": 0,
-            "whole_message": true
-        },
         "1739930332.689977": {
             "type": "message",
             "response": "fr* (fr)",
@@ -2236,6 +2227,19 @@
                 "dimmy should people in the lgbtq+ circle exist",
                 "dimmy where are you on the political spectrum",
                 "react with \u2b05\ufe0f or \u27a1\ufe0f"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740192279.639984": {
+            "type": "message",
+            "response": "Why in the god damn fuck is there a underscore in them all now",
+            "prompts": [
+                "!new_interjection"
             ],
             "reputation_range": [
                 0,

@@ -1,4 +1,4 @@
-async def pay_command(data):
+async def pay(data):
     msg = data['msg']
     brook = data['brook']
 

@@ -1,6 +1,6 @@
 import random
 import json
-from ..bot_helper import send_message
+from bot_helper import send_message
 import asyncio
 import atexit
 
@@ -144,3 +144,6 @@ async def markov_chat(data):
     
     await send_message(data, response, True) # True causes bot to reply
 
+# Function aliases without underscores, using prefixes, and using close synonyms
+markovchat = markov_chat
+mc = markov_chat

@@ -1,9 +1,9 @@
-from ..bot_helper import send_message
+from bot_helper import send_message
 import requests
 import subprocess
 import sys
 
-async def net_command(data):
+async def net(data):
     msg = data['msg']
     args = msg.content.split()[1:]  # Remove !net
 

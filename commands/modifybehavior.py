@@ -1,4 +1,4 @@
-from ..bot_helper import send_message, get_user_input, write_json
+from bot_helper import send_message, get_user_input, write_json
 import json
 import time
 
@@ -110,3 +110,11 @@ async def new_interjection(data):
     write_json(behavior)
     
     await send_message(data, 'Your interjection has been added.')
+
+# Function aliases without underscores, using prefixes, and using close synonyms
+command = new_command
+interjection = new_interjection
+addcommand = new_command
+addinterjection = new_interjection
+newcommand = new_command
+newinterjection = new_interjection

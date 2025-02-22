@@ -1,12 +1,9 @@
 import discord
 import json
 from brook import Brook
-from bot_helper import send_message, get_user_input, write_json, get_reputation, change_reputation
+from bot_helper import send_message, get_command_functions, get_reputation, change_reputation
 from ollama_handler import ask_ollama
 import emoji
-import importlib
-import inspect
-import os
 
 # # Rate limiting system
 # message_timestamps = []
@@ -36,47 +33,7 @@ import os
 #         await client.close()
 #         return
 
-# Get functions to bind to commands
-def get_command_functions():
-    folder = "commands"
-    functions = {}
-
-    for filename in os.listdir(folder):
-        if filename.endswith('.py') and filename != '__init__.py':
-            module_name = f"{folder}.{filename[:-3]}"
-            module = importlib.import_module(module_name)
-
-            for name, obj in inspect.getmembers(module):
-                if inspect.isfunction(obj):
-                    functions[name] = obj
-    
-    return functions
-
 command_functions = get_command_functions()
-
-# command_functions = {
-#     'newinterjection': new_interjection,
-#     'newcommand': new_command,
-#     'addinterjection': new_interjection,
-#     'addcommand': new_command,
-#     'beer': beer,
-#     'net': net_command,
-#     'help': help,
-#     'reputation': command_reputation,
-#     'interjections': list_interjections,
-#     'optout': opt_out,
-#     'optin': opt_in,
-#     'remove': remove_command_or_interjection,
-#     'pay': pay_command,
-#     'newmarket': new_market,
-#     'addmarket': new_market,
-#     'viewmarkets': view_markets,
-#     'marketbuy': market_buy,
-#     'marketresolve': market_resolve,
-#     'markov': markov,
-#     'markovchat': markov_chat,
-#     'react': react,
-# }
 
 # Initialize bot
 intents = discord.Intents.default()
@@ -183,6 +140,11 @@ async def run_command(data):
     with open('behavior.json', 'r') as file:
         commands = json.load(file)['commands']
 
+    # Add function names in command_functions to commands if not already present
+    for func_name in command_functions.keys():
+        if func_name not in commands:
+            commands[func_name] = {'response': 'you should not see this message'}
+
     # Find the longest matching command
     command_name = None
     for cmd in commands:
@@ -199,19 +161,16 @@ async def run_command(data):
     # Get the input parameter (everything after the command)
     input_param = full_command[len(command_name):].strip()
 
-    # Execute command
-    command = commands[command_name]
-    if command['type'] == 'message':
+    # Check if the command is a function in command_functions
+    if command_name in command_functions:
+        await command_functions[command_name](data)
+    else:
+        # Execute command
+        command = commands[command_name]
         response = command['response']
         if '{}' in response:
             response = response.replace('{}', input_param)
         await send_message(data, response)
-    elif command['type'] == 'function':
-        try:
-            await command_functions[command_name](data)
-        except KeyError:
-            await send_message(data, 'Interrobang screwed up and forgot to bind this function. Or the keyerror is some unrelated bug.')
-            await send_message(data, command['response'])
     
     return True
 
@@ -241,7 +200,7 @@ async def on_message(msg):
     command_found = await run_command(data) # Run command if possible
 
     if not command_found and msg.reference and msg.reference.resolved and msg.reference.resolved.author == client.user:
-        await markov_chat(data)
+        await command_functions.markov_chat(data)
         return
     
     # Interject if possible

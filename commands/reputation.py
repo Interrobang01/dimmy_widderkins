@@ -1,6 +1,9 @@
-from ..bot_helper import send_message, get_reputation
+from bot_helper import send_message, get_reputation
 
-async def command_reputation(data):
+async def reputation(data):
     msg = data['msg']
     reputation = get_reputation(msg.author)
     await send_message(data, f'Your reputation is {reputation}.')
+
+# Function aliases without underscores, using prefixes, and using close synonyms
+rep = reputation

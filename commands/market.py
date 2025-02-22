@@ -1,6 +1,6 @@
-from ..bot_helper import *
+from bot_helper import *
 
-async def calculate_market_probability_change(data, market, amount):
+async def _calculate_market_probability_change(data, market, amount):
     msg = data['msg']
     current_liquidity = market['liquidity']
     current_probability = market['probability']
@@ -119,7 +119,7 @@ async def market_buy(data):
         market['user_shares'][user_id] += amount
     
     # Calculate new probability
-    new_probability = await calculate_market_probability_change(data, market, amount)
+    new_probability = await _calculate_market_probability_change(data, market, amount)
 
     # Update market
     market['liquidity'] += price
@@ -218,3 +218,19 @@ async def view_markets(data):
     for market in markets:
         response += f'\n{market}: {markets[market]["probability"] * 100}%'
     await send_message(data, response)
+
+# Function aliases without underscores, using prefixes, and using close synonyms
+marketview = view_markets
+marketbuy = market_buy
+marketresolve = market_resolve
+marketnew = new_market
+newmarket = new_market
+viewmarket = view_markets
+viewmarkets = view_markets
+buy = market_buy
+resolve = market_resolve
+markets = view_markets
+market = view_markets
+
+
+

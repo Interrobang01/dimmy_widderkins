@@ -3,6 +3,9 @@
 import discord
 import json
 import time
+import importlib
+import inspect
+import os
 
 # General message function
 async def send_message(data, response, reply=False):
@@ -88,6 +91,8 @@ async def get_user_input(data, prompts, force_response=False):
     msg = data['msg']
     message_prefix = "" # Prefix to add to prompt message
 
+    responses = []
+
     # First see if responses are answered in message already, if that's allowed
     if not force_response:
         msg_trimmed = msg.content # A msg.content that we can rip stuff out of 
@@ -99,7 +104,6 @@ async def get_user_input(data, prompts, force_response=False):
             msg_trimmed = msg_trimmed[len(split_space[0]):].strip()
 
         split_newline = msg_trimmed.split('\n')
-        responses = []
 
         # User put the arguments on lines after command
         if split_newline[0] == '' and len(split_newline) > 1:
@@ -144,3 +148,25 @@ async def get_user_input(data, prompts, force_response=False):
             message_prefix = "Not enough arguments. Try again or say 'cancel' to cancel.\n"
 
     return responses
+
+# Get functions to bind to commands
+def get_command_functions():
+    folder = "commands"
+    functions = {}
+    commands_path = os.path.abspath(folder)
+
+    for filename in os.listdir(commands_path):
+        print(f"Checking {filename}")
+        if filename.endswith('.py') and filename != '__init__.py':
+            module_name = f"{folder}.{filename[:-3]}"
+            module = importlib.import_module(module_name)
+
+            # Ensure the module is from the commands folder
+            module_path = os.path.abspath(module.__file__)
+            if os.path.commonpath([commands_path, module_path]) == commands_path:
+                for name, obj in inspect.getmembers(module):
+                    if inspect.isfunction(obj) and not name.startswith('_') and obj.__module__ == module_name:
+                        print("adding function ", name)
+                        functions[name] = obj
+    
+    return functions

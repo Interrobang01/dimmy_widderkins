@@ -1,4 +1,4 @@
-from ..bot_helper import get_user_input, send_message, write_json
+from bot_helper import get_user_input, send_message, write_json
 import json
 
 async def remove_behavior(data):
@@ -36,17 +36,17 @@ async def remove_behavior(data):
     
     for i, (name, cmd) in enumerate(matching_commands):
         options.append(('command', name))
-        response += f"{i+1}. Command: !{name} -> {cmd['response'][:100]}...\n"
+        response += f"#{i+1}. Command: !{name} -> {cmd['response'][:100]}...\n"
 
     for i, (id, interj) in enumerate(matching_interjections, start=len(matching_commands)+1):
         options.append(('interjection', id))
-        response += f"{i}. Interjection: {', '.join(interj['prompts'])} -> {interj['response'][:100]}...\n"
+        response += f"#{i}. Interjection: {', '.join(interj['prompts'])} -> {interj['response'][:100]}...\n"
 
     response += "\nEnter the number to remove:"
     
     # Use only option if it's the only option
     choice = None
-    if len(matching_commands) + len(matching_interjections) == 1:
+    if len(matching_commands) + len(matching_interjections) == 1 and False: # Disable this for now
         choice = 1
     else:
         # Use get_user_input instead of manual input
@@ -72,3 +72,10 @@ async def remove_behavior(data):
 
     write_json(behavior)
     await send_message(data, f"{removed_type} '{removed_name}' removed successfully.")
+
+# Function aliases without underscores, using prefixes, and using close synonyms
+removebehavior = remove_behavior
+removeinterjection = remove_behavior
+removecommand = remove_behavior
+remove = remove_behavior
+delete = remove_behavior

@@ -1,4 +1,4 @@
-from ..bot_helper import send_message, get_reputation, change_reputation
+from bot_helper import send_message, get_reputation, change_reputation
 
 async def opt_out(data):
     msg = data['msg']
@@ -15,3 +15,7 @@ async def opt_in(data):
         return
     change_reputation(msg.author, -100)
     await send_message(data, "You have opted in.")
+
+# Function aliases without underscores, using prefixes, and using close synonyms
+optout = opt_out
+optin = opt_in

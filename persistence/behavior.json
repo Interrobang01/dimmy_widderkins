@@ -335,6 +335,10 @@
         "repo": {
             "type": "message",
             "response": "https://github.com/Interrobang01/dimmy_widderkins"
+        },
+        "howisopo": {
+            "type": "message",
+            "response": "probably in a bad mental state, he will not open up to you though so you have no way to tell"
         }
     },
     "interjections": {

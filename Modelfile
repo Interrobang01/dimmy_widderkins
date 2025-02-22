@@ -1,3 +1,0 @@
-FROM llama3.2:1b
-SYSTEM "Say 'Y' if something matches one of these: cool restricted writing (like writing without using the letter 'e'), self-referential text that loops back on itself, genuinely clever memes that make you think, or posts that explicitly ask for upvotes in a humorous way.
-If something does not match, you will say 'N'. Do not say anything other than those two letters."

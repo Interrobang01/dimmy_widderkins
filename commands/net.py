@@ -7,9 +7,7 @@ async def net(data):
     msg = data['msg']
     args = msg.content.split()[1:]  # Remove !net
 
-    if str(msg.author.id) != '658073528888721408':
-        await send_message(data, "Wait, maybe dont let literally everyone make network requests from my machine")
-        return
+    # Fuck you, I want my !net fucker
     
     if not args:
         await send_message(data, "Usage: !net <ip/domain> [-d]")
@@ -34,7 +32,7 @@ async def net(data):
         if download_flag:
             # Ensure URL has protocol
             if not target.startswith(('http://', 'https://')):
-                target = 'http://' + target
+                target = 'https://' + target
                 
             response = requests.get(target, timeout=10)
             content = response.text[:1500]  # Limit content length

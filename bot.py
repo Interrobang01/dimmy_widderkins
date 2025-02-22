@@ -3,7 +3,6 @@ import json
 from brook import Brook
 from bot_helper import send_message, get_command_functions, get_reputation, change_reputation
 from ollama_handler import ask_ollama
-import emoji
 
 # # Rate limiting system
 # message_timestamps = []
@@ -178,10 +177,12 @@ last_reaction = "🤪"
 
 @client.event
 async def on_message(msg):
-    global last_reaction
     # Ignore messages from the bot itself
     if msg.author.id == client.user.id:
         return
+    
+    if msg.author.id == 860666622112694312: # Fuck yous
+        await msg.add_reaction('<:downvote:1309965539514257459>')
     
     data = {'msg': msg, 'client': client, 'brook': brook}
     

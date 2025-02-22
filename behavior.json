@@ -2186,7 +2186,7 @@
                 100
             ],
             "reputation_change": 0,
-            "whole_message": true
+            "whole_message": false
         },
         "1740103548.5147867": {
             "type": "message",

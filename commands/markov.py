@@ -11,14 +11,14 @@ _markov_model_chat = None
 def _load_markov():
     global _markov_model
     if _markov_model is None:
-        _markov_model = json.load(open(r'../markov/markov_model_notw.json', 'r'))
+        _markov_model = json.load(open(r'markov/markov_model_notw.json', 'r'))
     return _markov_model
 
 # Markov model functions
 def _load_markov_chat():
     global _markov_model_chat
     if _markov_model_chat is None:
-        _markov_model_chat = json.load(open(r'../markov/markov_model_chat_notw.json', 'r'))
+        _markov_model_chat = json.load(open(r'markov/markov_model_chat_notw.json', 'r'))
     return _markov_model_chat
 
 # Close files when bot is closed

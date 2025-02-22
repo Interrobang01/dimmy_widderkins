@@ -3,6 +3,7 @@ import json
 from brook import Brook
 from bot_helper import send_message, get_command_functions, get_reputation, change_reputation
 from ollama_handler import ask_ollama
+from commands.ijgen import ijgen  # Add this import at the top
 
 # # Rate limiting system
 # message_timestamps = []
@@ -33,6 +34,7 @@ from ollama_handler import ask_ollama
 #         return
 
 command_functions = get_command_functions()
+command_functions['ijgen'] = ijgen  # Add this line after command_functions is initialized
 
 # Initialize bot
 intents = discord.Intents.default()

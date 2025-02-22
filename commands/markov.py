@@ -110,6 +110,9 @@ async def markov(data):
     
     await send_message(data, response)
 
+from collections import deque
+_message_history = deque(maxlen=5)
+
 async def markov_chat(data):
     msg = data['msg']
 
@@ -122,27 +125,26 @@ async def markov_chat(data):
         split = split[1:]
 
     input_message = ' '.join(split)
-    next_message = input_message
-
-    if len(split) == 0 and markov_chat.last_markov_message:
-        next_message = markov_chat.last_markov_message
+    
+    # Add current message to history
+    _message_history.append(input_message)
+    context = ' '.join(list(_message_history))
+    next_message = context if len(split) > 0 else markov_chat.last_markov_message
 
     response = ""
-    #while next_message is not None:
     next_message = _infer_markov_chat(next_message)
     response += str(next_message) + ' '
             
     markov_chat.last_markov_message = response.strip()
+    _message_history.append(response.strip())
 
     # Delay message to simulate typing
-    # Calculate typing delay based on response length
-    typing_delay = min(len(response) * 0.01, 3)  # Max delay of 3 seconds
+    typing_delay = min(len(response) * 0.01, 3)
 
-    # Trigger typing indicator
     async with msg.channel.typing():
         await asyncio.sleep(typing_delay)
     
-    await send_message(data, response, True) # True causes bot to reply
+    await send_message(data, response, True)
 
 # Function aliases without underscores, using prefixes, and using close synonyms
 markovchat = markov_chat

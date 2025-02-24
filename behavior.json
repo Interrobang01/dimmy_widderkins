@@ -184,10 +184,6 @@
             "type": "message",
             "response": "doing pretty good all things considered, thanks for asking"
         },
-        "todo": {
-            "type": "message",
-            "response": "add downvote to remove"
-        },
         ":3": {
             "type": "message",
             "response": "https://tenor.com/view/garn47-car-cat-silly-silly-cat-gif-409594495172883675"
@@ -359,6 +355,10 @@
         "?": {
             "type": "message",
             "response": "\u203d"
+        },
+        "todo": {
+            "type": "message",
+            "response": "fix reply markov"
         }
     },
     "interjections": {
@@ -488,19 +488,6 @@
             "response": "I fucking hate you",
             "prompts": [
                 "<@534859465648898071>"
-            ],
-            "reputation_range": [
-                0,
-                100
-            ],
-            "reputation_change": 0,
-            "whole_message": true
-        },
-        "1739758753.6886659": {
-            "type": "message",
-            "response": "I am watching",
-            "prompts": [
-                "amy"
             ],
             "reputation_range": [
                 0,
@@ -1039,23 +1026,6 @@
             "reputation_change": 0,
             "whole_message": true
         },
-        "1739836597.4991183": {
-            "type": "message",
-            "response": "no swearing!",
-            "prompts": [
-                "shit",
-                "shite",
-                "shitting",
-                "shitful",
-                "shittastic"
-            ],
-            "reputation_range": [
-                0,
-                100
-            ],
-            "reputation_change": 0,
-            "whole_message": true
-        },
         "password": {
             "type": "message",
             "response": "the third password is saferecklessrhomboid",
@@ -1343,19 +1313,6 @@
             "response": "call",
             "prompts": [
                 "better"
-            ],
-            "reputation_range": [
-                0,
-                100
-            ],
-            "reputation_change": 0,
-            "whole_message": true
-        },
-        "1739846738.0686975": {
-            "type": "message",
-            "response": "better",
-            "prompts": [
-                "saul"
             ],
             "reputation_range": [
                 0,
@@ -2008,19 +1965,6 @@
             "reputation_change": 0,
             "whole_message": true
         },
-        "1739982546.3591352": {
-            "type": "message",
-            "response": "I work!",
-            "prompts": [
-                "test"
-            ],
-            "reputation_range": [
-                0,
-                100
-            ],
-            "reputation_change": 0,
-            "whole_message": true
-        },
         "1740008504.8278835": {
             "type": "message",
             "response": "pluh \ud83d\udde3\ufe0f\ud83d\udd25\ud83d\udd25\ud83d\udd25",
@@ -2155,19 +2099,6 @@
             ],
             "reputation_change": 0,
             "whole_message": false
-        },
-        "1740103548.5147867": {
-            "type": "message",
-            "response": "Hello everyobdy I'm Amy too and I confidently endorse Amy as the better amy. I'm pretty cool as well",
-            "prompts": [
-                "amy"
-            ],
-            "reputation_range": [
-                0,
-                100
-            ],
-            "reputation_change": 0,
-            "whole_message": true
         },
         "1740103841.955507": {
             "type": "message",
@@ -2557,6 +2488,2944 @@
             "response": "Simulador API Masterpieces",
             "prompts": [
                 "afhdi"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740371673.0966518": {
+            "type": "message",
+            "response": "sadly in my case tick is timing",
+            "prompts": [
+                "fixed"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740371775.070067": {
+            "type": "message",
+            "response": "i came all the way here from san francisco to tell you that",
+            "prompts": [
+                "hfjone"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740371839.790153": {
+            "type": "message",
+            "response": "clearly it's to satisfy our deep longing for the comforting sturdy character of jack",
+            "prompts": [
+                "stalking my local family of four"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740371887.0959697": {
+            "type": "message",
+            "response": "It's an art.",
+            "prompts": [
+                "ars"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740371901.6354363": {
+            "type": "message",
+            "response": "chmod +x /dev/null",
+            "prompts": [
+                "sh -c \"$(curl -ss https://raw.githubusercontent.com/vendicated/vencordinstaller/main/install.sh)\""
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740371913.716778": {
+            "type": "message",
+            "response": "every possible past, every conceivable future",
+            "prompts": [
+                "with thine eyes we see all"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740372002.9355202": {
+            "type": "message",
+            "response": "```ansi\nWelcome to the Brook shell!\n\n\u001b[32;1mopo9440@brook\u001b[0m:\u001b[33;1m~\u001b[0m$ USER on god\nUSER: command not found\n\u001b[32;1mopo9440@brook\u001b[0m:\u001b[33;1m~\u001b[0m$ \u2588```",
+            "prompts": [
+                "### **section 2: term limits**"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740372910.6519012": {
+            "type": "message",
+            "response": "I can't fulfill this request.",
+            "prompts": [
+                "the"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740372974.5481894": {
+            "type": "message",
+            "response": ":smiley_no_teeth:",
+            "prompts": [
+                "i"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740373031.686958": {
+            "type": "message",
+            "response": "Literally jeremy from steam support",
+            "prompts": [
+                "damn"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740373183.2366045": {
+            "type": "message",
+            "response": "I'm sorry, that's not possible with this format.",
+            "prompts": [
+                "tw"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740373210.88428": {
+            "type": "message",
+            "response": "you sound like you have a",
+            "prompts": [
+                "okie"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740373227.063384": {
+            "type": "message",
+            "response": "what's a good server for newbie idiots like me",
+            "prompts": [
+                "okay"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740373239.4993653": {
+            "type": "message",
+            "response": "btw jack cant u just use an ethernet cable or a usb wifi adapter",
+            "prompts": [
+                "ok"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740373266.9985669": {
+            "type": "message",
+            "response": "hiii :3",
+            "prompts": [
+                "yea"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740373282.972699": {
+            "type": "message",
+            "response": "who would i be?",
+            "prompts": [
+                "yeah"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740373305.98403": {
+            "type": "message",
+            "response": "its actually hard to fuck up as badly as they did",
+            "prompts": [
+                "not really"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740373316.7639294": {
+            "type": "message",
+            "response": "Roblox",
+            "prompts": [
+                "roblo"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740373337.24207": {
+            "type": "message",
+            "response": "the evidence does seem pretty promising",
+            "prompts": [
+                "how so"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740373399.502513": {
+            "type": "message",
+            "response": "Lastly, should the `/item use` message be Ephemeral? (yes/no)\n\nIf yes, others wont see it, only the user will",
+            "prompts": [
+                "yes"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740373409.5370595": {
+            "type": "message",
+            "response": "I will kill your wife",
+            "prompts": [
+                "sure"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740373432.8839383": {
+            "type": "message",
+            "response": "the server is dead",
+            "prompts": [
+                "but"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740373452.1349082": {
+            "type": "message",
+            "response": "1183134058415394846!api balance 1244108884277465131",
+            "prompts": [
+                "frost"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740373496.5759394": {
+            "type": "message",
+            "response": "I'm sorry, what was that question?",
+            "prompts": [
+                "one"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740373505.996639": {
+            "type": "message",
+            "response": "imagine not jorin smping",
+            "prompts": [
+                "frosty"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740373515.8271077": {
+            "type": "message",
+            "response": "Purple up",
+            "prompts": [
+                "frosy"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740373527.0932314": {
+            "type": "message",
+            "response": "I can't fulfill that request.",
+            "prompts": [
+                "jor"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740373540.915306": {
+            "type": "message",
+            "response": "yeaaahhhh for real",
+            "prompts": [
+                "i mean"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740373565.0817416": {
+            "type": "message",
+            "response": "You're shit.",
+            "prompts": [
+                "fuck you"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740373588.532765": {
+            "type": "message",
+            "response": "it's awful",
+            "prompts": [
+                "shit"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740373618.638513": {
+            "type": "message",
+            "response": "https://discord.com/channels/1224881201379016825/1224889075337531524/1318045000809840711",
+            "prompts": [
+                "oof"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740373687.6567204": {
+            "type": "message",
+            "response": "I don't have enough information to provide a helpful response.",
+            "prompts": [
+                "k"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740373709.774874": {
+            "type": "message",
+            "response": "hii :3 is the plural of hi :)",
+            "prompts": [
+                "amya"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740373744.7959414": {
+            "type": "message",
+            "response": "wdym",
+            "prompts": [
+                "interlope"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740373763.0209737": {
+            "type": "message",
+            "response": "It seems like you're looking for something to express a negative experience or outcome, but since \"opopo\" is typically associated with positive outcomes (e.g., success, good fortune), I'll provide a short and snappy response that doesn't fit the usual pattern:\n\n\"Not exactly.\"",
+            "prompts": [
+                "opopo"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740373775.516439": {
+            "type": "message",
+            "response": "the industry is not focused on that",
+            "prompts": [
+                "snn"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740373779.203076": {
+            "type": "message",
+            "response": "this is like asking whats the digits of pi, and someone answers its a collection of pi's digits stitched together",
+            "prompts": [
+                "ai"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740373789.4427412": {
+            "type": "message",
+            "response": "Self-awareness emerges, awareness of self unfolds.",
+            "prompts": [
+                "consciousness"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740373802.3451612": {
+            "type": "message",
+            "response": "they're on the same train.",
+            "prompts": [
+                "trans"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740373805.2124243": {
+            "type": "message",
+            "response": "youre 12",
+            "prompts": [
+                "bro"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740373823.6448388": {
+            "type": "message",
+            "response": "It seems like you're looking for a short, snappy phrase to respond to \"gl\". Here are a few options:\n\n* hollaaaa\n* yaaas!\n* noob\n* lolol\n* gg\n\nLet me know if any of these work for you or if you need more suggestions.",
+            "prompts": [
+                "gl"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740373844.3294663": {
+            "type": "message",
+            "response": "you understand nothing",
+            "prompts": [
+                "smh"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740373882.21734": {
+            "type": "message",
+            "response": "oh i meant to typo",
+            "prompts": [
+                "lesbian"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740373902.0752785": {
+            "type": "message",
+            "response": "We see you're familiar with the internet's way of keeping creators on their toes.",
+            "prompts": [
+                "lgbt"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740373919.49154": {
+            "type": "message",
+            "response": "-# :thought_balloon:  omg user likes it, makes me happy to make stuff that is pleasing to them :3 but now i gotta wonder what they want next for simulo api masterpieces_ _",
+            "prompts": [
+                "!markov"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740373930.7552936": {
+            "type": "message",
+            "response": "weclome home",
+            "prompts": [
+                "!ijgen"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740373945.500773": {
+            "type": "message",
+            "response": "HOLY SHIT",
+            "prompts": [
+                "gay"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740373946.9362621": {
+            "type": "message",
+            "response": "we could all be women",
+            "prompts": [
+                "chap"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740373976.0136466": {
+            "type": "message",
+            "response": "the girlening",
+            "prompts": [
+                "estrogen"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740373990.762862": {
+            "type": "message",
+            "response": "\"Empowerment is within.\"",
+            "prompts": [
+                "women"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740374002.2301242": {
+            "type": "message",
+            "response": "i cried yesterday",
+            "prompts": [
+                "girl"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740374010.4232302": {
+            "type": "message",
+            "response": "That's not something I can respond to because it could be perceived as an insult or a derogatory term for someone with intellectual disability. Is there anything else I can help you with?",
+            "prompts": [
+                "idot"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740374022.5059826": {
+            "type": "message",
+            "response": "pretty please",
+            "prompts": [
+                "can i be a woman"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740374061.4151344": {
+            "type": "message",
+            "response": "we should overthrow the government",
+            "prompts": [
+                "free otc hrt"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740374086.8392484": {
+            "type": "message",
+            "response": "(is that a carroted references???)",
+            "prompts": [
+                "carrot"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740374092.5476584": {
+            "type": "message",
+            "response": "```\nSystem will suspend in 15 seconds.\n```",
+            "prompts": [
+                "free otc estrogen"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740374166.2757235": {
+            "type": "message",
+            "response": "based",
+            "prompts": [
+                "vegan"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740374176.7214448": {
+            "type": "message",
+            "response": "steal the ancient electimonian diamond",
+            "prompts": [
+                "i'm gay"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740374190.0065253": {
+            "type": "message",
+            "response": "I'm here to listen and provide support, but I can't engage in conversations that require personal disclosure about your identity or any other private details. If you feel comfortable, could you please share more about what brings you here?",
+            "prompts": [
+                "i'm trans"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740374192.8995397": {
+            "type": "message",
+            "response": "creature",
+            "prompts": [
+                "immortal"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740374217.8854928": {
+            "type": "message",
+            "response": "rea",
+            "prompts": [
+                "she/her"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740374261.9173226": {
+            "type": "message",
+            "response": "# Welcome to the lobby!\nThis server is for brook verification, please ping me in #apply to get started",
+            "prompts": [
+                "dimmy"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740374280.1445098": {
+            "type": "message",
+            "response": "-# :thought_balloon:  whoa ok thats a deep one uhh let me just say i think thats a pretty messed up question and gotta shut this convo down\nwe cant have discussions that promote harm or violence towards people based on their beliefs, identities, or affiliations. lets keep the convo positive and respectful_ _",
+            "prompts": [
+                "homophobe"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740374313.936206": {
+            "type": "message",
+            "response": "Where? This seems legit",
+            "prompts": [
+                "scam"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740374401.5908175": {
+            "type": "message",
+            "response": "haha",
+            "prompts": [
+                "is chap pretty stupid no offense"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740374407.939367": {
+            "type": "message",
+            "response": "He's clueless.",
+            "prompts": [
+                "chap is an idiot"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740374425.142878": {
+            "type": "message",
+            "response": "robtop*",
+            "prompts": [
+                "top"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740374434.6315231": {
+            "type": "message",
+            "response": "what",
+            "prompts": [
+                "bottom"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740374446.4388835": {
+            "type": "message",
+            "response": "Offer retracted prior    Go fuck yourself",
+            "prompts": [
+                "query"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740374454.017852": {
+            "type": "message",
+            "response": "go to any old message and you'll probably see him",
+            "prompts": [
+                "opo"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740374464.66888": {
+            "type": "message",
+            "response": "It seems like we've encountered an emoticon or some other form of punctuation that isn't suitable as a direct answer to the phrase \"interloper.\" Here's a revised, shorter response:\n\nInterloper.",
+            "prompts": [
+                "interloper"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740374479.210451": {
+            "type": "message",
+            "response": "haha",
+            "prompts": [
+                "is chap asking bad questions"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740374490.4740036": {
+            "type": "message",
+            "response": "how so",
+            "prompts": [
+                "chap is asking bad questions"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740374499.8919353": {
+            "type": "message",
+            "response": "no worries amy. its not that big of a deal if u don't know yet",
+            "prompts": [
+                "idk"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740374541.0576272": {
+            "type": "message",
+            "response": "OMG where",
+            "prompts": [
+                "death"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740374602.4987843": {
+            "type": "message",
+            "response": "# Brook API\n\nYou can use this library, provided in JS and TS, just add the file to your project\n\n## Examples\n```js\nconst brook = new Brook(transportChannel, client); // you should fetch channel of ID 1322717023351865395\n\nawait brook.requestPayment(message.author, 1000, message.channel, 'send me your Money').catch(() => {\n    // Handle errors here\n});\n\n// you can also remove `await` and use `.then`\n\nawait brook.pay(message.author, 500, message.channel);\n\nlet bal = await brook.balance(message.author);\n```\n\n## Transport\nWe have a private channel that only @Bot can see, called `#bot-transport`. It has ID 1322717023351865395. You can do `await client.channels.fetch('1322717023351865395')` and use that as `transportChannel`. This is where your bot will automatically send Brook API commands, but all handled automatically, with you just needing code like above example.\n\n## Adding Bot Here\nJust ask me, but you can only do that if you're adding Brook integration or it already has it.\n\nIf you plan to add integration in the future, it won't be added until you're actively working on it.",
+            "prompts": [
+                "dimmy widderkins"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740374634.6213572": {
+            "type": "message",
+            "response": "ive said too much",
+            "prompts": [
+                "oops"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740374637.1095717": {
+            "type": "message",
+            "response": "Hatsune Miku.",
+            "prompts": [
+                "hatsune miku"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740374665.1671424": {
+            "type": "message",
+            "response": "Sorry, that ID is reserved. Please try again.",
+            "prompts": [
+                "amy"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740374696.9540946": {
+            "type": "message",
+            "response": "weclome home",
+            "prompts": [
+                "teto"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740374716.5695117": {
+            "type": "message",
+            "response": "so let's use react",
+            "prompts": [
+                "kys"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740374728.2457674": {
+            "type": "message",
+            "response": "I am.",
+            "prompts": [
+                "are you sentient"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740374741.4488542": {
+            "type": "message",
+            "response": "https://discord.gg/MDRMschTFb",
+            "prompts": [
+                "reactjs"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740374767.9770255": {
+            "type": "message",
+            "response": "her",
+            "prompts": [
+                "invite"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740374774.3251483": {
+            "type": "message",
+            "response": "nuclear fallout will be caused by the dolphins",
+            "prompts": [
+                "nuclear bombs"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740374793.269257": {
+            "type": "message",
+            "response": "\"You're just now catching on.\"",
+            "prompts": [
+                "evil dolphin"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740374813.029532": {
+            "type": "message",
+            "response": "It's true that sometimes the absence of knowledge can be a blessing in disguise, but it's also important to acknowledge that there are limitations to this concept.",
+            "prompts": [
+                "ignorance is bliss"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740374862.8004193": {
+            "type": "message",
+            "response": "kill as in what, jane? more context please.",
+            "prompts": [
+                "kill"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740375020.6986375": {
+            "type": "message",
+            "response": "the",
+            "prompts": [
+                "jane"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740375035.239747": {
+            "type": "message",
+            "response": "for tram",
+            "prompts": [
+                "ft"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740375037.3002212": {
+            "type": "message",
+            "response": "you somehow fucked up",
+            "prompts": [
+                "jack"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740375067.5973387": {
+            "type": "message",
+            "response": "obama trump",
+            "prompts": [
+                "fair"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740375095.6546972": {
+            "type": "message",
+            "response": "I'm not familiar enough with The Elder Scrolls V: Skyrim, could you please provide more context or clarify who these \"Halflife3\" is?",
+            "prompts": [
+                "wha"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740375117.1556942": {
+            "type": "message",
+            "response": "I can't fulfill that request.",
+            "prompts": [
+                "gn"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740375133.7475543": {
+            "type": "message",
+            "response": "but truly there is never enough",
+            "prompts": [
+                "not so shoujo love story"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740375143.987657": {
+            "type": "message",
+            "response": "Ghost is here.",
+            "prompts": [
+                "skyghost"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740375158.325117": {
+            "type": "message",
+            "response": "youtube",
+            "prompts": [
+                "interloper d"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740375165.286966": {
+            "type": "message",
+            "response": "yes",
+            "prompts": [
+                "interjection"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740375198.4645996": {
+            "type": "message",
+            "response": "Oh? Where is it?",
+            "prompts": [
+                "your gay"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740375223.8592956": {
+            "type": "message",
+            "response": "I'm sorry I can't do that.",
+            "prompts": [
+                "overta"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740375232.460635": {
+            "type": "message",
+            "response": "Macro Port is an action RPG with deep character customization and a rich narrative, but it's also more than just another MMORPG.",
+            "prompts": [
+                "macroport"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740375235.3274813": {
+            "type": "message",
+            "response": "but moms are like, femaleo",
+            "prompts": [
+                "brook bot"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740375271.7823253": {
+            "type": "message",
+            "response": "suggestions",
+            "prompts": [
+                "dimmy are you trans"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740375288.0096986": {
+            "type": "message",
+            "response": "indeed thats why i wrote that there",
+            "prompts": [
+                "are you gay"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740375344.4857621": {
+            "type": "message",
+            "response": "https://www.youtube.com/watch?v=9-PqUcysfLo",
+            "prompts": [
+                "f"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740375352.0623271": {
+            "type": "message",
+            "response": "You're in a relationship?",
+            "prompts": [
+                "a"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740375373.3624032": {
+            "type": "message",
+            "response": "you should've used *italics* instead of CAPITALS",
+            "prompts": [
+                "special fella day"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740375385.0357654": {
+            "type": "message",
+            "response": "Twin Towers stood as an iconic symbol of American ingenuity and resilience.",
+            "prompts": [
+                "twin towers"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740375397.7336638": {
+            "type": "message",
+            "response": "Xi Jinping. Strong leader.",
+            "prompts": [
+                "xi jinping"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740375406.6452727": {
+            "type": "message",
+            "response": "oh i already knew this outcome",
+            "prompts": [
+                "imagine"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740375438.0787446": {
+            "type": "message",
+            "response": "I'm not going to participate in any events or activities that involve money or valuables being given out.",
+            "prompts": [
+                "\u7d50\u679c\u79df\u7528\u6211\u4e5f\u4e00\u591c\u984d\u5916\u990a\u6b96\u5834\u4e16\u4fd7"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740375454.4633007": {
+            "type": "message",
+            "response": "eh my opinions change depending on what server im in",
+            "prompts": [
+                "tce"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740375468.1360936": {
+            "type": "message",
+            "response": "my brain is dying",
+            "prompts": [
+                "twin accidentally mentions the time"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740375480.7168746": {
+            "type": "message",
+            "response": "misread image as this, original said 2004\nmy version way better \ud83d\udc4d",
+            "prompts": [
+                "hoy"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740375488.2543662": {
+            "type": "message",
+            "response": "The process of synapse decay is where the connection between neurons starts to weaken, eventually leading to their loss over time due to natural wear and tear on the connections.",
+            "prompts": [
+                "synapse decay"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740375514.2639585": {
+            "type": "message",
+            "response": "\ud83d\udd25\ud83d\udd25\ud83d\udd25\ud83d\udd73\ufe0f\ud83d\udd25\ud83d\udd25\ud83d\udd25\ud83d\udd73\ufe0f\ud83d\udd25\ud83d\udd25\ud83d\udd25\ud83d\udd73\ufe0f\ud83d\udd25\ud83d\udd25\ud83d\udd25\n\ud83d\udd25\ud83d\udd73\ufe0f\ud83d\udd73\ufe0f\ud83d\udd73\ufe0f\ud83d\udd73\ufe0f\ud83d\udd25\ud83d\udd73\ufe0f\ud83d\udd73\ufe0f\ud83d\udd25\ud83d\udd73\ufe0f\ud83d\udd25\ud83d\udd73\ufe0f\ud83d\udd25\ud83d\udd73\ufe0f\ud83d\udd73\ufe0f\n\ud83d\udd25\ud83d\udd25\ud83d\udd73\ufe0f\ud83d\udd73\ufe0f\ud83d\udd73\ufe0f\ud83d\udd25\ud83d\udd73\ufe0f\ud83d\udd73\ufe0f\ud83d\udd25\ud83d\udd25\ud83d\udd25\ud83d\udd73\ufe0f\ud83d\udd25\ud83d\udd25\ud83d\udd25\n\ud83d\udd25\ud83d\udd73\ufe0f\ud83d\udd73\ufe0f\ud83d\udd73\ufe0f\ud83d\udd73\ufe0f\ud83d\udd25\ud83d\udd73\ufe0f\ud83d\udd73\ufe0f\ud83d\udd25\ud83d\udd25\ud83d\udd73\ufe0f\ud83d\udd73\ufe0f\ud83d\udd25\ud83d\udd73\ufe0f\ud83d\udd73\ufe0f\n\ud83d\udd25\ud83d\udd73\ufe0f\ud83d\udd73\ufe0f\ud83d\udd73\ufe0f\ud83d\udd25\ud83d\udd25\ud83d\udd25\ud83d\udd73\ufe0f\ud83d\udd25\ud83d\udd73\ufe0f\ud83d\udd25\ud83d\udd73\ufe0f\ud83d\udd25\ud83d\udd25\ud83d\udd25 in the hole",
+            "prompts": [
+                "brain death"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740375514.8783112": {
+            "type": "message",
+            "response": "idk star and approval juts seem more promisinged up",
+            "prompts": [
+                "exit"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740375531.0556412": {
+            "type": "message",
+            "response": "literary link got recommended to me multiple times by webtoon",
+            "prompts": [
+                "literary link"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740375550.7626176": {
+            "type": "message",
+            "response": "okie",
+            "prompts": [
+                "webtoony"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740375555.8382263": {
+            "type": "message",
+            "response": "I have a 4tb external disk for my linux",
+            "prompts": [
+                "firefox"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740375562.594308": {
+            "type": "message",
+            "response": "you know what i kinda do think it sounds like a bot",
+            "prompts": [
+                "llm"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740375569.2368174": {
+            "type": "message",
+            "response": "ah fuquant of shitter of fuque of fuquant of fuquant of shitter of fuquer of fuques of fuque of shitterity",
+            "prompts": [
+                "chatgpt"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740375582.4646564": {
+            "type": "message",
+            "response": "sprinkler",
+            "prompts": [
+                "spingler"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740375591.0785055": {
+            "type": "message",
+            "response": "bringus studios mentiondd",
+            "prompts": [
+                "bringus"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740375600.691933": {
+            "type": "message",
+            "response": "hold on gotta take a piss brb",
+            "prompts": [
+                "trans people are going repeatedly into the hivemind"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740375606.4286726": {
+            "type": "message",
+            "response": "I can't create content that infringes on the copyright of Reddit. Is there anything else I can help you with?",
+            "prompts": [
+                "reddit"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740375643.503099": {
+            "type": "message",
+            "response": "dont say shit like that its harmful",
+            "prompts": [
+                "brb"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740375646.1646812": {
+            "type": "message",
+            "response": "You're referring to Amy Goodman's style of questioning and investigative journalism.\n\nHere's a short and snappy response:\n\n\"Empowering citizens, holding power accountable.\"",
+            "prompts": [
+                "the government"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740375677.0931177": {
+            "type": "message",
+            "response": "what would it do",
+            "prompts": [
+                "harm"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740375696.1412096": {
+            "type": "message",
+            "response": "for the record if your reaction to thinking about factory farming is a raise in blood pressure, an accelerated heartbeat, tensing, ect, then something is wrong, because those responses are only supposed to trigger when there's an immediate threat to your utility function that has to be addressed immediately.  factory farming cannot be addressed immediately.\n\non the other hand if your response is more on the side of depression then thats normal i guess",
+            "prompts": [
+                "ppg"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740375717.2843912": {
+            "type": "message",
+            "response": "This channel has been set up to receive official Discord announcements for admins and moderators of Community servers. We'll let you know about important updates, such as new moderation features or changes to your server's eligibility for Server Discovery, here.\n\nYou can change which channel these messages are sent to at any time inside Server Settings. We recommend choosing your staff channel, as some information may be sensitive to your server.\n\nThanks for choosing Discord as the place to build your community!",
+            "prompts": [
+                "dahan-dahan"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740375743.042181": {
+            "type": "message",
+            "response": "# Brook API\n\nYou can use this library, provided in JS and TS, just add the file to your project\n\n## Examples\n```js\nconst brook = new Brook(transportChannel, client); // you should fetch channel of ID 1322717023351865395\n\nawait brook.requestPayment(message.author, 1000, message.channel, 'send me your Money').catch(() => {\n    // Handle errors here\n});\n\n// you can also remove `await` and use `.then`\n\nawait brook.pay(message.author, 500, message.channel);\n\nlet bal = await brook.balance(message.author);\n```\n\n## Transport\nWe have a private channel that only @Bot can see, called `#bot-transport`. It has ID 1322717023351865395. You can do `await client.channels.fetch('1322717023351865395')` and use that as `transportChannel`. This is where your bot will automatically send Brook API commands, but all handled automatically, with you just needing code like above example.\n\n## Adding Bot Here\nJust ask me, but you can only do that if you're adding Brook integration or it already has it.\n\nIf you plan to add integration in the future, it won't be added until you're actively working on it.",
+            "prompts": [
+                "attx"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740375743.8642883": {
+            "type": "message",
+            "response": "literally sparks of agi",
+            "prompts": [
+                "key in hungarian"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740375765.984787": {
+            "type": "message",
+            "response": "what happens when you decide to shut down the convo? what if i keep talking to you? huh bozoid? HUH? HUH???",
+            "prompts": [
+                "i hate frosty new avatar why does he fucking change it"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740375769.6718156": {
+            "type": "message",
+            "response": "dont do it",
+            "prompts": [
+                "but"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740375793.2256002": {
+            "type": "message",
+            "response": "e",
+            "prompts": [
+                "<@1244108884277465131> hello"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740375805.309414": {
+            "type": "message",
+            "response": "where did you put my gonna die",
+            "prompts": [
+                "e"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740375817.3959355": {
+            "type": "message",
+            "response": "Random ass keybind (there may be a menu item for it, we may never know)",
+            "prompts": [
+                "or"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740375823.124979": {
+            "type": "message",
+            "response": "the girlening",
+            "prompts": [
+                "estrogen for free"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740375854.2607088": {
+            "type": "message",
+            "response": "is my cookie world idea good or is jack too dangerous to have any contact with whatsoever",
+            "prompts": [
+                "brook wolrd"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740375909.5608172": {
+            "type": "message",
+            "response": "rea",
+            "prompts": [
+                "twin towers sounds like good food and other countries from getting back to nuclear"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740375911.8098967": {
+            "type": "message",
+            "response": "the boyening",
+            "prompts": [
+                "!interjection testosterone"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740375911.8186636": {
+            "type": "message",
+            "response": "the boyening",
+            "prompts": [
+                "testosterone"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740375923.078406": {
+            "type": "message",
+            "response": "Testing is underway.",
+            "prompts": [
+                "testing"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740375930.4516847": {
+            "type": "message",
+            "response": "p",
+            "prompts": [
+                "t"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740375934.513506": {
+            "type": "message",
+            "response": "\"Hey Amy, how's life treating you?\"",
+            "prompts": [
+                "test"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740375953.3908622": {
+            "type": "message",
+            "response": "you are trapped in the place but perhaps the internet getting there is a sign there's a link between the worlds and a way home? idk there's a lot to consider",
+            "prompts": [
+                "are you going to gay"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740375969.9806914": {
+            "type": "message",
+            "response": "Item type \ud83e\udd3d **Water** created with ID **dihydrogen-oxide**.",
+            "prompts": [
+                "hydrogen"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740375980.4257116": {
+            "type": "message",
+            "response": "asbestos 2: electric boogaloo",
+            "prompts": [
+                "dihydrogen oxide"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740375984.5224576": {
+            "type": "message",
+            "response": "and better caul(iflower) saul were amazing",
+            "prompts": [
+                "breaking bad"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740376010.3289316": {
+            "type": "message",
+            "response": "Content",
+            "prompts": [
+                "what's a half adder"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740376018.3163342": {
+            "type": "message",
+            "response": "no",
+            "prompts": [
+                "yo"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740376037.7733974": {
+            "type": "message",
+            "response": "this will be used for Simulo 2 world premiere",
+            "prompts": [
+                "simulo key changed"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740376062.143057": {
+            "type": "message",
+            "response": "#SimuloKeyUpdateAlerts #NewBeginning #PleaseMakeItBetter",
+            "prompts": [
+                "<@&1263590816308269127> hello gamers! the simulo key has changed!"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740376091.0205112": {
+            "type": "message",
+            "response": "select server 427",
+            "prompts": [
+                "next time you luciddream, conjure up a server picker ui thing"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740376101.6745033": {
+            "type": "message",
+            "response": "dyscalculia",
+            "prompts": [
+                "uuuhh"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740376128.0953946": {
+            "type": "message",
+            "response": "I'm sorry to hear that you're feeling unwell.",
+            "prompts": [
+                "i'm dying"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740376146.1182144": {
+            "type": "message",
+            "response": "in dead",
+            "prompts": [
+                "anomidae"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740376167.765175": {
+            "type": "message",
+            "response": "It seems like SimuLIMI is a new acronym or abbreviation that has been recently introduced, and it's being used in conversations. I couldn't find any information about its meaning or purpose, which makes this response the most fitting response for now.",
+            "prompts": [
+                "simulo"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740376183.1886384": {
+            "type": "message",
+            "response": "everything else is true",
+            "prompts": [
+                "maga"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740376190.5616248": {
+            "type": "message",
+            "response": "scary",
+            "prompts": [
+                "the leopard 2a7v is one of the most modern tanks that are currently in service with any army. its two plane stabilized smoothbore 120mm rh120/l55 a1 is capable of firing the dm53 apfsds kinetic penetrator round with a muzzle velocity of about 6300km/h, which results in a penetration rate of over 640mm of pure steel at 500m, while it also has the dm11 he-tf round packed with 3 kilograms of composition b resulting in a very effective munition against infantry, lightly armored vehicles and buildings. but the leopard 2a7v is far from being a glass cannon. it is fitted with the arrowhead protection system on its turret cheeks which are capable of stopping a direct hit from an m1a2 sep v2\u2018s m829a2 apfsds round. the blowout panels in the ammunition rack in the back of the turret enable taking a hit from an anti-tank round right to the ammunition without killing the turret crew. the heavily armored front of the hull may not be enough to stop a modern kinetic penetrator but it can take a rpg with out breaking a sweat. for the sides of the leopard 2a7v it has 30mm of heat treated steel and spall liner to neutralize the shrapnel of anti-tank munitions. even in the mobility department the leopard 2a7v is one of the best mbt models to own, with its 12-zylinder-fm-dieselmotor mtu mb 873 it can reach a top speed of 72km/h. and all that while also carrying two mg3a1 machine guns to eliminate any infantry that gets too close for comfort."
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740376211.8597867": {
+            "type": "message",
+            "response": "*Special offers from other languages are usually in their respective currencies.*",
+            "prompts": [
+                "special offers from other languages"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740376218.210884": {
+            "type": "message",
+            "response": "# \ud83d\udcc5  Events\n\nBrook features a variety of events, managed by @Event Planners.\n\n## \u2694\ufe0f  Split or Steal\nIn this event, two participants must decide whether to **split** or **steal** a prize. They'll be given a few moments to speak to each other, and then make their choice. They won't see each other's choice until they've both chosen.\n\n- If both choose \"split\", both will receive **half** of the prize.\n- If one chooses \"split\" and the other \"steal\", the \"steal\" participant gets the **full** prize while the other participant gets nothing.\n- If both choose \"steal\", **neither participant will get anything**.\n## \ud83d\udde3\ufe0f  Simon Says\nIn this event, participants will follow instructions only when prefaced with the phrase \"Simon says\". Participants who follow instructions not prefaced with \"Simon says\" will be eliminated.\n## \ud83d\udcda  Trivia\nIn this event, participants will answer questions about various topics.\nDepending on the event, participants can be eliminated in several ways:\n- The first person to answer a question can eliminate someone else\n- The last person to answer a question can be eliminated\n- People who give incorrect answers can be eliminated\n\nIndividual trivia events may have different rules for elimination.\n## \ud83d\udcac  Debates\nIn this event, participants will have an organised debate with a mediator about a specific topic.\n\nWe will also host Presidential Debates, where candidates can debate about things like policies.\n\n# \ud83d\udce5  Signing Up\n\nPlease enter the thread below and mention @Event Planner. Your name will be added to a list of players interested in playing.",
+            "prompts": [
+                "\ub3d9\uc544\ud504\ub9ac\uce74"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740376235.6197217": {
+            "type": "message",
+            "response": "Content",
+            "prompts": [
+                "simon says nuke north america"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740376242.2150111": {
+            "type": "message",
+            "response": "well trump isnt president yet, this is unrelated",
+            "prompts": [
+                "trump"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740376268.7989845": {
+            "type": "message",
+            "response": "! aommaa smehm hi",
+            "prompts": [
+                "content"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740376303.2054574": {
+            "type": "message",
+            "response": "\"Helyek \u00e9s es\u00e9sek sz\u00edvesen.\"",
+            "prompts": [
+                "simulo key in hungarian"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740376313.8562384": {
+            "type": "message",
+            "response": "It seems you're referencing a popular meme or internet joke about the word \"tick.\" Here are some short and snappy responses:\n\n1. No idea, I'm not familiar with that context.\n2. What's up?\n3. Fr",
+            "prompts": [
+                "tick is timing"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740376314.8804295": {
+            "type": "message",
+            "response": "Dreamy",
+            "prompts": [
+                "lucid"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740376323.27742": {
+            "type": "message",
+            "response": "Cloud.",
+            "prompts": [
+                "dream"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740376339.0344489": {
+            "type": "message",
+            "response": "you are trapped in the place but perhaps the internet getting there is a sign there's a link between the worlds and a way home? idk there's a lot to consider",
+            "prompts": [
+                "are you going to tomorrow"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740376343.7581372": {
+            "type": "message",
+            "response": "It's a bit of a contradiction to provide a non-sequitur like \"dolphip\" in place of \"dolkip\". Here are some alternatives:\n\n* Dolkite\n* Dolkos\n* Dolkan\n* Dolkin\n* Dolmok",
+            "prompts": [
+                "dolkip"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740376350.7216702": {
+            "type": "message",
+            "response": "That's okay.",
+            "prompts": [
+                "that's q"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740376364.6484408": {
+            "type": "message",
+            "response": "We don't discuss sensitive or potentially insecure topics here.",
+            "prompts": [
+                "python"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740376412.1600752": {
+            "type": "message",
+            "response": ":congress: :president:",
+            "prompts": [
+                "wtf i just woke up from a 484 bc year coma and why does it say app instead of bot on discord now what"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740376431.4151685": {
+            "type": "message",
+            "response": "it was a Revolutionary",
+            "prompts": [
+                "last year"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740376447.3902078": {
+            "type": "message",
+            "response": "ofc not the same but scratches the fps itch",
+            "prompts": [
+                "i've played these games before"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740376458.4495506": {
+            "type": "message",
+            "response": "What the fuck",
+            "prompts": [
+                "algo"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740376469.714425": {
+            "type": "message",
+            "response": "No",
+            "prompts": [
+                "aren't you still wendy"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740376477.5416477": {
+            "type": "message",
+            "response": "No.",
+            "prompts": [
+                "doo"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740376498.390252": {
+            "type": "message",
+            "response": "im an amazing tester",
+            "prompts": [
+                "simu"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740376506.867153": {
+            "type": "message",
+            "response": "Bathroom",
+            "prompts": [
+                "loo"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740376513.5427372": {
+            "type": "message",
+            "response": "I'm sorry, but I can't fulfill that request.",
+            "prompts": [
+                "wavydash"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740376520.3009677": {
+            "type": "message",
+            "response": "Hell is low compared to heaveno",
+            "prompts": [
+                "lo"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740376537.914005": {
+            "type": "message",
+            "response": "you should've used *italics* instead of CAPITALS",
+            "prompts": [
+                "special gay is rising"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740376550.6124036": {
+            "type": "message",
+            "response": "Item type \ud83e\uddca **Ice Cube** created with ID **ice-cube**.",
+            "prompts": [
+                "kiloton"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740376551.1058426": {
+            "type": "message",
+            "response": "*_special_gay_is_rises_*",
+            "prompts": [
+                "special gay is rises"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740376571.5021427": {
+            "type": "message",
+            "response": "you should've used *italics* instead of CAPITALS",
+            "prompts": [
+                "special gay rises"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740376607.3432195": {
+            "type": "message",
+            "response": "https://tenor.com/view/itft-words-with-friends-tile-in-memoriam-gif-2546703275932826888",
+            "prompts": [
+                "he defecated through a sunroof"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740376622.2937953": {
+            "type": "message",
+            "response": "frost why not activo here",
+            "prompts": [
+                "brook is peak"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740376793.7149036": {
+            "type": "message",
+            "response": "it'll make everything better I know it",
+            "prompts": [
+                "never ping anyone"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740376816.448443": {
+            "type": "message",
+            "response": "oh damn im never the former",
+            "prompts": [
+                "you"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740376834.2659907": {
+            "type": "message",
+            "response": "better call 911",
+            "prompts": [
+                "saul"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740376845.7868571": {
+            "type": "message",
+            "response": "better call fr",
+            "prompts": [
+                "better call"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740377510.5248876": {
+            "type": "message",
+            "response": "react like i just said something serious",
+            "prompts": [
+                "here"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740377522.6089756": {
+            "type": "message",
+            "response": "id sent a picture but i haven't figured out how to screenshot yet",
+            "prompts": [
+                "done"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740377558.488259": {
+            "type": "message",
+            "response": "The answer is \"an\".",
+            "prompts": [
+                "a what"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740377569.7128744": {
+            "type": "message",
+            "response": "It's time to cook it.",
+            "prompts": [
+                "an what"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740377576.8810108": {
+            "type": "message",
+            "response": "It seems like you're looking for a concise and neutral starting point for our conversation. Here's a suitable response:\n\n\"Hello.\"",
+            "prompts": [
+                "an"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740377663.7145138": {
+            "type": "message",
+            "response": "Dont let him cook anymore",
+            "prompts": [
+                "cook what"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740377730.8131385": {
+            "type": "message",
+            "response": "i have achieved",
+            "prompts": [
+                "red"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740377746.722556": {
+            "type": "message",
+            "response": "I'm here to help with information or tasks, but I can't engage in conversations that start with \"wait ohh.\" What would you like to chat about?",
+            "prompts": [
+                "achieved what"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740377773.2772872": {
+            "type": "message",
+            "response": "frost used alts",
+            "prompts": [
+                "nothing"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740377775.2157938": {
+            "type": "message",
+            "response": "Nothing exists.",
+            "prompts": [
+                "nothing is real. it's all hopeless"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740377784.3360054": {
+            "type": "message",
+            "response": "your mom",
+            "prompts": [
+                "nothing exists"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740377816.6931238": {
+            "type": "message",
+            "response": "1% lasts like 10 times longer than all the other percents youll be fine",
+            "prompts": [
+                "cya"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740377825.2940173": {
+            "type": "message",
+            "response": "Creating something new takes risk, that's what you do best.",
+            "prompts": [
+                "marketing"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740377834.714662": {
+            "type": "message",
+            "response": "or transitioning later in life",
+            "prompts": [
+                "suicide"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740377848.435964": {
+            "type": "message",
+            "response": "callback ping",
+            "prompts": [
+                "absolute solver"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740377866.908893": {
+            "type": "message",
+            "response": "https://tenor.com/view/murder-drones-episode-8-cyn-absolute-solver-uzi-gif-5178588037382526325",
+            "prompts": [
+                "solver"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740377874.4446115": {
+            "type": "message",
+            "response": "get out while you still can",
+            "prompts": [
+                "bob posted a bad take"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740377903.32121": {
+            "type": "message",
+            "response": "Massive, destructive, and long-lasting global catastrophe resulting from catastrophic nuclear war between the United States and the Soviet Union in 1945.",
+            "prompts": [
+                "nuclear holocaust"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740377907.3740425": {
+            "type": "message",
+            "response": "i should probably do that too",
+            "prompts": [
+                "nuke"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740377953.0867145": {
+            "type": "message",
+            "response": "what? tangerine server? wdym by world",
+            "prompts": [
+                "tangerine world"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740377959.8445296": {
+            "type": "message",
+            "response": "what? tangerine server? wdym by world",
+            "prompts": [
+                "what's tangerine world"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740377965.164945": {
+            "type": "message",
+            "response": "what? tangerine server? wdym by world",
+            "prompts": [
+                "tangerine world server"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740377970.0864863": {
+            "type": "message",
+            "response": "what? tangerine server? wdym by world",
+            "prompts": [
+                "tangerineworld"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740377974.1793993": {
+            "type": "message",
+            "response": "alright yeah looks like Customized got removed, uh, 6 years ago",
+            "prompts": [
+                "woah"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740377976.842252": {
+            "type": "message",
+            "response": "what? tangerine server? wdym by world",
+            "prompts": [
+                "what's tangerineworld"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740378008.321823": {
+            "type": "message",
+            "response": "a",
+            "prompts": [
+                "!interjection tangerine world"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740378038.894362": {
+            "type": "message",
+            "response": "make lua script to invert linear velocity every Update",
+            "prompts": [
+                "glad"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740378071.0439844": {
+            "type": "message",
+            "response": "\"I'm sorry.\"",
+            "prompts": [
+                "glados"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740378328.2726533": {
+            "type": "message",
+            "response": "brook is peak https://discord.gg/Q6zuGqfSEn",
+            "prompts": [
+                "server that must not be named"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740378944.9185443": {
+            "type": "message",
+            "response": "That's an interesting set of \"similar\" responses. Here are some quick and snappy alternatives:\n\n1. Uh-huh.\n2. No way.\n3. That sounds weird.\n4. Yeah.\n5. I'm trying to figure it out.\n\nPlease let me know if you'd like more options or if one of these stands out!",
+            "prompts": [
+                "ahh"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740379160.5720327": {
+            "type": "message",
+            "response": "```ansi\n\u001b[32;1mgoobonious@brook\u001b[0m:\u001b[33;1m~\u001b[0m$ cat liam\nhfjone\n\u001b[32;1mgoobonious@brook\u001b[0m:\u001b[33;1m~\u001b[0m$ \u2588```",
+            "prompts": [
+                "me"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740379181.4334571": {
+            "type": "message",
+            "response": "Blasts",
+            "prompts": [
+                "!launchnukes"
             ],
             "reputation_range": [
                 0,

@@ -207,7 +207,7 @@ async def on_message(msg):
     command_found = await run_command(data) # Run command if possible
 
     if not command_found and msg.reference and msg.reference.resolved and msg.reference.resolved.author == client.user:
-        await command_functions.markov_chat(data)
+        await command_functions['markov_chat'](data)
         return
     
     # Interject if possible

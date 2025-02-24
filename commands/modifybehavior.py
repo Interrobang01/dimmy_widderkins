@@ -135,13 +135,17 @@ async def generate_interjection(data):
     
     # Generate multiple Markov responses
     markov_responses = [_infer_markov_chat(interjection_prompt) for _ in range(5)]
-    markov_responses = [r for r in markov_responses if r]  # Remove any None responses, as unlikely as they may be
-    markov_responses = list(set(markov_responses)) # Remove duplicates
+    markov_responses = [r for r in markov_responses if r]
+    markov_responses = list(set(markov_responses))
 
     # Create context from Markov responses
     context = "Previous similar responses:\n"
     context += "\n".join(f"- {r}" for r in markov_responses[:5]) + "\n" if markov_responses else ""
-    ai_response = await ask_ollama(f"Please generate a short and snappy response for: {interjection_prompt}. Do not say anything other than the response.\n{context}")
+    ai_response = await ask_ollama(
+        f"Please generate a short and snappy response for: {interjection_prompt}. Do not say anything other than the response.\n{context}",
+        model="gem:latest",
+        host="http://100.89.120.92:11434"
+    )
     
     responses = []
     if markov_responses:

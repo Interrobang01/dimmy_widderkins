@@ -20,15 +20,15 @@ async def ask_ollama_for_emoji(message_content, last_reaction):
         return None
     return None
 
-async def ask_ollama(prompt):
+async def ask_ollama(prompt, model="llama3.2:1b", host="http://localhost:11434"):
     try:
         async with aiohttp.ClientSession() as session:
-            async with session.post('http://localhost:11434/api/generate', 
+            async with session.post(f'{host}/api/generate', 
                 json={
-                    "model": "llama3.2:1b",
+                    "model": model,
                     "prompt": prompt,
                     "stream": False,
-                    "temperature": 0.2  # WHY USNT UT WIRJUNG
+                    "temperature": 0.2
                 }) as response:
                 if response.status == 200:
                     result = await response.json()

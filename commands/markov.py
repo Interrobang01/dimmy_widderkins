@@ -2,7 +2,6 @@ import random
 import json
 from bot_helper import send_message
 import asyncio
-import atexit
 
 _markov_model = None
 _markov_model_chat = None
@@ -11,26 +10,17 @@ _markov_model_chat = None
 def _load_markov():
     global _markov_model
     if _markov_model is None:
-        _markov_model = json.load(open(r'markov/markov_model_notw.json', 'r'))
+        with open(r'markov/markov_model_notw.json', 'r') as file:
+            _markov_model = json.load(file)
     return _markov_model
 
 # Markov model functions
 def _load_markov_chat():
     global _markov_model_chat
     if _markov_model_chat is None:
-        _markov_model_chat = json.load(open(r'markov/markov_model_chat_notw.json', 'r'))
+        with open(r'markov/markov_model_chat_notw.json', 'r') as file:
+            _markov_model_chat = json.load(file)
     return _markov_model_chat
-
-# Close files when bot is closed
-def _close_files():
-    global _markov_model
-    global _markov_model_chat
-    if _markov_model is not None:
-        _markov_model.close()
-    if _markov_model_chat is not None:
-        _markov_model_chat.close()
-
-atexit.register(_close_files)
 
 def _infer_markov(current_word):
     markov_model = _load_markov()

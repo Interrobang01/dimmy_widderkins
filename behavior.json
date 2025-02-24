@@ -2538,6 +2538,32 @@
             ],
             "reputation_change": 0,
             "whole_message": true
+        },
+        "1740371353.4262452": {
+            "type": "message",
+            "response": "Yes",
+            "prompts": [
+                "joe"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740371369.8101423": {
+            "type": "message",
+            "response": "Simulador API Masterpieces",
+            "prompts": [
+                "afhdi"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
         }
     }
 }

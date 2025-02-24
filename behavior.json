@@ -1,5 +1,9 @@
 {
     "commands": {
+        "ijgen": {
+            "type": "function",
+            "response": "Interjection generator command"
+        },
         "net": {
             "type": "function",
             "response": "Network utility command"

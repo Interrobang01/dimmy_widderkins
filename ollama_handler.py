@@ -1,6 +1,6 @@
 import aiohttp
 
-async def ask_ollama(message_content, last_reaction):
+async def ask_ollama_for_emoji(message_content, last_reaction):
     try:
         async with aiohttp.ClientSession() as session:
             with open('reactionprompt.txt', 'r') as promptheader:
@@ -19,3 +19,21 @@ async def ask_ollama(message_content, last_reaction):
     except Exception as e:
         return None
     return None
+
+async def ask_ollama(prompt):
+    try:
+        async with aiohttp.ClientSession() as session:
+            async with session.post('http://localhost:11434/api/generate', 
+                json={
+                    "model": "llama3.2:1b",
+                    "prompt": prompt,
+                    "stream": False,
+                    "temperature": 0.2  # WHY USNT UT WIRJUNG
+                }) as response:
+                if response.status == 200:
+                    result = await response.json()
+                    return result['response'].strip()
+    except Exception as e:
+        return None
+    return None
+

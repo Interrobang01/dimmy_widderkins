@@ -136,7 +136,10 @@ async def get_user_input(data, prompts, force_response=False):
     user = msg.author
     username = user.name
     while len(responses) < len(prompts):
-        await send_message(data, message_prefix + username + ": " + "Please answer the following questions (separate answers with newlines): " + '\n- ' + "\n- ".join(prompts), True)
+        prefix = ""
+        if not force_response:
+            prefix = "Please answer the following questions (separate answers with newlines):" 
+        await send_message(data, message_prefix + username + ": " + prefix + '\n- ' + "\n- ".join(prompts), True)
         message_prefix = ""
         response = await client.wait_for('message', check=lambda m: m.author == user)
         responses = response.content.split('\n')

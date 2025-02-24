@@ -76,7 +76,7 @@ def _infer_markov_chat(current_message):
             if len(split) == 0:
                 return None
             
-    print(f"Found in {i} iterations")
+    print(f"Found match in substring of '{current_message}' in {i} iterations")
         
 
 
@@ -110,14 +110,11 @@ async def markov(data):
     
     await send_message(data, response)
 
-from collections import deque
-_message_history = deque(maxlen=5)
-
 async def markov_chat(data):
     msg = data['msg']
 
     if not hasattr(markov_chat, 'last_markov_message'):
-        markov_chat.last_markov_message = 99
+        markov_chat.last_markov_message = "rea"
 
     split = msg.content.split(' ')
     # Remove command if it exists
@@ -125,18 +122,16 @@ async def markov_chat(data):
         split = split[1:]
 
     input_message = ' '.join(split)
-    
-    # Add current message to history
-    _message_history.append(input_message)
-    context = ' '.join(list(_message_history))
-    next_message = context if len(split) > 0 else markov_chat.last_markov_message
 
-    response = ""
-    next_message = _infer_markov_chat(next_message)
-    response += str(next_message) + ' '
+    prompt = ""    
+    if input_message:
+        prompt = input_message
+    else:
+        prompt = markov_chat.last_markov_message
+
+    response = _infer_markov_chat(prompt)
             
     markov_chat.last_markov_message = response.strip()
-    _message_history.append(response.strip())
 
     # Delay message to simulate typing
     # Calculate typing delay based on response length

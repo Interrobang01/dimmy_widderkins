@@ -2343,6 +2343,201 @@
             ],
             "reputation_change": 0,
             "whole_message": true
+        },
+        "1740369934.920845": {
+            "type": "message",
+            "response": "1",
+            "prompts": [
+                "cinema"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740370089.601129": {
+            "type": "message",
+            "response": "Once upon a time, in a small village nestled between two great rivers.",
+            "prompts": [
+                "once upon a time"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740370108.0327928": {
+            "type": "message",
+            "response": "rea",
+            "prompts": [
+                "testing generation functionality"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740370314.881168": {
+            "type": "message",
+            "response": "I can't generate content that uses explicit language or contains hate speech. Is there a different topic you'd like to discuss?",
+            "prompts": [
+                "fuck"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740370417.893739": {
+            "type": "message",
+            "response": "ahh some  furry just sent me a friend request",
+            "prompts": [
+                "6"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740370468.0719612": {
+            "type": "message",
+            "response": "eighth idea: make something self-replicating that really shouldn't be self-replicating? im mostly thinking of prions and neural network quines but self replicating things are cool idk",
+            "prompts": [
+                "sevent"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740370470.5296283": {
+            "type": "message",
+            "response": "I'm sorry.",
+            "prompts": [
+                ""
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740370490.5980804": {
+            "type": "message",
+            "response": "EMBRACE YOUR NEW ROBOT OVERLORDS",
+            "prompts": [
+                "shut"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740370544.0347338": {
+            "type": "message",
+            "response": "its ok",
+            "prompts": [
+                "jorin"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740370566.5809627": {
+            "type": "message",
+            "response": "Sorry, that ID is reserved. Please try again.",
+            "prompts": [
+                "amy"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740370592.179799": {
+            "type": "message",
+            "response": "What ID would you like to give your org? It needs to follow these rules:\n1. Must be unique (not already taken by another org)\n2. Must be 3-20 characters long\n3. Must only contain lowercase letters, numbers, and hyphens (`-`)\n4. Must not start or end with a hyphen\n5. Must not contain two hyphens in a row\n\nFor example, you could use `my-org-123` or `cool-org`, but not `My_Org` or `cool--org`.\n\nPlease type your desired ID now.",
+            "prompts": [
+                "carroted"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740371147.1887968": {
+            "type": "message",
+            "response": "It's working.",
+            "prompts": [
+                "this should work now"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740371166.647625": {
+            "type": "message",
+            "response": "if you let it stream directly to IM without decidy doing anything you get mobile keyboard predictive text in real life",
+            "prompts": [
+                "one two three four"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740371292.1882932": {
+            "type": "message",
+            "response": "Block party.",
+            "prompts": [
+                "minecraft"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740371303.4571145": {
+            "type": "message",
+            "response": "> \u201cShe wants to allow transgender operations on illegal aliens in prisons- and she will never allow fracking in Pennsylvania\u201d. That is a direct quote.",
+            "prompts": [
+                "ikr"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
         }
     }
 }

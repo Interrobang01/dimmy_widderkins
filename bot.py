@@ -2,7 +2,7 @@ import discord
 import json
 from brook import Brook
 from bot_helper import send_message, get_command_functions, get_reputation, change_reputation
-from ollama_handler import ask_ollama
+from ollama_handler import ask_ollama_for_emoji
 import emoji
 
 # # Rate limiting system
@@ -192,7 +192,7 @@ async def on_message(msg):
 
     if 'dimmy' in msg.content.lower() or 'widderkins' in msg.content.lower() or '<@1330727173115613304>' in msg.content.lower():
         # Ollama processing
-        response = await ask_ollama(msg.content, last_reaction)
+        response = await ask_ollama_for_emoji(msg.content, last_reaction)
         print(f"Ollama response: {response}")
         response = response.strip()[0]
         if response in emoji.EMOJI_DATA:

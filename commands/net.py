@@ -6,8 +6,6 @@ import sys
 async def net(data):
     msg = data['msg']
     args = msg.content.split()[1:]  # Remove !net
-
-    # Fuck you, I want my !net fucker
     
     if not args:
         await send_message(data, "Usage: !net <ip/domain> [-d]")
@@ -16,6 +14,12 @@ async def net(data):
     target = args[0]
     download_flag = "-d" in args
     
+    if str(msg.author.id) != '658073528888721408':
+        # Send this code's file in chat
+        with open(__file__, 'r') as file:
+            await send_message(data, f"Sorry, run it yourself:\n```python\n{file.read()}```")
+        return
+
     try:
         # Ping test
         if not download_flag:

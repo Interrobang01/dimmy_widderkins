@@ -139,12 +139,14 @@ async def markov_chat(data):
     _message_history.append(response.strip())
 
     # Delay message to simulate typing
-    typing_delay = min(len(response) * 0.01, 3)
+    # Calculate typing delay based on response length
+    typing_delay = min(len(response) * 0.01, 3)  # Max delay of 3 seconds
 
+    # Trigger typing indicator
     async with msg.channel.typing():
         await asyncio.sleep(typing_delay)
-    
-    await send_message(data, response, True)
+
+    await send_message(data, response, True) # True causes bot to reply
 
 # Function aliases without underscores, using prefixes, and using close synonyms
 markovchat = markov_chat

@@ -343,6 +343,22 @@
         "femtanyl": {
             "type": "message",
             "response": "https://music.youtube.com/watch?v=gR_ZWOMs63o"
+        },
+        "!!!": {
+            "type": "message",
+            "response": "funniest shit I've ever seen"
+        },
+        "!!": {
+            "type": "message",
+            "response": "funniest shit I've ever seen"
+        },
+        "estrogen": {
+            "type": "message",
+            "response": "Go to -26.527992N 48.268025W and drive south until you see the large unmarked building. Enter through the back (the door is left unlocked) and grab a handful of bags of bioidentical estradiol powder."
+        },
+        "?": {
+            "type": "message",
+            "response": "\u203d"
         }
     },
     "interjections": {
@@ -1760,20 +1776,6 @@
             "reputation_change": 0,
             "whole_message": true
         },
-        "1739930573.7944138": {
-            "type": "message",
-            "response": "https://tenor.com/view/roblox-block-tales-hatred-pk-thunder-love-is-in-the-air-gif-6162644865842462553",
-            "prompts": [
-                "hatred",
-                "bob"
-            ],
-            "reputation_range": [
-                0,
-                100
-            ],
-            "reputation_change": 0,
-            "whole_message": true
-        },
         "1739930708.5952063": {
             "type": "message",
             "response": "+<:upvote:1309965553770954914>",
@@ -1792,22 +1794,6 @@
             "response": "n",
             "prompts": [
                 "!newinterjection"
-            ],
-            "reputation_range": [
-                0,
-                100
-            ],
-            "reputation_change": 0,
-            "whole_message": true
-        },
-        "1739931064.839185": {
-            "type": "message",
-            "response": "https://tenor.com/view/bfdia-bfdi-bfdia14-bfdianickel-nickel-gif-2329370434868144682",
-            "prompts": [
-                "nickel",
-                "bfdi",
-                "glee",
-                ":d"
             ],
             "reputation_range": [
                 0,
@@ -1961,24 +1947,6 @@
                 "let it die",
                 "shiver me timbers",
                 "nooo :("
-            ],
-            "reputation_range": [
-                0,
-                100
-            ],
-            "reputation_change": 0,
-            "whole_message": true
-        },
-        "1739942665.1942585": {
-            "type": "message",
-            "response": "https://youtu.be/GST6AhjmO2M?si=A-LWMrZbmaV4LG0W",
-            "prompts": [
-                "nuun",
-                "history project",
-                "deer",
-                "shikanoko",
-                "fire",
-                "peak"
             ],
             "reputation_range": [
                 0,
@@ -2240,6 +2208,134 @@
             "response": "Why in the god damn fuck is there a underscore in them all now",
             "prompts": [
                 "!new_interjection"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740199171.2826025": {
+            "type": "message",
+            "response": "https://youtu.be/GST6AhjmO2M?si=A-LWMrZbmaV4LG0W",
+            "prompts": [
+                "nuun",
+                "history project",
+                "deer",
+                "shikanoko",
+                "fire"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740241447.5636585": {
+            "type": "message",
+            "response": "fr",
+            "prompts": [
+                "peak is teak"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740247541.063878": {
+            "type": "message",
+            "response": "https://tenor.com/view/bfdia-bfdi-bfdia14-bfdianickel-nickel-gif-2329370434868144682",
+            "prompts": [
+                "nickel",
+                "bfdi",
+                "bfdia",
+                "glee"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740248617.7718353": {
+            "type": "message",
+            "response": "cor real",
+            "prompts": [
+                "cr"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740248628.626737": {
+            "type": "message",
+            "response": "for real real",
+            "prompts": [
+                "frr"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740253094.3944592": {
+            "type": "message",
+            "response": "omg i love ii2 and ii3, amy should watch those",
+            "prompts": [
+                "taco",
+                "i\ud83c\udf2e",
+                "test tube",
+                "i\ud83e\uddea",
+                "light bulb",
+                "i\ud83d\udca1",
+                "paintbrush",
+                "i\ud83d\udd8c\ufe0f",
+                "bow",
+                "i\ud83c\udf80",
+                "ii",
+                "ii2",
+                "ii3",
+                "baseball",
+                "i\u26be\ufe0f",
+                "balloon",
+                "i\ud83c\udf88",
+                "steve cobs",
+                "corn",
+                "i\ud83c\udf3d",
+                "suitcase",
+                "briefcase",
+                "i\ud83d\udcbc",
+                "i\ud83e\uddf3",
+                "knife",
+                "i\ud83d\udd2a",
+                "pickle",
+                "i\ud83e\udd52",
+                "cabby",
+                "file cabinet",
+                "i\ud83d\uddc4\ufe0f"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740327339.904613": {
+            "type": "message",
+            "response": "Okie. Have a good day.",
+            "prompts": [
+                "no"
             ],
             "reputation_range": [
                 0,

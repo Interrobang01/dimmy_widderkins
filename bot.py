@@ -7,6 +7,8 @@ from bot_helper import send_message, get_command_functions, get_reputation, chan
 from ollama_handler import ask_ollama_for_emoji
 from opo_toolset import universe
 import emoji
+import random
+
 # # Rate limiting system
 # message_timestamps = []
 # self_destruct = False
@@ -125,9 +127,11 @@ async def interject(data):
             if matches:
                 matching_interjections.append((prompt, interjection))
 
-    # If we found matches, respond to the one with the longest prompt
+    # If we found matches, respond to one randomly weighted by length
     if matching_interjections:
-        longest_prompt, chosen_interjection = max(matching_interjections, key=lambda x: len(x[0]))
+        total_length = sum(len(prompt) for prompt, _ in matching_interjections)
+        weights = [len(prompt) / total_length for prompt, _ in matching_interjections]
+        chosen_interjection = random.choices(matching_interjections, weights=weights, k=1)[0][1]
         print(f"Interjection caused by {msg.content} by user {msg.author}")
         change_reputation(msg.author, chosen_interjection['reputation_change'])
         await send_message(data, chosen_interjection['response'])

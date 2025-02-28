@@ -144,8 +144,9 @@ async def generate_interjection(data):
     ai_response = await ask_ollama(
         f"Please generate a short and snappy response for: {interjection_prompt}. Do not say anything other than the response.\n{context}",
         model="gem:latest",
-        host="http://100.89.120.92:11434"
+        host="http://localhost:11434"
     )
+    ai_response = ai_response[:2000]
     
     responses = []
     if markov_responses:

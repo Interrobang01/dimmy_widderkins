@@ -359,6 +359,26 @@
         "todo": {
             "type": "message",
             "response": "fix reply markov"
+        },
+        "starting": {
+            "type": "message",
+            "response": "https://cdn.discordapp.com/attachments/1340840809905393664/1344445194954735696/imstarting.mp4?ex=67c0efa9&is=67bf9e29&hm=42cd30df3d72e1e1e3bcb6a6f4c073778388bf3cbedc3a3bc681eb7ae4e5f4e4&"
+        },
+        "dimmyloves": {
+            "type": "message",
+            "response": "I sure do love {}. God bless {}"
+        },
+        "rock": {
+            "type": "message",
+            "response": "Rock easily destroys {}, get owned sweaty"
+        },
+        "roshambo": {
+            "type": "message",
+            "response": "ok sure let's play roshambo, say \"i pick\" and then your selection in one message"
+        },
+        "greet": {
+            "type": "message",
+            "response": "hiiii {} ^w^"
         }
     },
     "interjections": {
@@ -1347,19 +1367,6 @@
             "reputation_change": 0,
             "whole_message": true
         },
-        "1739846817.9428039": {
-            "type": "message",
-            "response": "https://discord.gg/3558wJDBQd",
-            "prompts": [
-                "fr"
-            ],
-            "reputation_range": [
-                0,
-                100
-            ],
-            "reputation_change": 0,
-            "whole_message": true
-        },
         "1739846851.9200704": {
             "type": "message",
             "response": "https://cdn.discordapp.com/attachments/1083594843667824733/1341239443528613938/vexed.png?ex=67b54612&is=67b3f492&hm=19db88beba95053802d2ee305bde12433a18d1c793286200d7f15ae4fbe28f17&",
@@ -1553,19 +1560,6 @@
             "response": "\u200b+<:upvote:1309965553770954914>",
             "prompts": [
                 "upvote"
-            ],
-            "reputation_range": [
-                0,
-                100
-            ],
-            "reputation_change": 0,
-            "whole_message": true
-        },
-        "1739899231.7460122": {
-            "type": "message",
-            "response": "shut up chap",
-            "prompts": [
-                "and"
             ],
             "reputation_range": [
                 0,
@@ -5426,6 +5420,293 @@
             "response": "Blasts",
             "prompts": [
                 "!launchnukes"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740428556.3508022": {
+            "type": "message",
+            "response": "https://tenor.com/view/dantdm-gif-4016435219676753363",
+            "prompts": [
+                "gr",
+                "get real"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740428576.3248343": {
+            "type": "message",
+            "response": "my worst enemy",
+            "prompts": [
+                "zay"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740432348.1858134": {
+            "type": "message",
+            "response": "They call me joe. joe spheres",
+            "prompts": [
+                "joe"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740433097.8865235": {
+            "type": "message",
+            "response": "the premise is, universes are actually just the Fetuses of gods",
+            "prompts": [
+                "basically"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740433188.7739284": {
+            "type": "message",
+            "response": "why not do the the",
+            "prompts": [
+                "actually"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740433234.8571897": {
+            "type": "message",
+            "response": "I can't help with creating unwanted or potentially problematic responses, including \"stop.\" Can I assist you with something else?",
+            "prompts": [
+                "stop"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740455634.672422": {
+            "type": "message",
+            "response": "I'm happy to help. However, I need a bit more information from you.\n\nCan you please provide the following:\n\n1. The title of this document.\n* [END OF SECTION 6.2>\n\nYou are about to begin the \"Final Exam\" for the year!>\n\nWhat's up guys? Welcome back to my channel!\n\nI've got some exciting news to share with all of you, and I hope it brings me a sense of calm>\nAs a seasoned traveler, I'm always on the lookout for unique experiences and hidden gems. Here are some of our favorite books that have been featured in this series>\n\n\"Welcome to the world's most famous amusement park!>\n<end_ofstart_ofstart_ofstart_ofstart_ofstart_ofstart_ofstart_ofstart_ofstart_ofstart_ofstart_ofstart_ofstart_ofstart_ofstart_ofstart_ofstart_ofstop>\n<beginning> <end> \n<end_of_end> \n</start_of_start>\n\n## Step 1: Understand the problem statement\nThe problem is asking to find all possible solutions for a system of linear equations.\n\nx + y = 3 & x - y = z\n\n## Step 1: Write down what we are given in the prompt.\nThe prompt is to create a list of items that the user can select from when creating a new user account:\nThis document describes how to configure and use the web interface for the OpenID Connect server.\n\nTo connect an application to an existing OAuth 2.0 authorization endpoint>\n<request_timestamp>2021-01-16T14:30:00Z> <end_ofstart_ofstart_ofstart_ofstart_ofstart_ofstart_ofstart_ofstart_ofstart_ofstart_ofstart of text>\n\nI am excited to be a part of this amazing new project!\nThe company is working on developing an app for a fictional game, and the following paragraphs are about this topic>\nIt's interesting that you mention the significance of the word 'begin' in relation to each other>\n<end_ofstart_ofstart>\n\nIn my opinion, one of the most significant challenges facing our society today is>\nA) Climate change\nB) Economic inequality\nC) Access to healthcare\nD) Education\n\nThe best answer is A",
+            "prompts": [
+                "yee"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740527398.7599604": {
+            "type": "message",
+            "response": "trump would not make it past the brook lobby",
+            "prompts": [
+                "ra"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740531192.0230467": {
+            "type": "message",
+            "response": "<end_of_end_of_turn>\n\nI'm not sure what you're referring to. Could you provide more context or clarify the question being asked.</a>\n\nThe following is an example of a function that takes no arguments:\n```python\ndef my_function():\n    print(\"Hello, world!\")\n\n# Call the start_ofstart() function>\n<stop_of_stop>\n  <loop>\n    <condition>\n      <value>0</value>\n    </start_of_start_of_start_of_start>\n\nThis is a test of the <testtag> element.\n\nBefore we begin, I just want to confirm that everything looks good on your end?>\n\nYes! Everything seems to be working as expected. Thank you for taking the time to review and respond to my request for information about 11/11 (formerly known as 9/11>\nA terrorist attack occurred at 7:59 a.m. yesterday, January 2nd, 2018, 18:30>\n\nI'm planning to participate in a charity run or walk, and the participant's name is Jane, who lives in the town of Willow Creek in the state of Texas>\n<End_of_start_ofstart>\n\nA simple example where we demonstrate how to implement a simple Linear Regression model using scikit-learn library in Python>\n\n# Importing Libraries\nimport pandas as pd\n\n# Creating dataframes\ndata = {\n    \"Name\": [\"John\", \"Mary\", \"Tom\"],\n        <end_of_end>-->\n\n```\n/**\n * Created by Administrator on 2017/11/20</start_ofstart_ofstart>\n\nI have a few questions regarding the upcoming album.\n\n1. What are your current musical influences and inspirations?\n\nHere is an example of the format for this question:\nYou asked me to tell you about a topic that starts with \"M\">\nTopic: Mammals\nA mammal is any animal that has hair or fur, which can be either smooth or ridged</start_ofstart>\n<end_ofstart>\n\n**Evaluating the Impact of Climate Change on Agriculture in Africa**\n**Kwaafu A. K., et al.\nTitle: The impact of social media and online engagement on mental health\nThe relationship between mental health and wellbeing is a multifaceted issue that requires careful consideration of multiple factors to develop effective strategies for both individuals and orga",
+            "prompts": [
+                "uh huh"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740536525.6458924": {
+            "type": "message",
+            "response": "shut up chap",
+            "prompts": [
+                "ok and"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740536593.2306201": {
+            "type": "message",
+            "response": "what",
+            "prompts": [
+                "guess what"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740536834.4848564": {
+            "type": "message",
+            "response": "cant believe i ever disliked Jack Opopolescence \"Jane\" Doe",
+            "prompts": [
+                "aw"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740536911.898855": {
+            "type": "message",
+            "response": "what wrong with me \ud83d\ude2d",
+            "prompts": [
+                "why not"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740618035.5419142": {
+            "type": "message",
+            "response": "everything is edible if you try hard enough!",
+            "prompts": [
+                "inedible"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740626875.3165972": {
+            "type": "message",
+            "response": "i pick scissors. you lose",
+            "prompts": [
+                "i pick paper"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740626894.056823": {
+            "type": "message",
+            "response": "i pick paper. you lose",
+            "prompts": [
+                "i pick rock"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740626903.4920835": {
+            "type": "message",
+            "response": "i pick paper, you win",
+            "prompts": [
+                "i pick scissors"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740626938.8453429": {
+            "type": "message",
+            "response": "i pick 14th century child, you win",
+            "prompts": [
+                "i pick bubonic plague"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740626964.1267161": {
+            "type": "message",
+            "response": "i pick- AAAAAAAAAAAAAAAA AAAAAAAA AGGHHHHHH HELP ME HELP ME IM FUCKING DYING AAA HELP ME",
+            "prompts": [
+                "i pick death"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740627323.7294755": {
+            "type": "message",
+            "response": "i pick person who will get shot, you win",
+            "prompts": [
+                "i pick gun"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740629490.7177856": {
+            "type": "message",
+            "response": "n",
+            "prompts": [
+                "!newinterjection"
+            ],
+            "reputation_range": [
+                0,
+                100
+            ],
+            "reputation_change": 0,
+            "whole_message": true
+        },
+        "1740629490.7446177": {
+            "type": "message",
+            "response": "!markovchat",
+            "prompts": [
+                "mist"
             ],
             "reputation_range": [
                 0,

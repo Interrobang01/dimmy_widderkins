@@ -28,6 +28,7 @@ async def ask_ollama(prompt, model="llama3.2:1b", host="http://localhost:11434")
                     "model": model,
                     "prompt": prompt,
                     "stream": False,
+                    "max_tokens": 10,
                     "temperature": 0.2
                 }) as response:
                 if response.status == 200:

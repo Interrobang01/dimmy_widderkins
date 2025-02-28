@@ -5,3 +5,6 @@ markov_model_chat.json
 markov_model_notw.json
 markov_model_chat_notw.json
 markov
+behavior.json
+reputation.json
+markets.json

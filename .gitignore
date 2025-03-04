@@ -1,7 +1,4 @@
 *depc
 __pycache__
-markov_model.json
-markov_model_chat.json
-markov_model_notw.json
-markov_model_chat_notw.json
 markov
+*.json

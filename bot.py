@@ -186,12 +186,9 @@ async def on_message(msg):
     if msg.author.id == client.user.id:
         return
     
-    # Return if bot hasn't initialized yet
-    if not brook:
+    # Return if bot hasn't been initialized yet
+    if not hasattr(client, 'user'):
         return
-    
-    # if msg.author.id == 860666622112694312: # Fuck yous
-    #     await msg.add_reaction('<:downvote:1309965539514257459>')
     
     data = {'msg': msg, 'client': client, 'brook': brook}
     

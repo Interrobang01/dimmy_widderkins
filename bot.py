@@ -1,8 +1,11 @@
 import discord
 import json
+import random
+import asyncio
 from brook import Brook
 from bot_helper import send_message, get_command_functions, get_reputation, change_reputation
 from ollama_handler import ask_ollama_for_emoji
+from opo_toolset import universe
 import emoji
 import random
 
@@ -53,7 +56,12 @@ async def on_ready():
     transport_channel = client.get_channel(1322717023351865395)
     global brook
     brook = Brook(transport_channel, client)
-
+    async def periodic_universe():
+        while True:
+            minutes = random.randint(37, 62)
+            await asyncio.sleep(minutes * 60) 
+            await universe(client)
+    client.loop.create_task(periodic_universe())
     
 
 async def interject(data):

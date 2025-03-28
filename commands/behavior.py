@@ -298,26 +298,50 @@ async def generate_interjection(data):
 class HelpMenu(discord.ui.View):
     def __init__(self):
         super().__init__()
-        self.current_page = 0
+        self.current_page = 1
+        self.speed = 1
 
     async def update_message(self, interaction):
         # Update the embed to the current page
         embed, _ = await help(None, self.current_page, True)
         await interaction.response.edit_message(embed=embed, view=self)
 
-    @discord.ui.button(label="Previous", style=discord.ButtonStyle.primary)
+    @discord.ui.button(label="<<", style=discord.ButtonStyle.primary)
+    async def previous_exp(self, interaction: discord.Interaction, button: discord.ui.Button):
+        # Go to the previous page, speed up exponentially
+        if self.speed > -1:
+            self.speed = -1
+        else:
+            self.speed *= 2
+        self.current_page += self.speed
+        await self.update_message(interaction)
+
+    @discord.ui.button(label="<", style=discord.ButtonStyle.primary)
     async def previous(self, interaction: discord.Interaction, button: discord.ui.Button):
         # Go to the previous page
-        if self.current_page > 0:
-            self.current_page -= 1
-            await self.update_message(interaction)
+        self.speed = -1
+        self.current_page -= 1
+        await self.update_message(interaction)
 
-    @discord.ui.button(label="Next", style=discord.ButtonStyle.primary)
+    @discord.ui.button(label=">", style=discord.ButtonStyle.primary)
     async def next(self, interaction: discord.Interaction, button: discord.ui.Button):
         # Go to the next page
+        self.speed = 1
         _, length = await help(None, self.current_page, True) # Inefficient? Yes.
-        if self.current_page < length - 1:
+        if self.current_page + 1 < length:
             self.current_page += 1
+            await self.update_message(interaction)
+
+    @discord.ui.button(label=">>", style=discord.ButtonStyle.primary)
+    async def next_exp(self, interaction: discord.Interaction, button: discord.ui.Button):
+        # Go to the next page, speed up exponentially
+        _, length = await help(None, self.current_page, True) # Inefficient? Yes.
+        if self.speed < 1:
+            self.speed = 1
+        else:
+            self.speed *= 2
+        if self.current_page + self.speed < length:
+            self.current_page += self.speed
             await self.update_message(interaction)
 
     @discord.ui.button(label="Close", style=discord.ButtonStyle.danger)
@@ -370,17 +394,30 @@ async def help(data, page=None, edit=False):
 
 
     # Pagination
+
     items_per_page = 10
     total_pages = (len(all_behavior) + items_per_page - 1) // items_per_page
     total_command_pages = (interjection_cutoff + items_per_page - 1) // items_per_page
+    if page < -10:
+        # Page -11 is equal to page 1, and continues upward from the negatives
+        page = abs(page + 10)%total_pages + 1
     start_index = (page - 1) * items_per_page
     end_index = start_index + items_per_page
 
     embed = None
+    title = f"Help - Page **{page}/{total_pages}**"
     if start_index >= len(all_behavior):
-        embed = discord.Embed(title=f"Help - Page **{page}/{total_pages}**", description="No more behavior.")
+        embed = discord.Embed(title=title, description="No more behavior.")
     else:
-        embed = discord.Embed(title=f"Help - Page **{page}/{total_pages}**", description='\n'.join(all_behavior[start_index:end_index]))
+        embed = discord.Embed(title=title, description='\n'.join(all_behavior[start_index:end_index]))
+
+    # Page <1 easter eggs
+    if page == 0:
+        embed = discord.Embed(title=title, description="Thank goodness we're not dividing by page number anywhere.")
+    if page == -1:
+        embed = discord.Embed(title=title, description="An enormous dark and dimly-lit room. A large, unknown machine rests in the center: https://demonin.com/games/endlessStairwell/")
+    if page == -10:
+        embed = discord.Embed(title=title, description="Quod est superius est sicut quod inferius, et quod inferius est sicut quod est superius.")
 
     embed.set_footer(text=f"Use !help [page] to view more pages. Interjections start on page {total_command_pages}.")
     if edit:

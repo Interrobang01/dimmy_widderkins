@@ -229,10 +229,10 @@ async def generate_interjection(data):
     context = "Previous similar responses:\n"
     context += "\n".join(f"- {r}" for r in markov_responses[:5]) + "\n" if markov_responses else ""
     #ai_response = await ask_ollama(
-        f"Please generate a short and snappy response for: {interjection_prompt}. Do not say anything other than the response.\n{context}",
-        model="gem:latest",
-        host="http://localhost:11434"
-    )
+    #    f"Please generate a short and snappy response for: {interjection_prompt}. Do not say anything other than the response.\n{context}",
+    #    model="gem:latest",
+    #    host="http://localhost:11434"
+    #)
     #ai_response = ai_response[:2000]
     ai_response = "AAAAAAAAAH"
     

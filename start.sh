@@ -6,6 +6,20 @@ cd "$parent_path"
 
 pip install requests
 pip install mcproto
-ollama run llama3.2:1b &
-ollama run gemma2:2b &
+pip install aiohttp
+
+# Make sure we clean up processes on exit
+cleanup() {
+  echo "Cleaning up processes..."
+  pkill -f "ollama run qwen3:0.6b" || true
+  pkill -f "python3 bot.py" || true
+}
+
+# Set up trap to call cleanup function when script exits
+trap cleanup EXIT
+
+# Start Ollama models in background
+ollama run qwen3:0.6b &
+
+# Start the bot
 python3 bot.py

@@ -181,9 +181,9 @@ async def new_interjection(data):
 
     whole_message = 'y' in responses[1].lower()
     # Pranked
-    if not whole_message:
-        whole_message = True
-        await send_message(data, 'Just kidding. You are not allowed to make non-whole-message interjections.')
+    # if not whole_message:
+    #     whole_message = True
+    #     await send_message(data, 'Just kidding. You are not allowed to make non-whole-message interjections.')
 
 
     # Load interjections list

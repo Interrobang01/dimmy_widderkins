@@ -2,12 +2,14 @@ import discord
 import json
 import random
 import asyncio
+import collections
 from brook import Brook
 from bot_helper import send_message, get_command_functions, get_reputation, change_reputation
-from ollama_handler import ask_ollama_for_emoji
+# We'll import specifically from ollama_handler as needed to avoid circular imports
 from opo_toolset import universe
 import emoji
 import random
+import sys
 
 # # Rate limiting system
 # message_timestamps = []
@@ -46,6 +48,9 @@ intents.typing = True
 
 client = discord.Client(intents=intents)
 
+# Message history tracking (stores last messages per channel)
+message_history = collections.defaultdict(lambda: collections.deque(maxlen=5))
+
 # Define event handlers
 
 transport_channel = None  # This needs to be set after client is ready
@@ -56,6 +61,12 @@ async def on_ready():
     transport_channel = client.get_channel(1322717023351865395)
     global brook
     brook = Brook(transport_channel, client)
+    
+    # Initialize the stateful Ollama session
+    from ollama_handler import get_ollama_session
+    await get_ollama_session()
+    print("Initialized stateful Ollama session")
+    
     async def periodic_universe():
         while True:
             minutes = random.randint(37, 62)
@@ -189,7 +200,7 @@ last_reaction = "🤪"
 
 @client.event
 async def on_message(msg):
-    global last_reaction
+    global last_reaction, message_history
     # Ignore messages from the bot itself
     if msg.author.id == client.user.id:
         return
@@ -198,19 +209,37 @@ async def on_message(msg):
     if not hasattr(client, 'user'):
         return
     
+    # Add message to history for this channel
+    message_history[msg.channel.id].append({
+        'author': str(msg.author.display_name),
+        'content': msg.content,
+        'timestamp': msg.created_at.isoformat()
+    })
+    
     data = {'msg': msg, 'client': client, 'brook': brook}
     
     await brook.on_message(msg)
 
     if 'dimmy' in msg.content.lower() or 'widderkins' in msg.content.lower() or '<@1330727173115613304>' in msg.content.lower():
-        # Ollama processing
-        response = await ask_ollama_for_emoji(msg.content, last_reaction)
+        # Use the stateful Ollama handler
+        from ollama_handler import get_ollama_session
+        ollama_session = await get_ollama_session()
+        
+        # Get emoji reaction using the stateful session with channel context
+        response = await ollama_session.get_emoji_reaction(
+            channel_id=msg.channel.id,
+            message_content=msg.content,
+            author_name=msg.author.display_name,
+            last_reaction=last_reaction,
+            debug=True  # Enable debugging output
+        )
+        
         print(f"Ollama response: {response}")
-        response = response.strip()[0]
-        if response in emoji.EMOJI_DATA:
-            last_reaction = response
-            #await msg.add_reaction('<:upvote:1309965553770954914>')
-            await msg.add_reaction(response)
+        if response:
+            response = response.strip()[0]
+            if response in emoji.EMOJI_DATA:
+                last_reaction = response
+                await msg.add_reaction(response)
 
     command_found = await run_command(data) # Run command if possible
 
@@ -229,7 +258,21 @@ async def on_reaction_add(reaction, user):
     if reaction.emoji == '🗑️' and reaction.message.author == client.user:
         await reaction.message.delete()
 
+async def cleanup():
+    # Close the Ollama session properly
+    from ollama_handler import _ollama_instance
+    if _ollama_instance:
+        await _ollama_instance.close()
+        print("Closed Ollama session")
+
 if __name__ == '__main__':
-    with open(r"/home/interrobang/VALUABLE/dimmy_widderkins_token.txt", 'r') as file:
-        client.run(file.read())
+    try:
+        with open(r"/home/interrobang/VALUABLE/dimmy_widderkins_token.txt", 'r') as file:
+            client.run(file.read())
+    finally:
+        # Run cleanup in a new event loop to ensure it runs
+        loop = asyncio.new_event_loop()
+        asyncio.set_event_loop(loop)
+        loop.run_until_complete(cleanup())
+        loop.close()
 

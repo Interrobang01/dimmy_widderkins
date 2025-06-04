@@ -10,13 +10,13 @@ async def launch_nukes(data):
     msg = data['msg']
     current_time = datetime.now()
 
-    # Remove entries older than 5 seconds
-    call_tracker = {k: v for k, v in call_tracker.items() if v > current_time - timedelta(seconds=5)}
+    # Remove entries older than 15 seconds
+    call_tracker = {k: v for k, v in call_tracker.items() if v > current_time - timedelta(seconds=15)}
 
     # Add current call
     call_tracker[msg.author.id] = current_time
 
-    # Check if there are 3 different senders in the last 5 seconds
+    # Check if there are 3 different senders in the last 15 seconds
     if len(call_tracker) >= 3:
         await send_message(data, "Nuclear weapons launched. May God have mercy on our souls.")
         await send_message(data, "https://tenor.com/view/nuclear-catastrophic-disastrous-melt-down-gif-13918708")

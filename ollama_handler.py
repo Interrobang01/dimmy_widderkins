@@ -7,6 +7,7 @@ from typing import Optional, Literal
 
 class EmojiResponse(BaseModel):
     """Schema for structured emoji response from Ollama."""
+    word: str = Field(description="A single word that describes the reaction")
     emoji: str = Field(description="A single emoji character that reacts to the message")
     confidence: float = Field(default=1.0, description="Confidence level in the selected emoji")
 
@@ -61,7 +62,7 @@ class OllamaSession:
             with open('reactionprompt.txt', 'r') as promptheader:
                 prompt = (
                     promptheader.read() + "\n"
-                    f"Do NOT use the emoji \"{self.last_reactions[channel_id]}\". \n" + 
+                    #f"Do NOT use the emoji \"{self.last_reactions[channel_id]}\". \n" + 
                     f"Current message to react to: {author_name}: {message_content}\n" +
                     context_str
                 )
@@ -98,6 +99,7 @@ class OllamaSession:
                     
                     if debug:
                         print("\nSTRUCTURED RESPONSE:")
+                        print(f"Word: {emoji_data.word}")
                         print(f"Emoji: {emoji_response}")
                         print(f"Confidence: {emoji_data.confidence}")
                         print("--------------------\n")

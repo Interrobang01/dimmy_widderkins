@@ -7,6 +7,7 @@ from brook import Brook
 from bot_helper import send_message, get_command_functions, get_reputation, change_reputation
 # We'll import specifically from ollama_handler as needed to avoid circular imports
 from opo_toolset import universe
+from startupmessage import send_startup_message
 import emoji
 import random
 import sys
@@ -73,7 +74,10 @@ async def on_ready():
             await asyncio.sleep(minutes * 60) 
             await universe(client)
     client.loop.create_task(periodic_universe())
-    
+
+    # Send startup message
+    #await send_startup_message(client)
+    #print("Sent startup message")
 
 async def interject(data):
     msg = data['msg']

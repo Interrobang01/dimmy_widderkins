@@ -69,11 +69,12 @@ async def on_ready():
     print("Initialized stateful Ollama session")
     
     async def periodic_universe():
+        print("periodic_universe task started")
         while True:
-            minutes = random.randint(37, 62)
-            await asyncio.sleep(minutes * 60) 
+            minutes = random.randint(1, 2)
+            await asyncio.sleep(minutes * 15)
             await universe(client)
-    client.loop.create_task(periodic_universe())
+    asyncio.create_task(periodic_universe())
 
     # Send startup message
     #await send_startup_message(client)

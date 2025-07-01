@@ -8,9 +8,6 @@ async def pay(data):
         
     try:
         amount = int(args[1])
-        if amount <= 0:
-            await msg.channel.send("Amount must be positive")
-            return
     except ValueError:
         await msg.channel.send("Please provide a valid number for the amount")
         return
@@ -18,5 +15,13 @@ async def pay(data):
     user = msg.author
     request_channel = msg.channel
     description = "please donate to help fund my medication"
-    
-    await brook.request_payment(user, amount, request_channel, description)
+
+    if amount == 0:
+        await msg.channel.send("Amount must not be zero you little bitch")
+        return
+
+    if amount > 0:
+        await brook.request_payment(user, amount, request_channel, description)
+    else:
+        # Negative amount: pay the user
+        await brook.pay(user, abs(amount), request_channel)

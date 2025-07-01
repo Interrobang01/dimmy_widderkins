@@ -5,6 +5,7 @@ import asyncio
 import collections
 from brook import Brook
 from bot_helper import send_message, get_command_functions, get_reputation, change_reputation
+from supercommands import supercommand
 # We'll import specifically from ollama_handler as needed to avoid circular imports
 from opo_toolset import universe
 from startupmessage import send_startup_message
@@ -69,11 +70,12 @@ async def on_ready():
     print("Initialized stateful Ollama session")
     
     async def periodic_universe():
+        print("periodic_universe task started")
         while True:
-            minutes = random.randint(37, 62)
-            await asyncio.sleep(minutes * 60) 
+            minutes = random.randint(1, 2)
+            await asyncio.sleep(minutes * 15)
             await universe(client)
-    client.loop.create_task(periodic_universe())
+    asyncio.create_task(periodic_universe())
 
     # Send startup message
     await send_startup_message(client)
@@ -179,6 +181,15 @@ async def run_command(data):
             if command_name is None or len(cmd) > len(command_name):
                 command_name = cmd
 
+    # Check for supercommands if no built-in command is found
+    if command_name is None:
+        with open('supercommands.json', 'r') as f:
+            for line in f:
+                name, _ = line.strip().split(':', 1)
+                if full_command.lower().startswith(name.lower()):
+                    command_name = name
+                    break
+
     # Check if command exists
     if command_name is None:
         await send_message(data, 'Command not found.')
@@ -191,12 +202,25 @@ async def run_command(data):
     if command_name in command_functions:
         await command_functions[command_name](data)
     else:
-        # Execute command
-        command = commands[command_name]
-        response = command['response']
-        if '{}' in response:
-            response = response.replace('{}', input_param)
-        await send_message(data, response)
+        # Check if it is a supercommand
+        is_supercommand = False
+        with open('supercommands.json', 'r') as f:
+            for line in f:
+                name, _ = line.strip().split(':', 1)
+                if name == command_name:
+                    is_supercommand = True
+                    break
+        
+        if is_supercommand:
+            from supercommands import run_supercommand
+            await run_supercommand(data)
+        else:
+            # Execute command
+            command = commands[command_name]
+            response = command['response']
+            if '{}' in response:
+                response = response.replace('{}', input_param)
+            await send_message(data, response)
     
     return True
 
@@ -261,6 +285,16 @@ async def on_reaction_add(reaction, user):
     # Check if the reaction is the specific emoji and the message was written by the bot
     if reaction.emoji == '🗑️' and reaction.message.author == client.user:
         await reaction.message.delete()
+    # Update reputation for upvote/downvote reactions
+    from commands.reputation import update_reputation_on_reaction
+    if reaction.emoji in (':upvote:', '👍', ':downvote:', '👎'):
+        update_reputation_on_reaction(reaction.message, reaction.emoji, added=True)
+
+@client.event
+async def on_reaction_remove(reaction, user):
+    from commands.reputation import update_reputation_on_reaction
+    if reaction.emoji in (':upvote:', '👍', ':downvote:', '👎'):
+        update_reputation_on_reaction(reaction.message, reaction.emoji, added=False)
 
 async def cleanup():
     # Close the Ollama session properly
@@ -269,10 +303,13 @@ async def cleanup():
         await _ollama_instance.close()
         print("Closed Ollama session")
 
+# Read the Discord token from file and export it for use elsewhere
+with open(r"/home/interrobang/VALUABLE/dimmy_widderkins_token.txt", 'r') as file:
+    DISCORD_TOKEN = file.read().strip()
+
 if __name__ == '__main__':
     try:
-        with open(r"/home/interrobang/VALUABLE/dimmy_widderkins_token.txt", 'r') as file:
-            client.run(file.read())
+        client.run(DISCORD_TOKEN)
     finally:
         # Run cleanup in a new event loop to ensure it runs
         loop = asyncio.new_event_loop()

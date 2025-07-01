@@ -63,7 +63,7 @@ def get_reputation(user):
     # Check if user has reputation
     if user_id not in reputations:
         # Add user to reputation list
-        reputations[user_id] = 100 # Default reputation
+        reputations[user_id] = 50 # Default reputation
         write_json(reputations, 'reputation.json')
     
     return reputations[user_id]
@@ -79,12 +79,46 @@ def change_reputation(user, amount):
     # Check if user has reputation
     if user_id not in reputations:
         # Add user to reputation list
-        reputations[user_id] = 100 # Default reputation
+        reputations[user_id] = 50 # Default reputation
     
     # Change reputation
     reputations[user_id] += amount
     reputations[user_id] = max(0, min(reputations[user_id], 100)) # Clamp reputation to 0-100
     write_json(reputations, 'reputation.json')
+
+def update_reputation_on_reaction(message, emoji, added=True):
+    change = 0
+    # Check for custom emoji by name (e.g. :upvote: or :downvote:)
+    emoji_name = emoji.name if hasattr(emoji, 'name') else str(emoji)
+    if emoji_name == 'upvote':
+        change = 1 if added else -1
+    elif emoji_name == 'downvote':
+        change = -1 if added else 1
+    if change != 0:
+        change_reputation(message.author, change)
+
+
+OPT_FILE = 'opt.json'
+
+def load_opted_in():
+    """Load users who have explicitly opted in."""
+    if not os.path.exists(OPT_FILE):
+        return set()
+    with open(OPT_FILE, 'r') as f:
+        try:
+            return set(json.load(f))
+        except Exception:
+            return set()
+
+def save_opted_in(opted_in):
+    """Save the set of users who have explicitly opted in."""
+    with open(OPT_FILE, 'w') as f:
+        json.dump(list(opted_in), f)
+
+def is_opted_in(user):
+    """Check if a user is opted in."""
+    opted_in = load_opted_in()
+    return str(user.id) in opted_in
 
 # Ask a series of questions defined in prompts to the user, then return their responses
 async def get_user_input(data, prompts, force_response=False):

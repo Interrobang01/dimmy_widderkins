@@ -50,3 +50,5 @@ async def launch_nukes(data):
 # Function aliases without underscores, using prefixes, and using close synonyms
 nukes = launch_nukes
 launchnukes = launch_nukes
+nuke = launch_nukes
+launchnuke = launch_nukes

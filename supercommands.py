@@ -1,6 +1,5 @@
 import re
 from bot_helper import send_message
-from opo_toolset import globals
 
 async def supercommand(data):
     message_content = data.content[len("!supercommand "):]
@@ -58,35 +57,42 @@ print("Hello, " + user_name + "!")
 
     await send_message(data, f"Supercommand '{command_name}' created successfully.")
 
+# Instead of eval, use safer alternatives
+def safe_eval(expr, variables):
+    # Use ast.literal_eval for safe expressions or implement custom parser
+    # This only handles basic data types, not arbitrary code
+    import ast
+    try:
+        return ast.literal_eval(expr)
+    except (ValueError, SyntaxError):
+        # For variable substitution
+        return variables.get(expr.strip(), expr)
+    
 async def run_supercommand(data):
     command_name = data.content.split(' ')[0][1:]
-    
-    with open('supercommands.json', 'r') as f:
-        for line in f:
-            name, code = line.strip().split(':', 1)
-            if name == command_name:
-                # Execute the code block
-                await execute_supercommand(data, code)
-                return
+    await send_message(data, "todo: make this work without allowing arbitrary code execution")
+#     with open('supercommands.json', 'r') as f:
+#         for line in f:
+#             name, code = line.strip().split(':', 1)
+#             if name == command_name:
+#                 # Execute the code block
+#                 await execute_supercommand(data, code)
+#                 return
 
-async def execute_supercommand(data, code):
-    local_vars = {
-        "send_message": send_message,
-        "data": data,
-        "print": lambda msg: send_message(data, str(msg))
-    }
+# async def execute_supercommand(data, code):
+#     local_vars = {
+#         "send_message": send_message,
+#         "data": data,
+#         "print": lambda msg: send_message(data, str(msg))
+#     }
     
-    opo_globals = globals()
-    if opo_globals:
-        local_vars.update(opo_globals)
-
-    for line in code.split('\n'):
-        try:
-            if '=' in line:
-                var, value = line.split('=', 1)
-                local_vars[var.strip()] = eval(value.strip(), {}, local_vars)
-            else:
-                exec(line, {}, local_vars)
-        except Exception as e:
-            await send_message(data, f"Error executing supercommand: {e}")
-            return
+#     for line in code.split('\n'):
+#         try:
+#             if '=' in line:
+#                 var, value = line.split('=', 1)
+#                 local_vars[var.strip()] = eval(value.strip(), {}, local_vars)
+#             else:
+#                 exec(line, {}, local_vars)
+#         except Exception as e:
+#             await send_message(data, f"Error executing supercommand: {e}")
+#             return

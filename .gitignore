@@ -1,3 +1,4 @@
 *depc
 __pycache__
 markov
+*.json

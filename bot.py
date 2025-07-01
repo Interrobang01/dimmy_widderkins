@@ -4,10 +4,10 @@ import random
 import asyncio
 import collections
 from brook import Brook
-from bot_helper import send_message, get_command_functions, get_reputation, change_reputation
+from bot_helper import send_message, get_command_functions, get_reputation, change_reputation, update_reputation_on_reaction, is_opted_in
 from supercommands import supercommand
 # We'll import specifically from ollama_handler as needed to avoid circular imports
-from opo_toolset import universe
+from opo_toolset import universe, you
 from startupmessage import send_startup_message
 import emoji
 import random
@@ -72,8 +72,8 @@ async def on_ready():
     async def periodic_universe():
         print("periodic_universe task started")
         while True:
-            minutes = random.randint(1, 2)
-            await asyncio.sleep(minutes * 15)
+            minutes = random.randint(5, 50)
+            await asyncio.sleep(minutes * 60)
             await universe(client)
     asyncio.create_task(periodic_universe())
 
@@ -92,6 +92,10 @@ async def interject(data):
 
     # Go through every interjection
     for _, interjection in interjections.items():
+        # Skip if user is opted out
+        if not is_opted_in(msg.author):
+            continue
+
         # Skip if user reputation is out of range
         reputation = get_reputation(msg.author)
         if reputation < interjection['reputation_range'][0]-1 or reputation > interjection['reputation_range'][1]-1:
@@ -224,6 +228,21 @@ async def run_command(data):
     
     return True
 
+async def get_watching():
+    # Check if the bot is currently watching something (opo_toolset.py)
+    from opo_toolset import currently_watching
+    return currently_watching
+
+async def handle_universe(data):
+    pass
+
+async def handle_reply(data):
+    if not get_watching() == "you":
+        await command_functions['markov_chat'](data)
+    else:
+        await you(data)
+
+
 last_reaction = "🤪"
 
 @client.event
@@ -272,7 +291,8 @@ async def on_message(msg):
     command_found = await run_command(data) # Run command if possible
 
     if not command_found and msg.reference and msg.reference.resolved and msg.reference.resolved.author == client.user:
-        await command_functions['markov_chat'](data)
+        # Handle replies to bot messages
+        await handle_reply(data)
         return
     
     # Interject if possible
@@ -286,13 +306,11 @@ async def on_reaction_add(reaction, user):
     if reaction.emoji == '🗑️' and reaction.message.author == client.user:
         await reaction.message.delete()
     # Update reputation for upvote/downvote reactions
-    from commands.reputation import update_reputation_on_reaction
     if reaction.emoji in (':upvote:', '👍', ':downvote:', '👎'):
         update_reputation_on_reaction(reaction.message, reaction.emoji, added=True)
 
 @client.event
 async def on_reaction_remove(reaction, user):
-    from commands.reputation import update_reputation_on_reaction
     if reaction.emoji in (':upvote:', '👍', ':downvote:', '👎'):
         update_reputation_on_reaction(reaction.message, reaction.emoji, added=False)
 
@@ -303,13 +321,10 @@ async def cleanup():
         await _ollama_instance.close()
         print("Closed Ollama session")
 
-# Read the Discord token from file and export it for use elsewhere
-with open(r"/home/interrobang/VALUABLE/dimmy_widderkins_token.txt", 'r') as file:
-    DISCORD_TOKEN = file.read().strip()
-
 if __name__ == '__main__':
     try:
-        client.run(DISCORD_TOKEN)
+        with open(r"/home/interrobang/VALUABLE/dimmy_widderkins_token.txt", 'r') as file:
+            client.run(file.read())
     finally:
         # Run cleanup in a new event loop to ensure it runs
         loop = asyncio.new_event_loop()

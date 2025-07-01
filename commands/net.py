@@ -14,7 +14,7 @@ async def net(data):
     target = args[0]
     download_flag = "-d" in args
     
-    if str(msg.author.id) == '658073528888721408':
+    if str(msg.author.id) != '658073528888721408':
         # Send this code's file in chat
         with open(__file__, 'r') as file:
             await send_message(data, f"Sorry, run it yourself:\n```python\n{file.read()}```")

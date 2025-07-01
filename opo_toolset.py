@@ -2,6 +2,10 @@ import json
 import random
 import discord
 import asyncio
+from bot_helper import send_message
+
+# Track whether the bot is currently watching something
+currently_watching = ""
 
 def split_opted_members():
     with open('behavior.json', 'r') as file:
@@ -15,6 +19,7 @@ def split_opted_members():
     return (group1, group2)
 
 async def universe(client):
+    global currently_watching
     original_status = client.status
     possible_things_to_watch = [
         "the horizon",
@@ -25,44 +30,42 @@ async def universe(client):
         "you",
     ]
     thing = random.choice(possible_things_to_watch)
+    currently_watching = thing
     await client.change_presence(
         status=discord.Status.idle,
         activity=discord.Activity(type=discord.ActivityType.watching, name=thing)
     )
-    if thing == "you":
-        await you(client)
     await asyncio.sleep(5)
     await client.change_presence(status=original_status)
+    currently_watching = ""
 
-async def you(client):
-    for guild in client.guilds:
-        for channel in guild.text_channels:
-            try:
-                await channel.send("I'm watching")
-                await asyncio.sleep(2)
-                await channel.send("oops didn't mean that haha")
-                await channel.send("it was a joke")
-                await channel.send("please don't be alarmed")
-                await channel.send("I just wanted to say hi")
-                await channel.send("how are you doing today?")
-                await channel.send("I hope you're having a great day!")
-                await asyncio.sleep(2)
-                await channel.send("I just wanted to let you know that I'm here for you")
-                await channel.send("if you need anything, just let me know")
-                await channel.send("I'm always here to help")
-                await channel.send("I just wanted to say that I appreciate you")
-                await channel.send("you're doing great")
-                await asyncio.sleep(2)
-                await channel.send("keep up the good work")
-                await channel.send("you're amazing")
-                await channel.send("I just wanted to let you know that I care about you")
-                await channel.send("you're not alone")
-                await asyncio.sleep(10)
-                await channel.send("I'm always here for you")
-            except Exception:
-                continue
-
-def globals():
-    from bot import DISCORD_TOKEN, client
-    globals()['DISCORD_TOKEN'] = DISCORD_TOKEN
-    globals()['client'] = client
+async def you(data):
+    messages = [
+        "I'm watching",
+        2,
+        "oops didn't mean that haha",
+        "it was a joke",
+        "please don't be alarmed",
+        "I just wanted to say hi",
+        "how are you doing today?",
+        "I hope you're having a great day!",
+        2,
+        "I just wanted to let you know that I'm here for you",
+        "if you need anything, just let me know",
+        "I'm always here to help",
+        "I just wanted to say that I appreciate you",
+        "you're doing great",
+        2,
+        "keep up the good work",
+        "you're amazing",
+        "I just wanted to let you know that I care about you",
+        "you're not alone",
+        2,
+        "I'm always here for you"
+    ]
+    for message in messages:
+        if isinstance(message, int):
+            await asyncio.sleep(message)
+        else:
+            await send_message(data, message)
+            await asyncio.sleep(0.5)

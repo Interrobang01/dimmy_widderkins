@@ -76,8 +76,8 @@ async def on_ready():
     client.loop.create_task(periodic_universe())
 
     # Send startup message
-    #await send_startup_message(client)
-    #print("Sent startup message")
+    await send_startup_message(client)
+    print("Sent startup message")
 
 async def interject(data):
     msg = data['msg']

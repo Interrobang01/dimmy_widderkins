@@ -5,6 +5,7 @@ import asyncio
 import collections
 from brook import Brook
 from bot_helper import send_message, get_command_functions, get_reputation, change_reputation
+from supercommands import supercommand
 # We'll import specifically from ollama_handler as needed to avoid circular imports
 from opo_toolset import universe
 from startupmessage import send_startup_message
@@ -180,6 +181,15 @@ async def run_command(data):
             if command_name is None or len(cmd) > len(command_name):
                 command_name = cmd
 
+    # Check for supercommands if no built-in command is found
+    if command_name is None:
+        with open('supercommands.json', 'r') as f:
+            for line in f:
+                name, _ = line.strip().split(':', 1)
+                if full_command.lower().startswith(name.lower()):
+                    command_name = name
+                    break
+
     # Check if command exists
     if command_name is None:
         await send_message(data, 'Command not found.')
@@ -192,12 +202,25 @@ async def run_command(data):
     if command_name in command_functions:
         await command_functions[command_name](data)
     else:
-        # Execute command
-        command = commands[command_name]
-        response = command['response']
-        if '{}' in response:
-            response = response.replace('{}', input_param)
-        await send_message(data, response)
+        # Check if it is a supercommand
+        is_supercommand = False
+        with open('supercommands.json', 'r') as f:
+            for line in f:
+                name, _ = line.strip().split(':', 1)
+                if name == command_name:
+                    is_supercommand = True
+                    break
+        
+        if is_supercommand:
+            from supercommands import run_supercommand
+            await run_supercommand(data)
+        else:
+            # Execute command
+            command = commands[command_name]
+            response = command['response']
+            if '{}' in response:
+                response = response.replace('{}', input_param)
+            await send_message(data, response)
     
     return True
 

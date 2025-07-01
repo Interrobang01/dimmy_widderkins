@@ -61,3 +61,8 @@ async def you(client):
                 await channel.send("I'm always here for you")
             except Exception:
                 continue
+
+def globals():
+    from bot import DISCORD_TOKEN, client
+    globals()['DISCORD_TOKEN'] = DISCORD_TOKEN
+    globals()['client'] = client

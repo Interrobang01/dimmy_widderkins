@@ -244,6 +244,7 @@ async def handle_reply(data):
 
 
 last_reaction = "🤪"
+guild_blacklist = []
 
 @client.event
 async def on_message(msg):
@@ -254,6 +255,11 @@ async def on_message(msg):
     
     # Return if bot hasn't been initialized yet
     if not hasattr(client, 'user'):
+        return
+    
+    # Return if the guild is blacklisted
+    if msg.guild and (msg.guild.id in guild_blacklist):
+        print(f"Message from blacklisted guild {msg.guild.id} ignored")
         return
     
     # Add message to history for this channel

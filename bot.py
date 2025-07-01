@@ -262,6 +262,16 @@ async def on_reaction_add(reaction, user):
     # Check if the reaction is the specific emoji and the message was written by the bot
     if reaction.emoji == '🗑️' and reaction.message.author == client.user:
         await reaction.message.delete()
+    # Update reputation for upvote/downvote reactions
+    from commands.reputation import update_reputation_on_reaction
+    if reaction.emoji in (':upvote:', '👍', ':downvote:', '👎'):
+        update_reputation_on_reaction(reaction.message, reaction.emoji, added=True)
+
+@client.event
+async def on_reaction_remove(reaction, user):
+    from commands.reputation import update_reputation_on_reaction
+    if reaction.emoji in (':upvote:', '👍', ':downvote:', '👎'):
+        update_reputation_on_reaction(reaction.message, reaction.emoji, added=False)
 
 async def cleanup():
     # Close the Ollama session properly
@@ -270,10 +280,13 @@ async def cleanup():
         await _ollama_instance.close()
         print("Closed Ollama session")
 
+# Read the Discord token from file and export it for use elsewhere
+with open(r"/home/interrobang/VALUABLE/dimmy_widderkins_token.txt", 'r') as file:
+    DISCORD_TOKEN = file.read().strip()
+
 if __name__ == '__main__':
     try:
-        with open(r"/home/interrobang/VALUABLE/dimmy_widderkins_token.txt", 'r') as file:
-            client.run(file.read())
+        client.run(DISCORD_TOKEN)
     finally:
         # Run cleanup in a new event loop to ensure it runs
         loop = asyncio.new_event_loop()

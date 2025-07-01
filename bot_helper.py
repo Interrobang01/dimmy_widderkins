@@ -118,7 +118,7 @@ def save_opted_in(opted_in):
 def is_opted_in(user):
     """Check if a user is opted in."""
     opted_in = load_opted_in()
-    return str(user.id) in opted_in
+    return str(user) in opted_in
 
 # Ask a series of questions defined in prompts to the user, then return their responses
 async def get_user_input(data, prompts, force_response=False):

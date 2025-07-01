@@ -83,6 +83,11 @@ async def on_ready():
 
 async def interject(data):
     msg = data['msg']
+
+    # Skip if user is opted out
+    if not is_opted_in(msg.author):
+        return
+    
     # Load interjections list
     with open('behavior.json', 'r') as file:
         interjections = json.load(file)['interjections']
@@ -92,13 +97,10 @@ async def interject(data):
 
     # Go through every interjection
     for _, interjection in interjections.items():
-        # Skip if user is opted out
-        if not is_opted_in(msg.author):
-            continue
 
         # Skip if user reputation is out of range
         reputation = get_reputation(msg.author)
-        if reputation < interjection['reputation_range'][0]-1 or reputation > interjection['reputation_range'][1]-1:
+        if reputation <= interjection['reputation_range'][0]-1 or reputation >= interjection['reputation_range'][1]+1:
             continue
         
         whole_message = interjection['whole_message']

@@ -59,10 +59,8 @@ transport_channel = None  # This needs to be set after client is ready
 @client.event
 async def on_ready():
     print(f'We have logged in as {client.user}')
-    global transport_channel
-    transport_channel = client.get_channel(1322717023351865395)
     global brook
-    brook = Brook(transport_channel, client)
+    brook = init_brook()
     
     # Initialize the stateful Ollama session
     from ollama_handler import get_ollama_session
@@ -239,7 +237,7 @@ async def handle_universe(data):
     pass
 
 async def handle_reply(data):
-    if not get_watching() == "you":
+    if not await get_watching() == "you":
         await command_functions['markov_chat'](data)
     else:
         await you(data)
@@ -273,8 +271,6 @@ async def on_message(msg):
     
     data = {'msg': msg, 'client': client, 'brook': brook}
     
-    await brook.on_message(msg)
-
     if 'dimmy' in msg.content.lower() or 'widderkins' in msg.content.lower() or '<@1330727173115613304>' in msg.content.lower():
         # Use the stateful Ollama handler
         from ollama_handler import get_ollama_session
@@ -328,6 +324,22 @@ async def cleanup():
     if _ollama_instance:
         await _ollama_instance.close()
         print("Closed Ollama session")
+
+def init_brook():
+    brook = Brook()
+
+    with open(r"/home/interrobang/VALUABLE/dimmy_widderkins_token.txt", 'r') as file:
+        token = file.read().strip()
+    if not token:
+        print("No token found, cannot initialize Brook API client")
+        sys.exit(1)
+
+    brook.initialize(
+        token=token,
+        transport_channel_id="1322717023351865395"
+    )
+    print("Initialized Brook API client")
+    return brook
 
 if __name__ == '__main__':
     try:

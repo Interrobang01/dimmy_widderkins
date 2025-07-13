@@ -21,5 +21,8 @@ trap cleanup EXIT
 # Start Ollama models in background
 ollama run qwen3:0.6b &
 
+# Start the Brook server
+gnome-terminal -- npx ts-node brook_server.ts
+
 # Start the bot
 python3 bot.py

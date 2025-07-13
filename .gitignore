@@ -2,3 +2,6 @@
 __pycache__
 markov
 *.json
+node_modules
+botport.ts
+brook.ts

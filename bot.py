@@ -196,7 +196,7 @@ async def run_command(data):
 
     # Check if command exists
     if command_name is None:
-        await send_message(data, 'Command not found.')
+        #await send_message(data, 'Command not found.')
         return True
 
     # Get the input parameter (everything after the command)

@@ -1,13 +1,13 @@
-from bot_helper import send_message, get_reputation
+import json
+from bot_helper import send_message, get_reputation, write_json
 import asyncio
 from datetime import datetime, timedelta
-from bot import guild_blacklist
 
 # Dictionary to keep track of calls
 call_tracker = {}
 uncall_tracker = {}
 
-blacklist = [
+nuke_blacklist = [
     1389395510929916007
 ]
 
@@ -24,11 +24,15 @@ async def launch_nukes(data):
     msg = data['msg']
     current_time = datetime.now()
 
-    if msg.guild.id in blacklist:
+    if msg.guild.id in nuke_blacklist:
         await send_message(data, "https://tenor.com/view/bunny-rabbit-golf-hole-in-one-gif-821257481761453386")
         return
 
     update_call_trackers()
+
+    if msg.author.id in call_tracker:
+        await send_message(data, "You did that already.")
+        return
 
     # Add current call
     call_tracker[msg.author.id] = current_time
@@ -55,8 +59,15 @@ async def launch_nukes(data):
         # Code to shut down the bot
         # await data['client'].close()
 
-        # Code to add guild to blacklist in bot.py
-        guild_blacklist.append(msg.guild.id)
+        # Add guild id to blacklist.json if it doesn't exist (different from nuke_blacklist)
+        with open('blacklist.json', 'r+') as file:
+            blacklist = json.load(file)
+            if str(msg.guild.id) not in blacklist:
+                blacklist.append(str(msg.guild.id))
+                # Write updated blacklist to file
+                write_json(blacklist, 'blacklist.json')
+                print("done, added to blacklist.json")
+        return
     else:
         await send_message(data, f"Key turned. {3 - vote} more keys needed to launch nukes.")
 
@@ -65,11 +76,15 @@ async def unlaunch_nukes(data):
     msg = data['msg']
     current_time = datetime.now()
 
-    if msg.guild.id in blacklist:
+    if msg.guild.id in nuke_blacklist:
         await send_message(data, "https://tenor.com/view/bunny-rabbit-golf-hole-in-one-gif-821257481761453386")
         return
 
     update_call_trackers()
+
+    if msg.author.id in uncall_tracker:
+        await send_message(data, "You did that already.")
+        return
 
     # Add current uncall
     uncall_tracker[msg.author.id] = current_time
@@ -80,8 +95,10 @@ async def unlaunch_nukes(data):
         await send_message(data, "Happiness missiles launched. May Satan have mercy on our souls.")
         await send_message(data, "https://tenor.com/view/pixelmoo-moodeng-uponly-up-only-pump-it-gif-18134094526770564575")
 
-        # Code to clear blacklist in bot.py
-        guild_blacklist.clear()
+        # clear blacklist.json (different from nuke_blacklist)
+        with open('blacklist.json', 'r+') as file:
+            write_json([], 'blacklist.json')
+        return
     else:
         await send_message(data, f"Tactical Stanislav deployed. {3 + vote} more Petrovs needed to unlaunch nukes.")
 

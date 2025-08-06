@@ -244,7 +244,6 @@ async def handle_reply(data):
 
 
 last_reaction = "🤪"
-guild_blacklist = []
 
 @client.event
 async def on_message(msg):
@@ -258,9 +257,11 @@ async def on_message(msg):
         return
     
     # Return if the guild is blacklisted
-    if msg.guild and (msg.guild.id in guild_blacklist):
-        print(f"Message from blacklisted guild {msg.guild.id} ignored")
-        return
+    with open('blacklist.json', 'r') as file:
+        guild_blacklist = json.load(file)
+        if msg.guild and (str(msg.guild.id) in guild_blacklist):
+            print(f"Message from blacklisted guild {msg.guild.id} ignored")
+            return
     
     # Add message to history for this channel
     message_history[msg.channel.id].append({

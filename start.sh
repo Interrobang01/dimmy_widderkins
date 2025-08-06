@@ -22,7 +22,7 @@ trap cleanup EXIT
 ollama run qwen3:0.6b &
 
 # Start the Brook server
-gnome-terminal -- npx ts-node brook_server.ts
+gnome-terminal -- bash -c "source ~/.profile && source ~/.bashrc && $(which bun || echo "$HOME/.bun/bin/bun") brook_server.ts"
 
 # Start the bot
 python3 bot.py

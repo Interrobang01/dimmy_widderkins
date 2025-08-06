@@ -5,3 +5,4 @@ markov
 node_modules
 botport.ts
 brook.ts
+*.db

@@ -46,7 +46,8 @@ async def send_message(data, response, reply=False):
 # Write json
 def write_json(data, filename='behavior.json'):
     # Cancel if data is empty, malformed, or over 1MB
-    if not data or not isinstance(data, dict) or len(json.dumps(data)) > 1000000:
+    if not (isinstance(data, dict) or isinstance(data, list)) or len(json.dumps(data)) > 1000000:
+        print(f"Invalid data for {filename}, not writing to file.")
         return
 
     with open(filename, 'w') as file:

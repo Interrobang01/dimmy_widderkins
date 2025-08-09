@@ -12,6 +12,7 @@ from startupmessage import send_startup_message
 import emoji
 import random
 import sys
+import go_to_commands
 
 # # Rate limiting system
 # message_timestamps = []
@@ -272,6 +273,8 @@ async def on_message(msg):
     
     data = {'msg': msg, 'client': client, 'brook': brook}
     
+    await go_to_commands.on_message(data)  # Handle go_to_commands logic
+
     if 'dimmy' in msg.content.lower() or 'widderkins' in msg.content.lower() or '<@1330727173115613304>' in msg.content.lower():
         # Use the stateful Ollama handler
         from ollama_handler import get_ollama_session

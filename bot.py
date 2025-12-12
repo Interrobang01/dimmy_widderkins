@@ -5,7 +5,7 @@ import asyncio
 import collections
 from brook import Brook
 from bot_helper import send_message, get_command_functions, get_reputation, change_reputation, update_reputation_on_reaction, is_opted_in
-from supercommands import supercommand
+#from supercommands import supercommand
 # We'll import specifically from ollama_handler as needed to avoid circular imports
 from opo_toolset import universe, you
 from startupmessage import send_startup_message
@@ -61,12 +61,9 @@ transport_channel = None  # This needs to be set after client is ready
 async def on_ready():
     print(f'We have logged in as {client.user}')
     global brook
-    brook = init_brook()
-    
-    # Initialize the stateful Ollama session
-    from ollama_handler import get_ollama_session
-    await get_ollama_session()
-    print("Initialized stateful Ollama session")
+    brook = None
+    # Initialize Brook API client
+    # brook = init_brook()
     
     async def periodic_universe():
         print("periodic_universe task started")
@@ -186,15 +183,6 @@ async def run_command(data):
             if command_name is None or len(cmd) > len(command_name):
                 command_name = cmd
 
-    # Check for supercommands if no built-in command is found
-    if command_name is None:
-        with open('supercommands.json', 'r') as f:
-            for line in f:
-                name, _ = line.strip().split(':', 1)
-                if full_command.lower().startswith(name.lower()):
-                    command_name = name
-                    break
-
     # Check if command exists
     if command_name is None:
         #await send_message(data, 'Command not found.')
@@ -271,25 +259,29 @@ async def on_message(msg):
         'timestamp': msg.created_at.isoformat()
     })
     
-    data = {'msg': msg, 'client': client, 'brook': brook}
+    if brook:
+        data = {'msg': msg, 'client': client, 'brook': brook}
+    else:
+        data = {'msg': msg, 'client': client}
     
     await go_to_commands.on_message(data)  # Handle go_to_commands logic
 
     if 'dimmy' in msg.content.lower() or 'widderkins' in msg.content.lower() or '<@1330727173115613304>' in msg.content.lower():
-        # Use the stateful Ollama handler
-        from ollama_handler import get_ollama_session
-        ollama_session = await get_ollama_session()
+        # # Use the stateful Ollama handler
+        # from ollama_handler import get_ollama_session
+        # ollama_session = await get_ollama_session()
         
-        # Get emoji reaction using the stateful session with channel context
-        response = await ollama_session.get_emoji_reaction(
-            channel_id=msg.channel.id,
-            message_content=msg.content,
-            author_name=msg.author.display_name,
-            last_reaction=last_reaction,
-            debug=True  # Enable debugging output
-        )
+        # # Get emoji reaction using the stateful session with channel context
+        # response = await ollama_session.get_emoji_reaction(
+        #     channel_id=msg.channel.id,
+        #     message_content=msg.content,
+        #     author_name=msg.author.display_name,
+        #     last_reaction=last_reaction,
+        #     debug=True  # Enable debugging output
+        # )
         
-        print(f"Ollama response: {response}")
+        # print(f"Ollama response: {response}")
+        response = "❓"
         if response:
             response = response.strip()[0]
             if response in emoji.EMOJI_DATA:
@@ -322,17 +314,17 @@ async def on_reaction_remove(reaction, user):
     if reaction.emoji in (':upvote:', '👍', ':downvote:', '👎'):
         update_reputation_on_reaction(reaction.message, reaction.emoji, added=False)
 
-async def cleanup():
-    # Close the Ollama session properly
-    from ollama_handler import _ollama_instance
-    if _ollama_instance:
-        await _ollama_instance.close()
-        print("Closed Ollama session")
+#async def cleanup():
+#    # Close the Ollama session properly
+#    from ollama_handler import _ollama_instance
+#    if _ollama_instance:
+#        await _ollama_instance.close()
+#        print("Closed Ollama session")
 
 def init_brook():
     brook = Brook()
 
-    with open(r"/home/interrobang/VALUABLE/dimmy_widderkins_token.txt", 'r') as file:
+    with open(r"/home/interrobang/VALUABLE/firmament_token.txt", 'r') as file:
         token = file.read().strip()
     if not token:
         print("No token found, cannot initialize Brook API client")
@@ -346,13 +338,6 @@ def init_brook():
     return brook
 
 if __name__ == '__main__':
-    try:
-        with open(r"/home/interrobang/VALUABLE/dimmy_widderkins_token.txt", 'r') as file:
-            client.run(file.read())
-    finally:
-        # Run cleanup in a new event loop to ensure it runs
-        loop = asyncio.new_event_loop()
-        asyncio.set_event_loop(loop)
-        loop.run_until_complete(cleanup())
-        loop.close()
+    with open(r"/home/interrobang/VALUABLE/firmament_token.txt", 'r') as file:
+        client.run(file.read())
 

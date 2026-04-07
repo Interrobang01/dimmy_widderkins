@@ -13,6 +13,7 @@ import emoji
 import random
 import sys
 import go_to_commands
+import time
 
 # # Rate limiting system
 # message_timestamps = []
@@ -63,7 +64,7 @@ async def on_ready():
     global brook
     brook = None
     # Initialize Brook API client
-    # brook = init_brook()
+    # brook = init_brook() # Uncomment to restore brook integration
     
     async def periodic_universe():
         print("periodic_universe task started")
@@ -80,6 +81,12 @@ async def on_ready():
 async def interject(data):
     msg = data['msg']
 
+    # Skip if unlucky
+    decay_start = 1765830118
+    seconds_in_day = 86400
+    if not "firmy" in msg.content and not "firmament" in msg.content and random.random() > 0.5 / (((time.time() - decay_start) / seconds_in_day)/3 + 1):
+        return
+
     # Skip if user is opted out
     if not is_opted_in(msg.author):
         return
@@ -93,6 +100,7 @@ async def interject(data):
 
     # Go through every interjection
     for _, interjection in interjections.items():
+
 
         # Skip if user reputation is out of range
         reputation = get_reputation(msg.author)
@@ -132,7 +140,7 @@ async def interject(data):
             if not prompt_words:
                 continue
             
-            if whole_message:
+            if whole_message and False:
             # Check if both message and prompt have same words
                 matches = message_words == prompt_words
             else:
@@ -324,7 +332,7 @@ async def on_reaction_remove(reaction, user):
 def init_brook():
     brook = Brook()
 
-    with open(r"/home/interrobang/VALUABLE/firmament_token.txt", 'r') as file:
+    with open(r"/home/randy/firmament_token.txt", 'r') as file:
         token = file.read().strip()
     if not token:
         print("No token found, cannot initialize Brook API client")
@@ -338,6 +346,6 @@ def init_brook():
     return brook
 
 if __name__ == '__main__':
-    with open(r"/home/interrobang/VALUABLE/firmament_token.txt", 'r') as file:
+    with open(r"/home/randy/firmament_token.txt", 'r') as file:
         client.run(file.read())
 

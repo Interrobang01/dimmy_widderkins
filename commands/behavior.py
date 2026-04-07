@@ -2,7 +2,7 @@ from bot_helper import get_user_input, send_message, write_json, get_command_fun
 import json
 import time
 from commands.markov import _infer_markov_chat
-from ollama_handler import ask_ollama
+#from ollama_handler import ask_ollama
 import random
 import discord
 

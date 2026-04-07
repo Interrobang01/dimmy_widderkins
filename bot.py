@@ -219,6 +219,8 @@ async def run_command(data):
             # Execute command
             command = commands[command_name]
             response = command['response']
+            if '{+}' in response:
+                response = response.replace('{+}', input_param.replace(' ', '+'))
             if '{}' in response:
                 response = response.replace('{}', input_param)
             await send_message(data, response)
